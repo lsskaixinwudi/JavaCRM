@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.situ.crm.dao.CustomerLossMapper" >
+  <resultMap id="BaseResultMap" type="com.situ.crm.pojo.CustomerLoss" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cus_no" property="cusNo" jdbcType="VARCHAR" />
+    <result column="cus_name" property="cusName" jdbcType="VARCHAR" />
+    <result column="cus_manager" property="cusManager" jdbcType="VARCHAR" />
+    <result column="last_order_time" property="lastOrderTime" jdbcType="DATE" />
+    <result column="confirm_loss_time" property="confirmLossTime" jdbcType="DATE" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="loss_reason" property="lossReason" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, cus_no, cus_name, cus_manager, last_order_time, confirm_loss_time, state, loss_reason
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.situ.crm.pojo.CustomerLossExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from customer_loss
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from customer_loss
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from customer_loss
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.situ.crm.pojo.CustomerLossExample" >
+    delete from customer_loss
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.situ.crm.pojo.CustomerLoss" >
+    insert into customer_loss (id, cus_no, cus_name, 
+      cus_manager, last_order_time, confirm_loss_time, 
+      state, loss_reason)
+    values (#{id,jdbcType=INTEGER}, #{cusNo,jdbcType=VARCHAR}, #{cusName,jdbcType=VARCHAR}, 
+      #{cusManager,jdbcType=VARCHAR}, #{lastOrderTime,jdbcType=DATE}, #{confirmLossTime,jdbcType=DATE}, 
+      #{state,jdbcType=INTEGER}, #{lossReason,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.situ.crm.pojo.CustomerLoss" >
+    insert into customer_loss
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cusNo != null" >
+        cus_no,
+      </if>
+      <if test="cusName != null" >
+        cus_name,
+      </if>
+      <if test="cusManager != null" >
+        cus_manager,
+      </if>
+      <if test="lastOrderTime != null" >
+        last_order_time,
+      </if>
+      <if test="confirmLossTime != null" >
+        confirm_loss_time,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="lossReason != null" >
+        loss_reason,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cusNo != null" >
+        #{cusNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cusName != null" >
+        #{cusName,jdbcType=VARCHAR},
+      </if>
+      <if test="cusManager != null" >
+        #{cusManager,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOrderTime != null" >
+        #{lastOrderTime,jdbcType=DATE},
+      </if>
+      <if test="confirmLossTime != null" >
+        #{confirmLossTime,jdbcType=DATE},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="lossReason != null" >
+        #{lossReason,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.situ.crm.pojo.CustomerLossExample" resultType="java.lang.Integer" >
+    select count(*) from customer_loss
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update customer_loss
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.cusNo != null" >
+        cus_no = #{record.cusNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cusName != null" >
+        cus_name = #{record.cusName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cusManager != null" >
+        cus_manager = #{record.cusManager,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastOrderTime != null" >
+        last_order_time = #{record.lastOrderTime,jdbcType=DATE},
+      </if>
+      <if test="record.confirmLossTime != null" >
+        confirm_loss_time = #{record.confirmLossTime,jdbcType=DATE},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.lossReason != null" >
+        loss_reason = #{record.lossReason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update customer_loss
+    set id = #{record.id,jdbcType=INTEGER},
+      cus_no = #{record.cusNo,jdbcType=VARCHAR},
+      cus_name = #{record.cusName,jdbcType=VARCHAR},
+      cus_manager = #{record.cusManager,jdbcType=VARCHAR},
+      last_order_time = #{record.lastOrderTime,jdbcType=DATE},
+      confirm_loss_time = #{record.confirmLossTime,jdbcType=DATE},
+      state = #{record.state,jdbcType=INTEGER},
+      loss_reason = #{record.lossReason,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.situ.crm.pojo.CustomerLoss" >
+    update customer_loss
+    <set >
+      <if test="cusNo != null" >
+        cus_no = #{cusNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cusName != null" >
+        cus_name = #{cusName,jdbcType=VARCHAR},
+      </if>
+      <if test="cusManager != null" >
+        cus_manager = #{cusManager,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOrderTime != null" >
+        last_order_time = #{lastOrderTime,jdbcType=DATE},
+      </if>
+      <if test="confirmLossTime != null" >
+        confirm_loss_time = #{confirmLossTime,jdbcType=DATE},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="lossReason != null" >
+        loss_reason = #{lossReason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.situ.crm.pojo.CustomerLoss" >
+    update customer_loss
+    set cus_no = #{cusNo,jdbcType=VARCHAR},
+      cus_name = #{cusName,jdbcType=VARCHAR},
+      cus_manager = #{cusManager,jdbcType=VARCHAR},
+      last_order_time = #{lastOrderTime,jdbcType=DATE},
+      confirm_loss_time = #{confirmLossTime,jdbcType=DATE},
+      state = #{state,jdbcType=INTEGER},
+      loss_reason = #{lossReason,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
