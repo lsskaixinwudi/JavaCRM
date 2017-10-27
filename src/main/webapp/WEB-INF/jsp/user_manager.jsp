@@ -37,19 +37,14 @@
 <script type="text/javascript">
 	/* 查找 */
 	function doSearch(value){
-		$("#datagrid").datagrid('load',{
+		$("#datagrid").datagrid("load",{
 			'userName':value
 		})
 	}
+	
 	/* 删除 */
 	function doDelete(){
-		var selectedIds = $("#datagrid").datagrid("getSelections");
-		console.log(selectedIds);
-		var ids = [];//[1,2,3]
-		for(var i in selectedIds){
-			ids.push(selectedIds[i].id);
-		}
-		ids = ids.join(',');
+		var ids = Util.getSelectionsIds("#datagrid");
 		if (ids.length == 0) {
 			$.messager.alert("系统提示", "请选择要删除的数据");
 			return;
@@ -61,7 +56,7 @@
 					{ids:ids}, 
 					function(result) {
 						$.messager.alert("系统提示", result.msg);
-						if(result.status == 0) {
+						if(result.status == Util.SUCCESS) {
 							$("#datagrid").datagrid("reload");
 						}
 					},

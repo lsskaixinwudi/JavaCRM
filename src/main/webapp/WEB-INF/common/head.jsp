@@ -9,6 +9,7 @@
      var ctx="${pageContext.request.contextPath}";  
 </script>
 
+<script type="text/javascript" src="${ctx}/resources/js/common.js"></script>
 <%-- <script type="text/javascript" src="${ctx}/resources/js/common.js"></script> --%>
 
 <link rel="stylesheet" type="text/css" href="${ctx}/resources/thirdlib/jquery-easyui/themes/default/easyui.css">
