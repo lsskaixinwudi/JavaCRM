@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.situ.crm.common.EasyUIDataGrideResult;
+import com.situ.crm.common.ServerResponse;
+import com.situ.crm.pojo.User;
 import com.situ.crm.service.IUserService;
 
 @Controller
@@ -16,12 +18,18 @@ public class UserController {
 
 	@RequestMapping("/index")
 	public String index() {
-		return "user_manager";   
+		return "user_manager";
 	}
 	
 	@RequestMapping("/findAll")
 	@ResponseBody
-	public EasyUIDataGrideResult findAll() {
-		return userService.findAll();
+	public EasyUIDataGrideResult findAll(Integer page, Integer rows, User user) {
+		return userService.findAll(page, rows, user);
+	}
+	
+	@RequestMapping("delete")
+	@ResponseBody
+	public ServerResponse delete(String ids) {
+		return userService.delete(ids);
 	}
 }
