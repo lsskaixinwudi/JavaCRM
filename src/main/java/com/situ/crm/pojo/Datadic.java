@@ -3,9 +3,9 @@ package com.situ.crm.pojo;
 public class Datadic {
     private Integer id;
 
-    private String dataDicName;
+    private String datadicName;
 
-    private String dataDicValue;
+    private String datadicValue;
 
     public Integer getId() {
         return id;
@@ -15,19 +15,19 @@ public class Datadic {
         this.id = id;
     }
 
-    public String getDataDicName() {
-        return dataDicName;
+    public String getDatadicName() {
+        return datadicName;
     }
 
-    public void setDataDicName(String dataDicName) {
-        this.dataDicName = dataDicName == null ? null : dataDicName.trim();
+    public void setDatadicName(String datadicName) {
+        this.datadicName = datadicName == null ? null : datadicName.trim();
     }
 
-    public String getDataDicValue() {
-        return dataDicValue;
+    public String getDatadicValue() {
+        return datadicValue;
     }
 
-    public void setDataDicValue(String dataDicValue) {
-        this.dataDicValue = dataDicValue == null ? null : dataDicValue.trim();
+    public void setDatadicValue(String datadicValue) {
+        this.datadicValue = datadicValue == null ? null : datadicValue.trim();
     }
 }

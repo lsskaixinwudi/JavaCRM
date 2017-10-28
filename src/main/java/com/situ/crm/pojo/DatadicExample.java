@@ -164,142 +164,142 @@ public class DatadicExample {
             return (Criteria) this;
         }
 
-        public Criteria andDataDicNameIsNull() {
+        public Criteria andDatadicNameIsNull() {
             addCriterion("data_dic_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicNameIsNotNull() {
+        public Criteria andDatadicNameIsNotNull() {
             addCriterion("data_dic_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicNameEqualTo(String value) {
+        public Criteria andDatadicNameEqualTo(String value) {
             addCriterion("data_dic_name =", value, "dataDicName");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicNameNotEqualTo(String value) {
+        public Criteria andDatadicNameNotEqualTo(String value) {
             addCriterion("data_dic_name <>", value, "dataDicName");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicNameGreaterThan(String value) {
+        public Criteria andDatadicNameGreaterThan(String value) {
             addCriterion("data_dic_name >", value, "dataDicName");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicNameGreaterThanOrEqualTo(String value) {
+        public Criteria andDatadicNameGreaterThanOrEqualTo(String value) {
             addCriterion("data_dic_name >=", value, "dataDicName");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicNameLessThan(String value) {
+        public Criteria andDatadicNameLessThan(String value) {
             addCriterion("data_dic_name <", value, "dataDicName");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicNameLessThanOrEqualTo(String value) {
+        public Criteria andDatadicNameLessThanOrEqualTo(String value) {
             addCriterion("data_dic_name <=", value, "dataDicName");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicNameLike(String value) {
+        public Criteria andDatadicNameLike(String value) {
             addCriterion("data_dic_name like", value, "dataDicName");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicNameNotLike(String value) {
+        public Criteria andDatadicNameNotLike(String value) {
             addCriterion("data_dic_name not like", value, "dataDicName");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicNameIn(List<String> values) {
+        public Criteria andDatadicNameIn(List<String> values) {
             addCriterion("data_dic_name in", values, "dataDicName");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicNameNotIn(List<String> values) {
+        public Criteria andDatadicNameNotIn(List<String> values) {
             addCriterion("data_dic_name not in", values, "dataDicName");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicNameBetween(String value1, String value2) {
+        public Criteria andDatadicNameBetween(String value1, String value2) {
             addCriterion("data_dic_name between", value1, value2, "dataDicName");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicNameNotBetween(String value1, String value2) {
+        public Criteria andDatadicNameNotBetween(String value1, String value2) {
             addCriterion("data_dic_name not between", value1, value2, "dataDicName");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicValueIsNull() {
+        public Criteria andDatadicValueIsNull() {
             addCriterion("data_dic_value is null");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicValueIsNotNull() {
+        public Criteria andDatadicValueIsNotNull() {
             addCriterion("data_dic_value is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicValueEqualTo(String value) {
+        public Criteria andDatadicValueEqualTo(String value) {
             addCriterion("data_dic_value =", value, "dataDicValue");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicValueNotEqualTo(String value) {
+        public Criteria andDatadicValueNotEqualTo(String value) {
             addCriterion("data_dic_value <>", value, "dataDicValue");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicValueGreaterThan(String value) {
+        public Criteria andDatadicValueGreaterThan(String value) {
             addCriterion("data_dic_value >", value, "dataDicValue");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicValueGreaterThanOrEqualTo(String value) {
+        public Criteria andDatadicValueGreaterThanOrEqualTo(String value) {
             addCriterion("data_dic_value >=", value, "dataDicValue");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicValueLessThan(String value) {
+        public Criteria andDatadicValueLessThan(String value) {
             addCriterion("data_dic_value <", value, "dataDicValue");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicValueLessThanOrEqualTo(String value) {
+        public Criteria andDatadicValueLessThanOrEqualTo(String value) {
             addCriterion("data_dic_value <=", value, "dataDicValue");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicValueLike(String value) {
+        public Criteria andDatadicValueLike(String value) {
             addCriterion("data_dic_value like", value, "dataDicValue");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicValueNotLike(String value) {
+        public Criteria andDatadicValueNotLike(String value) {
             addCriterion("data_dic_value not like", value, "dataDicValue");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicValueIn(List<String> values) {
+        public Criteria andDatadicValueIn(List<String> values) {
             addCriterion("data_dic_value in", values, "dataDicValue");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicValueNotIn(List<String> values) {
+        public Criteria andDatadicValueNotIn(List<String> values) {
             addCriterion("data_dic_value not in", values, "dataDicValue");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicValueBetween(String value1, String value2) {
+        public Criteria andDatadicValueBetween(String value1, String value2) {
             addCriterion("data_dic_value between", value1, value2, "dataDicValue");
             return (Criteria) this;
         }
 
-        public Criteria andDataDicValueNotBetween(String value1, String value2) {
+        public Criteria andDatadicValueNotBetween(String value1, String value2) {
             addCriterion("data_dic_value not between", value1, value2, "dataDicValue");
             return (Criteria) this;
         }
