@@ -51,4 +51,20 @@ public class UserServiceImpl implements IUserService{
 		return ServerResponse.createSuccess("数据已经成功删除");
 	}
 
+	@Override
+	public ServerResponse add(User user) {
+		if(userMapper.insert(user)>0){
+			return ServerResponse.createSuccess("添加成功！");
+		}
+		return ServerResponse.createError("添加失败！");
+	}
+
+	@Override
+	public ServerResponse update(User user) {
+		if(userMapper.updateByPrimaryKey(user)>0){
+			return ServerResponse.createSuccess("修改成功！");
+		}
+		return ServerResponse.createError("修改失败！");
+	}
+
 }
