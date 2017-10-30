@@ -5,9 +5,9 @@ import java.util.Date;
 public class CustomerContact {
     private Integer id;
 
-    private Integer cusId;
+    private Integer customerId;
 
-    private Date contactTime;
+    private Date time;
 
     private String address;
 
@@ -21,20 +21,20 @@ public class CustomerContact {
         this.id = id;
     }
 
-    public Integer getCusId() {
-        return cusId;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setCusId(Integer cusId) {
-        this.cusId = cusId;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
-    public Date getContactTime() {
-        return contactTime;
+    public Date getTime() {
+        return time;
     }
 
-    public void setContactTime(Date contactTime) {
-        this.contactTime = contactTime;
+    public void setTime(Date time) {
+        this.time = time;
     }
 
     public String getAddress() {

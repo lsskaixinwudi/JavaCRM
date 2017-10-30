@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.situ.crm.dao.CustomerReprieveMapper" >
-  <resultMap id="BaseResultMap" type="com.situ.crm.pojo.CustomerReprieve" >
+<mapper namespace="com.situ.crm.dao.OrderItemMapper" >
+  <resultMap id="BaseResultMap" type="com.situ.crm.pojo.OrderItem" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="loss_id" property="lossId" jdbcType="INTEGER" />
-    <result column="measure" property="measure" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="product_num" property="productNum" jdbcType="INTEGER" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="REAL" />
+    <result column="sum" property="sum" jdbcType="REAL" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,15 +69,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, loss_id, measure
+    id, order_id, product_name, product_num, unit, price, sum
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.situ.crm.pojo.CustomerReprieveExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.situ.crm.pojo.OrderItemExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from customer_reprieve
+    from order_item
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,67 +88,105 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from customer_reprieve
+    from order_item
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from customer_reprieve
+    delete from order_item
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.situ.crm.pojo.CustomerReprieveExample" >
-    delete from customer_reprieve
+  <delete id="deleteByExample" parameterType="com.situ.crm.pojo.OrderItemExample" >
+    delete from order_item
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.situ.crm.pojo.CustomerReprieve" >
-    insert into customer_reprieve (id, loss_id, measure
-      )
-    values (#{id,jdbcType=INTEGER}, #{lossId,jdbcType=INTEGER}, #{measure,jdbcType=VARCHAR}
-      )
+  <insert id="insert" parameterType="com.situ.crm.pojo.OrderItem" >
+    insert into order_item (id, order_id, product_name, 
+      product_num, unit, price, 
+      sum)
+    values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, 
+      #{productNum,jdbcType=INTEGER}, #{unit,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, 
+      #{sum,jdbcType=REAL})
   </insert>
-  <insert id="insertSelective" parameterType="com.situ.crm.pojo.CustomerReprieve" >
-    insert into customer_reprieve
+  <insert id="insertSelective" parameterType="com.situ.crm.pojo.OrderItem" >
+    insert into order_item
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="lossId != null" >
-        loss_id,
+      <if test="orderId != null" >
+        order_id,
       </if>
-      <if test="measure != null" >
-        measure,
+      <if test="productName != null" >
+        product_name,
+      </if>
+      <if test="productNum != null" >
+        product_num,
+      </if>
+      <if test="unit != null" >
+        unit,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="sum != null" >
+        sum,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="lossId != null" >
-        #{lossId,jdbcType=INTEGER},
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
       </if>
-      <if test="measure != null" >
-        #{measure,jdbcType=VARCHAR},
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productNum != null" >
+        #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=REAL},
+      </if>
+      <if test="sum != null" >
+        #{sum,jdbcType=REAL},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.situ.crm.pojo.CustomerReprieveExample" resultType="java.lang.Integer" >
-    select count(*) from customer_reprieve
+  <select id="countByExample" parameterType="com.situ.crm.pojo.OrderItemExample" resultType="java.lang.Integer" >
+    select count(*) from order_item
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update customer_reprieve
+    update order_item
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.lossId != null" >
-        loss_id = #{record.lossId,jdbcType=INTEGER},
+      <if test="record.orderId != null" >
+        order_id = #{record.orderId,jdbcType=INTEGER},
       </if>
-      <if test="record.measure != null" >
-        measure = #{record.measure,jdbcType=VARCHAR},
+      <if test="record.productName != null" >
+        product_name = #{record.productName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productNum != null" >
+        product_num = #{record.productNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.unit != null" >
+        unit = #{record.unit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=REAL},
+      </if>
+      <if test="record.sum != null" >
+        sum = #{record.sum,jdbcType=REAL},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -152,30 +194,50 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update customer_reprieve
+    update order_item
     set id = #{record.id,jdbcType=INTEGER},
-      loss_id = #{record.lossId,jdbcType=INTEGER},
-      measure = #{record.measure,jdbcType=VARCHAR}
+      order_id = #{record.orderId,jdbcType=INTEGER},
+      product_name = #{record.productName,jdbcType=VARCHAR},
+      product_num = #{record.productNum,jdbcType=INTEGER},
+      unit = #{record.unit,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=REAL},
+      sum = #{record.sum,jdbcType=REAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.situ.crm.pojo.CustomerReprieve" >
-    update customer_reprieve
+  <update id="updateByPrimaryKeySelective" parameterType="com.situ.crm.pojo.OrderItem" >
+    update order_item
     <set >
-      <if test="lossId != null" >
-        loss_id = #{lossId,jdbcType=INTEGER},
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
       </if>
-      <if test="measure != null" >
-        measure = #{measure,jdbcType=VARCHAR},
+      <if test="productName != null" >
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productNum != null" >
+        product_num = #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null" >
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=REAL},
+      </if>
+      <if test="sum != null" >
+        sum = #{sum,jdbcType=REAL},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.situ.crm.pojo.CustomerReprieve" >
-    update customer_reprieve
-    set loss_id = #{lossId,jdbcType=INTEGER},
-      measure = #{measure,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.situ.crm.pojo.OrderItem" >
+    update order_item
+    set order_id = #{orderId,jdbcType=INTEGER},
+      product_name = #{productName,jdbcType=VARCHAR},
+      product_num = #{productNum,jdbcType=INTEGER},
+      unit = #{unit,jdbcType=VARCHAR},
+      price = #{price,jdbcType=REAL},
+      sum = #{sum,jdbcType=REAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

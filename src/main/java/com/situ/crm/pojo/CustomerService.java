@@ -5,13 +5,13 @@ import java.util.Date;
 public class CustomerService {
     private Integer id;
 
-    private String serveType;
+    private String serviceType;
 
     private String overview;
 
     private String customer;
 
-    private String state;
+    private String status;
 
     private String serviceRequest;
 
@@ -23,15 +23,15 @@ public class CustomerService {
 
     private Date assignTime;
 
-    private String serviceProce;
+    private String serviceDeal;
 
-    private String serviceProcePeople;
+    private String serviceDealPeople;
 
-    private Date serviceProceTime;
+    private Date serviceDealTime;
 
-    private String serviceProceResult;
+    private String serviceDealResult;
 
-    private String myd;
+    private String satisfy;
 
     public Integer getId() {
         return id;
@@ -41,12 +41,12 @@ public class CustomerService {
         this.id = id;
     }
 
-    public String getServeType() {
-        return serveType;
+    public String getServiceType() {
+        return serviceType;
     }
 
-    public void setServeType(String serveType) {
-        this.serveType = serveType == null ? null : serveType.trim();
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType == null ? null : serviceType.trim();
     }
 
     public String getOverview() {
@@ -65,12 +65,12 @@ public class CustomerService {
         this.customer = customer == null ? null : customer.trim();
     }
 
-    public String getState() {
-        return state;
+    public String getStatus() {
+        return status;
     }
 
-    public void setState(String state) {
-        this.state = state == null ? null : state.trim();
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 
     public String getServiceRequest() {
@@ -113,43 +113,43 @@ public class CustomerService {
         this.assignTime = assignTime;
     }
 
-    public String getServiceProce() {
-        return serviceProce;
+    public String getServiceDeal() {
+        return serviceDeal;
     }
 
-    public void setServiceProce(String serviceProce) {
-        this.serviceProce = serviceProce == null ? null : serviceProce.trim();
+    public void setServiceDeal(String serviceDeal) {
+        this.serviceDeal = serviceDeal == null ? null : serviceDeal.trim();
     }
 
-    public String getServiceProcePeople() {
-        return serviceProcePeople;
+    public String getServiceDealPeople() {
+        return serviceDealPeople;
     }
 
-    public void setServiceProcePeople(String serviceProcePeople) {
-        this.serviceProcePeople = serviceProcePeople == null ? null : serviceProcePeople.trim();
+    public void setServiceDealPeople(String serviceDealPeople) {
+        this.serviceDealPeople = serviceDealPeople == null ? null : serviceDealPeople.trim();
     }
 
-    public Date getServiceProceTime() {
-        return serviceProceTime;
+    public Date getServiceDealTime() {
+        return serviceDealTime;
     }
 
-    public void setServiceProceTime(Date serviceProceTime) {
-        this.serviceProceTime = serviceProceTime;
+    public void setServiceDealTime(Date serviceDealTime) {
+        this.serviceDealTime = serviceDealTime;
     }
 
-    public String getServiceProceResult() {
-        return serviceProceResult;
+    public String getServiceDealResult() {
+        return serviceDealResult;
     }
 
-    public void setServiceProceResult(String serviceProceResult) {
-        this.serviceProceResult = serviceProceResult == null ? null : serviceProceResult.trim();
+    public void setServiceDealResult(String serviceDealResult) {
+        this.serviceDealResult = serviceDealResult == null ? null : serviceDealResult.trim();
     }
 
-    public String getMyd() {
-        return myd;
+    public String getSatisfy() {
+        return satisfy;
     }
 
-    public void setMyd(String myd) {
-        this.myd = myd == null ? null : myd.trim();
+    public void setSatisfy(String satisfy) {
+        this.satisfy = satisfy == null ? null : satisfy.trim();
     }
 }

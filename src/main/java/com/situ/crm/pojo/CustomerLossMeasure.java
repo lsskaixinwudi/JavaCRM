@@ -1,6 +1,6 @@
 package com.situ.crm.pojo;
 
-public class CustomerReprieve {
+public class CustomerLossMeasure {
     private Integer id;
 
     private Integer lossId;

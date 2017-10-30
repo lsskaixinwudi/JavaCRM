@@ -1,0 +1,9 @@
+
+2017-10-30 11:16:16  [ main:0 ] - [ ERROR ]  Error
+2017-10-30 11:16:31  [ main:0 ] - [ ERROR ]  Error
+2017-10-30 11:16:31  [ main:0 ] - [ WARN ]  Warn
+2017-10-30 11:16:31  [ main:0 ] - [ INFO ]  Info
+2017-10-30 11:17:21  [ main:0 ] - [ ERROR ]  Error
+2017-10-30 11:17:21  [ main:1 ] - [ WARN ]  Warn
+2017-10-30 11:17:21  [ main:1 ] - [ INFO ]  Info
+2017-10-30 11:17:21  [ main:1 ] - [ DEBUG ]  Debug

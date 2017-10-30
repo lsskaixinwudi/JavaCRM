@@ -3,7 +3,7 @@ package com.situ.crm.pojo;
 public class Product {
     private Integer id;
 
-    private String productName;
+    private String name;
 
     private String model;
 
@@ -11,7 +11,7 @@ public class Product {
 
     private Float price;
 
-    private Double store;
+    private Double stock;
 
     private String remark;
 
@@ -23,12 +23,12 @@ public class Product {
         this.id = id;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName == null ? null : productName.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     public String getModel() {
@@ -55,12 +55,12 @@ public class Product {
         this.price = price;
     }
 
-    public Double getStore() {
-        return store;
+    public Double getStock() {
+        return stock;
     }
 
-    public void setStore(Double store) {
-        this.store = store;
+    public void setStock(Double stock) {
+        this.stock = stock;
     }
 
     public String getRemark() {

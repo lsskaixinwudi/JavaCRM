@@ -3,19 +3,19 @@ package com.situ.crm.pojo;
 public class Customer {
     private Integer id;
 
-    private String khno;
+    private String num;
 
     private String name;
 
-    private String area;
+    private String region;
 
-    private String cusManager;
+    private String managerName;
 
     private String level;
 
-    private String myd;
+    private String satisfy;
 
-    private String xyd;
+    private String credit;
 
     private String address;
 
@@ -27,23 +27,23 @@ public class Customer {
 
     private String webSite;
 
-    private String yyzzzch;
+    private String licenceNo;
 
-    private String fr;
+    private String legalPerson;
 
-    private String zczj;
+    private String bankroll;
 
-    private String nyye;
+    private String turnover;
 
-    private String khyh;
+    private String bankName;
 
-    private String khzh;
+    private String bankAccount;
 
-    private String dsdjh;
+    private String localTaxNo;
 
-    private String gsdjh;
+    private String nationalTaxNo;
 
-    private Integer state;
+    private Integer status;
 
     public Integer getId() {
         return id;
@@ -53,12 +53,12 @@ public class Customer {
         this.id = id;
     }
 
-    public String getKhno() {
-        return khno;
+    public String getNum() {
+        return num;
     }
 
-    public void setKhno(String khno) {
-        this.khno = khno == null ? null : khno.trim();
+    public void setNum(String num) {
+        this.num = num == null ? null : num.trim();
     }
 
     public String getName() {
@@ -69,20 +69,20 @@ public class Customer {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getArea() {
-        return area;
+    public String getRegion() {
+        return region;
     }
 
-    public void setArea(String area) {
-        this.area = area == null ? null : area.trim();
+    public void setRegion(String region) {
+        this.region = region == null ? null : region.trim();
     }
 
-    public String getCusManager() {
-        return cusManager;
+    public String getManagerName() {
+        return managerName;
     }
 
-    public void setCusManager(String cusManager) {
-        this.cusManager = cusManager == null ? null : cusManager.trim();
+    public void setManagerName(String managerName) {
+        this.managerName = managerName == null ? null : managerName.trim();
     }
 
     public String getLevel() {
@@ -93,20 +93,20 @@ public class Customer {
         this.level = level == null ? null : level.trim();
     }
 
-    public String getMyd() {
-        return myd;
+    public String getSatisfy() {
+        return satisfy;
     }
 
-    public void setMyd(String myd) {
-        this.myd = myd == null ? null : myd.trim();
+    public void setSatisfy(String satisfy) {
+        this.satisfy = satisfy == null ? null : satisfy.trim();
     }
 
-    public String getXyd() {
-        return xyd;
+    public String getCredit() {
+        return credit;
     }
 
-    public void setXyd(String xyd) {
-        this.xyd = xyd == null ? null : xyd.trim();
+    public void setCredit(String credit) {
+        this.credit = credit == null ? null : credit.trim();
     }
 
     public String getAddress() {
@@ -149,75 +149,75 @@ public class Customer {
         this.webSite = webSite == null ? null : webSite.trim();
     }
 
-    public String getYyzzzch() {
-        return yyzzzch;
+    public String getLicenceNo() {
+        return licenceNo;
     }
 
-    public void setYyzzzch(String yyzzzch) {
-        this.yyzzzch = yyzzzch == null ? null : yyzzzch.trim();
+    public void setLicenceNo(String licenceNo) {
+        this.licenceNo = licenceNo == null ? null : licenceNo.trim();
     }
 
-    public String getFr() {
-        return fr;
+    public String getLegalPerson() {
+        return legalPerson;
     }
 
-    public void setFr(String fr) {
-        this.fr = fr == null ? null : fr.trim();
+    public void setLegalPerson(String legalPerson) {
+        this.legalPerson = legalPerson == null ? null : legalPerson.trim();
     }
 
-    public String getZczj() {
-        return zczj;
+    public String getBankroll() {
+        return bankroll;
     }
 
-    public void setZczj(String zczj) {
-        this.zczj = zczj == null ? null : zczj.trim();
+    public void setBankroll(String bankroll) {
+        this.bankroll = bankroll == null ? null : bankroll.trim();
     }
 
-    public String getNyye() {
-        return nyye;
+    public String getTurnover() {
+        return turnover;
     }
 
-    public void setNyye(String nyye) {
-        this.nyye = nyye == null ? null : nyye.trim();
+    public void setTurnover(String turnover) {
+        this.turnover = turnover == null ? null : turnover.trim();
     }
 
-    public String getKhyh() {
-        return khyh;
+    public String getBankName() {
+        return bankName;
     }
 
-    public void setKhyh(String khyh) {
-        this.khyh = khyh == null ? null : khyh.trim();
+    public void setBankName(String bankName) {
+        this.bankName = bankName == null ? null : bankName.trim();
     }
 
-    public String getKhzh() {
-        return khzh;
+    public String getBankAccount() {
+        return bankAccount;
     }
 
-    public void setKhzh(String khzh) {
-        this.khzh = khzh == null ? null : khzh.trim();
+    public void setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount == null ? null : bankAccount.trim();
     }
 
-    public String getDsdjh() {
-        return dsdjh;
+    public String getLocalTaxNo() {
+        return localTaxNo;
     }
 
-    public void setDsdjh(String dsdjh) {
-        this.dsdjh = dsdjh == null ? null : dsdjh.trim();
+    public void setLocalTaxNo(String localTaxNo) {
+        this.localTaxNo = localTaxNo == null ? null : localTaxNo.trim();
     }
 
-    public String getGsdjh() {
-        return gsdjh;
+    public String getNationalTaxNo() {
+        return nationalTaxNo;
     }
 
-    public void setGsdjh(String gsdjh) {
-        this.gsdjh = gsdjh == null ? null : gsdjh.trim();
+    public void setNationalTaxNo(String nationalTaxNo) {
+        this.nationalTaxNo = nationalTaxNo == null ? null : nationalTaxNo.trim();
     }
 
-    public Integer getState() {
-        return state;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setState(Integer state) {
-        this.state = state;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

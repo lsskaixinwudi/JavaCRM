@@ -9,7 +9,7 @@ public class SaleChance {
 
     private String customerName;
 
-    private Integer cgjl;
+    private Integer successRate;
 
     private String overview;
 
@@ -27,7 +27,7 @@ public class SaleChance {
 
     private Date assignTime;
 
-    private Integer state;
+    private Integer status;
 
     private Integer devResult;
 
@@ -55,12 +55,12 @@ public class SaleChance {
         this.customerName = customerName == null ? null : customerName.trim();
     }
 
-    public Integer getCgjl() {
-        return cgjl;
+    public Integer getSuccessRate() {
+        return successRate;
     }
 
-    public void setCgjl(Integer cgjl) {
-        this.cgjl = cgjl;
+    public void setSuccessRate(Integer successRate) {
+        this.successRate = successRate;
     }
 
     public String getOverview() {
@@ -127,12 +127,12 @@ public class SaleChance {
         this.assignTime = assignTime;
     }
 
-    public Integer getState() {
-        return state;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setState(Integer state) {
-        this.state = state;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Integer getDevResult() {

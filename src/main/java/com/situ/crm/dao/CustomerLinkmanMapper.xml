@@ -3,9 +3,9 @@
 <mapper namespace="com.situ.crm.dao.CustomerLinkmanMapper" >
   <resultMap id="BaseResultMap" type="com.situ.crm.pojo.CustomerLinkman" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="cus_id" property="cusId" jdbcType="INTEGER" />
+    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
     <result column="link_name" property="linkName" jdbcType="VARCHAR" />
-    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
     <result column="position" property="position" jdbcType="VARCHAR" />
     <result column="office_phone" property="officePhone" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, cus_id, link_name, sex, position, office_phone, phone
+    id, customer_id, link_name, gender, position, office_phone, phone
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.situ.crm.pojo.CustomerLinkmanExample" >
     select
@@ -102,11 +102,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.situ.crm.pojo.CustomerLinkman" >
-    insert into customer_linkman (id, cus_id, link_name, 
-      sex, position, office_phone, 
+    insert into customer_linkman (id, customer_id, link_name, 
+      gender, position, office_phone, 
       phone)
-    values (#{id,jdbcType=INTEGER}, #{cusId,jdbcType=INTEGER}, #{linkName,jdbcType=VARCHAR}, 
-      #{sex,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{officePhone,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{linkName,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{officePhone,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.situ.crm.pojo.CustomerLinkman" >
@@ -115,14 +115,14 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="cusId != null" >
-        cus_id,
+      <if test="customerId != null" >
+        customer_id,
       </if>
       <if test="linkName != null" >
         link_name,
       </if>
-      <if test="sex != null" >
-        sex,
+      <if test="gender != null" >
+        gender,
       </if>
       <if test="position != null" >
         position,
@@ -138,14 +138,14 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="cusId != null" >
-        #{cusId,jdbcType=INTEGER},
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
       </if>
       <if test="linkName != null" >
         #{linkName,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null" >
-        #{sex,jdbcType=VARCHAR},
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
       </if>
       <if test="position != null" >
         #{position,jdbcType=VARCHAR},
@@ -170,14 +170,14 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.cusId != null" >
-        cus_id = #{record.cusId,jdbcType=INTEGER},
+      <if test="record.customerId != null" >
+        customer_id = #{record.customerId,jdbcType=INTEGER},
       </if>
       <if test="record.linkName != null" >
         link_name = #{record.linkName,jdbcType=VARCHAR},
       </if>
-      <if test="record.sex != null" >
-        sex = #{record.sex,jdbcType=VARCHAR},
+      <if test="record.gender != null" >
+        gender = #{record.gender,jdbcType=VARCHAR},
       </if>
       <if test="record.position != null" >
         position = #{record.position,jdbcType=VARCHAR},
@@ -196,9 +196,9 @@
   <update id="updateByExample" parameterType="map" >
     update customer_linkman
     set id = #{record.id,jdbcType=INTEGER},
-      cus_id = #{record.cusId,jdbcType=INTEGER},
+      customer_id = #{record.customerId,jdbcType=INTEGER},
       link_name = #{record.linkName,jdbcType=VARCHAR},
-      sex = #{record.sex,jdbcType=VARCHAR},
+      gender = #{record.gender,jdbcType=VARCHAR},
       position = #{record.position,jdbcType=VARCHAR},
       office_phone = #{record.officePhone,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR}
@@ -209,14 +209,14 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.situ.crm.pojo.CustomerLinkman" >
     update customer_linkman
     <set >
-      <if test="cusId != null" >
-        cus_id = #{cusId,jdbcType=INTEGER},
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=INTEGER},
       </if>
       <if test="linkName != null" >
         link_name = #{linkName,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null" >
-        sex = #{sex,jdbcType=VARCHAR},
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
       </if>
       <if test="position != null" >
         position = #{position,jdbcType=VARCHAR},
@@ -232,9 +232,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.situ.crm.pojo.CustomerLinkman" >
     update customer_linkman
-    set cus_id = #{cusId,jdbcType=INTEGER},
+    set customer_id = #{customerId,jdbcType=INTEGER},
       link_name = #{linkName,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
       position = #{position,jdbcType=VARCHAR},
       office_phone = #{officePhone,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR}

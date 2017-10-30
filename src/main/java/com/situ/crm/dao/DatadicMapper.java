@@ -1,30 +1,30 @@
 package com.situ.crm.dao;
 
-import com.situ.crm.pojo.Datadic;
-import com.situ.crm.pojo.DatadicExample;
+import com.situ.crm.pojo.DataDic;
+import com.situ.crm.pojo.DataDicExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface DatadicMapper {
-    int countByExample(DatadicExample example);
+public interface DataDicMapper {
+    int countByExample(DataDicExample example);
 
-    int deleteByExample(DatadicExample example);
+    int deleteByExample(DataDicExample example);
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Datadic record);
+    int insert(DataDic record);
 
-    int insertSelective(Datadic record);
+    int insertSelective(DataDic record);
 
-    List<Datadic> selectByExample(DatadicExample example);
+    List<DataDic> selectByExample(DataDicExample example);
 
-    Datadic selectByPrimaryKey(Integer id);
+    DataDic selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") Datadic record, @Param("example") DatadicExample example);
+    int updateByExampleSelective(@Param("record") DataDic record, @Param("example") DataDicExample example);
 
-    int updateByExample(@Param("record") Datadic record, @Param("example") DatadicExample example);
+    int updateByExample(@Param("record") DataDic record, @Param("example") DataDicExample example);
 
-    int updateByPrimaryKeySelective(Datadic record);
+    int updateByPrimaryKeySelective(DataDic record);
 
-    int updateByPrimaryKey(Datadic record);
+    int updateByPrimaryKey(DataDic record);
 }

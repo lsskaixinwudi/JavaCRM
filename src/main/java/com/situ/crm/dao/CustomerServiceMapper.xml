@@ -3,20 +3,20 @@
 <mapper namespace="com.situ.crm.dao.CustomerServiceMapper" >
   <resultMap id="BaseResultMap" type="com.situ.crm.pojo.CustomerService" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="serve_type" property="serveType" jdbcType="VARCHAR" />
+    <result column="service_type" property="serviceType" jdbcType="VARCHAR" />
     <result column="overview" property="overview" jdbcType="VARCHAR" />
     <result column="customer" property="customer" jdbcType="VARCHAR" />
-    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="service_request" property="serviceRequest" jdbcType="VARCHAR" />
     <result column="create_people" property="createPeople" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="assigner" property="assigner" jdbcType="VARCHAR" />
     <result column="assign_time" property="assignTime" jdbcType="TIMESTAMP" />
-    <result column="service_proce" property="serviceProce" jdbcType="VARCHAR" />
-    <result column="service_proce_people" property="serviceProcePeople" jdbcType="VARCHAR" />
-    <result column="service_proce_time" property="serviceProceTime" jdbcType="TIMESTAMP" />
-    <result column="service_proce_result" property="serviceProceResult" jdbcType="VARCHAR" />
-    <result column="myd" property="myd" jdbcType="VARCHAR" />
+    <result column="service_deal" property="serviceDeal" jdbcType="VARCHAR" />
+    <result column="service_deal_people" property="serviceDealPeople" jdbcType="VARCHAR" />
+    <result column="service_deal_time" property="serviceDealTime" jdbcType="TIMESTAMP" />
+    <result column="service_deal_result" property="serviceDealResult" jdbcType="VARCHAR" />
+    <result column="satisfy" property="satisfy" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -77,9 +77,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, serve_type, overview, customer, state, service_request, create_people, create_time, 
-    assigner, assign_time, service_proce, service_proce_people, service_proce_time, service_proce_result, 
-    myd
+    id, service_type, overview, customer, status, service_request, create_people, create_time, 
+    assigner, assign_time, service_deal, service_deal_people, service_deal_time, service_deal_result, 
+    satisfy
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.situ.crm.pojo.CustomerServiceExample" >
     select
@@ -112,18 +112,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.situ.crm.pojo.CustomerService" >
-    insert into customer_service (id, serve_type, overview, 
-      customer, state, service_request, 
+    insert into customer_service (id, service_type, overview, 
+      customer, status, service_request, 
       create_people, create_time, assigner, 
-      assign_time, service_proce, service_proce_people, 
-      service_proce_time, service_proce_result, 
-      myd)
-    values (#{id,jdbcType=INTEGER}, #{serveType,jdbcType=VARCHAR}, #{overview,jdbcType=VARCHAR}, 
-      #{customer,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{serviceRequest,jdbcType=VARCHAR}, 
+      assign_time, service_deal, service_deal_people, 
+      service_deal_time, service_deal_result, satisfy
+      )
+    values (#{id,jdbcType=INTEGER}, #{serviceType,jdbcType=VARCHAR}, #{overview,jdbcType=VARCHAR}, 
+      #{customer,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{serviceRequest,jdbcType=VARCHAR}, 
       #{createPeople,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{assigner,jdbcType=VARCHAR}, 
-      #{assignTime,jdbcType=TIMESTAMP}, #{serviceProce,jdbcType=VARCHAR}, #{serviceProcePeople,jdbcType=VARCHAR}, 
-      #{serviceProceTime,jdbcType=TIMESTAMP}, #{serviceProceResult,jdbcType=VARCHAR}, 
-      #{myd,jdbcType=VARCHAR})
+      #{assignTime,jdbcType=TIMESTAMP}, #{serviceDeal,jdbcType=VARCHAR}, #{serviceDealPeople,jdbcType=VARCHAR}, 
+      #{serviceDealTime,jdbcType=TIMESTAMP}, #{serviceDealResult,jdbcType=VARCHAR}, #{satisfy,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.situ.crm.pojo.CustomerService" >
     insert into customer_service
@@ -131,8 +131,8 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="serveType != null" >
-        serve_type,
+      <if test="serviceType != null" >
+        service_type,
       </if>
       <if test="overview != null" >
         overview,
@@ -140,8 +140,8 @@
       <if test="customer != null" >
         customer,
       </if>
-      <if test="state != null" >
-        state,
+      <if test="status != null" >
+        status,
       </if>
       <if test="serviceRequest != null" >
         service_request,
@@ -158,28 +158,28 @@
       <if test="assignTime != null" >
         assign_time,
       </if>
-      <if test="serviceProce != null" >
-        service_proce,
+      <if test="serviceDeal != null" >
+        service_deal,
       </if>
-      <if test="serviceProcePeople != null" >
-        service_proce_people,
+      <if test="serviceDealPeople != null" >
+        service_deal_people,
       </if>
-      <if test="serviceProceTime != null" >
-        service_proce_time,
+      <if test="serviceDealTime != null" >
+        service_deal_time,
       </if>
-      <if test="serviceProceResult != null" >
-        service_proce_result,
+      <if test="serviceDealResult != null" >
+        service_deal_result,
       </if>
-      <if test="myd != null" >
-        myd,
+      <if test="satisfy != null" >
+        satisfy,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="serveType != null" >
-        #{serveType,jdbcType=VARCHAR},
+      <if test="serviceType != null" >
+        #{serviceType,jdbcType=VARCHAR},
       </if>
       <if test="overview != null" >
         #{overview,jdbcType=VARCHAR},
@@ -187,8 +187,8 @@
       <if test="customer != null" >
         #{customer,jdbcType=VARCHAR},
       </if>
-      <if test="state != null" >
-        #{state,jdbcType=VARCHAR},
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
       </if>
       <if test="serviceRequest != null" >
         #{serviceRequest,jdbcType=VARCHAR},
@@ -205,20 +205,20 @@
       <if test="assignTime != null" >
         #{assignTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="serviceProce != null" >
-        #{serviceProce,jdbcType=VARCHAR},
+      <if test="serviceDeal != null" >
+        #{serviceDeal,jdbcType=VARCHAR},
       </if>
-      <if test="serviceProcePeople != null" >
-        #{serviceProcePeople,jdbcType=VARCHAR},
+      <if test="serviceDealPeople != null" >
+        #{serviceDealPeople,jdbcType=VARCHAR},
       </if>
-      <if test="serviceProceTime != null" >
-        #{serviceProceTime,jdbcType=TIMESTAMP},
+      <if test="serviceDealTime != null" >
+        #{serviceDealTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="serviceProceResult != null" >
-        #{serviceProceResult,jdbcType=VARCHAR},
+      <if test="serviceDealResult != null" >
+        #{serviceDealResult,jdbcType=VARCHAR},
       </if>
-      <if test="myd != null" >
-        #{myd,jdbcType=VARCHAR},
+      <if test="satisfy != null" >
+        #{satisfy,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -234,8 +234,8 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.serveType != null" >
-        serve_type = #{record.serveType,jdbcType=VARCHAR},
+      <if test="record.serviceType != null" >
+        service_type = #{record.serviceType,jdbcType=VARCHAR},
       </if>
       <if test="record.overview != null" >
         overview = #{record.overview,jdbcType=VARCHAR},
@@ -243,8 +243,8 @@
       <if test="record.customer != null" >
         customer = #{record.customer,jdbcType=VARCHAR},
       </if>
-      <if test="record.state != null" >
-        state = #{record.state,jdbcType=VARCHAR},
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
       </if>
       <if test="record.serviceRequest != null" >
         service_request = #{record.serviceRequest,jdbcType=VARCHAR},
@@ -261,20 +261,20 @@
       <if test="record.assignTime != null" >
         assign_time = #{record.assignTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.serviceProce != null" >
-        service_proce = #{record.serviceProce,jdbcType=VARCHAR},
+      <if test="record.serviceDeal != null" >
+        service_deal = #{record.serviceDeal,jdbcType=VARCHAR},
       </if>
-      <if test="record.serviceProcePeople != null" >
-        service_proce_people = #{record.serviceProcePeople,jdbcType=VARCHAR},
+      <if test="record.serviceDealPeople != null" >
+        service_deal_people = #{record.serviceDealPeople,jdbcType=VARCHAR},
       </if>
-      <if test="record.serviceProceTime != null" >
-        service_proce_time = #{record.serviceProceTime,jdbcType=TIMESTAMP},
+      <if test="record.serviceDealTime != null" >
+        service_deal_time = #{record.serviceDealTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.serviceProceResult != null" >
-        service_proce_result = #{record.serviceProceResult,jdbcType=VARCHAR},
+      <if test="record.serviceDealResult != null" >
+        service_deal_result = #{record.serviceDealResult,jdbcType=VARCHAR},
       </if>
-      <if test="record.myd != null" >
-        myd = #{record.myd,jdbcType=VARCHAR},
+      <if test="record.satisfy != null" >
+        satisfy = #{record.satisfy,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -284,20 +284,20 @@
   <update id="updateByExample" parameterType="map" >
     update customer_service
     set id = #{record.id,jdbcType=INTEGER},
-      serve_type = #{record.serveType,jdbcType=VARCHAR},
+      service_type = #{record.serviceType,jdbcType=VARCHAR},
       overview = #{record.overview,jdbcType=VARCHAR},
       customer = #{record.customer,jdbcType=VARCHAR},
-      state = #{record.state,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
       service_request = #{record.serviceRequest,jdbcType=VARCHAR},
       create_people = #{record.createPeople,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       assigner = #{record.assigner,jdbcType=VARCHAR},
       assign_time = #{record.assignTime,jdbcType=TIMESTAMP},
-      service_proce = #{record.serviceProce,jdbcType=VARCHAR},
-      service_proce_people = #{record.serviceProcePeople,jdbcType=VARCHAR},
-      service_proce_time = #{record.serviceProceTime,jdbcType=TIMESTAMP},
-      service_proce_result = #{record.serviceProceResult,jdbcType=VARCHAR},
-      myd = #{record.myd,jdbcType=VARCHAR}
+      service_deal = #{record.serviceDeal,jdbcType=VARCHAR},
+      service_deal_people = #{record.serviceDealPeople,jdbcType=VARCHAR},
+      service_deal_time = #{record.serviceDealTime,jdbcType=TIMESTAMP},
+      service_deal_result = #{record.serviceDealResult,jdbcType=VARCHAR},
+      satisfy = #{record.satisfy,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -305,8 +305,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.situ.crm.pojo.CustomerService" >
     update customer_service
     <set >
-      <if test="serveType != null" >
-        serve_type = #{serveType,jdbcType=VARCHAR},
+      <if test="serviceType != null" >
+        service_type = #{serviceType,jdbcType=VARCHAR},
       </if>
       <if test="overview != null" >
         overview = #{overview,jdbcType=VARCHAR},
@@ -314,8 +314,8 @@
       <if test="customer != null" >
         customer = #{customer,jdbcType=VARCHAR},
       </if>
-      <if test="state != null" >
-        state = #{state,jdbcType=VARCHAR},
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
       </if>
       <if test="serviceRequest != null" >
         service_request = #{serviceRequest,jdbcType=VARCHAR},
@@ -332,40 +332,40 @@
       <if test="assignTime != null" >
         assign_time = #{assignTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="serviceProce != null" >
-        service_proce = #{serviceProce,jdbcType=VARCHAR},
+      <if test="serviceDeal != null" >
+        service_deal = #{serviceDeal,jdbcType=VARCHAR},
       </if>
-      <if test="serviceProcePeople != null" >
-        service_proce_people = #{serviceProcePeople,jdbcType=VARCHAR},
+      <if test="serviceDealPeople != null" >
+        service_deal_people = #{serviceDealPeople,jdbcType=VARCHAR},
       </if>
-      <if test="serviceProceTime != null" >
-        service_proce_time = #{serviceProceTime,jdbcType=TIMESTAMP},
+      <if test="serviceDealTime != null" >
+        service_deal_time = #{serviceDealTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="serviceProceResult != null" >
-        service_proce_result = #{serviceProceResult,jdbcType=VARCHAR},
+      <if test="serviceDealResult != null" >
+        service_deal_result = #{serviceDealResult,jdbcType=VARCHAR},
       </if>
-      <if test="myd != null" >
-        myd = #{myd,jdbcType=VARCHAR},
+      <if test="satisfy != null" >
+        satisfy = #{satisfy,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.situ.crm.pojo.CustomerService" >
     update customer_service
-    set serve_type = #{serveType,jdbcType=VARCHAR},
+    set service_type = #{serviceType,jdbcType=VARCHAR},
       overview = #{overview,jdbcType=VARCHAR},
       customer = #{customer,jdbcType=VARCHAR},
-      state = #{state,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
       service_request = #{serviceRequest,jdbcType=VARCHAR},
       create_people = #{createPeople,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       assigner = #{assigner,jdbcType=VARCHAR},
       assign_time = #{assignTime,jdbcType=TIMESTAMP},
-      service_proce = #{serviceProce,jdbcType=VARCHAR},
-      service_proce_people = #{serviceProcePeople,jdbcType=VARCHAR},
-      service_proce_time = #{serviceProceTime,jdbcType=TIMESTAMP},
-      service_proce_result = #{serviceProceResult,jdbcType=VARCHAR},
-      myd = #{myd,jdbcType=VARCHAR}
+      service_deal = #{serviceDeal,jdbcType=VARCHAR},
+      service_deal_people = #{serviceDealPeople,jdbcType=VARCHAR},
+      service_deal_time = #{serviceDealTime,jdbcType=TIMESTAMP},
+      service_deal_result = #{serviceDealResult,jdbcType=VARCHAR},
+      satisfy = #{satisfy,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

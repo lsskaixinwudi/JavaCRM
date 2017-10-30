@@ -7,23 +7,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
-import com.situ.crm.pojo.Datadic;
-import com.situ.crm.service.IDatadicService;
+import com.situ.crm.pojo.DataDic;
+import com.situ.crm.service.IDataDicService;
 
 @Controller
 @RequestMapping("/datadic")
 public class DatadicController {
 	@Autowired
-	private IDatadicService datadicService;
+	private IDataDicService datadicService;
 
 	@RequestMapping("/index")
 	public String index() {
-		return "datadic_manager";
+		return "data_dic_manager";
 	}
 	
 	@RequestMapping("/findAll")
 	@ResponseBody
-	public EasyUIDataGrideResult findAll(Integer page, Integer rows, Datadic datadic) {
+	public EasyUIDataGrideResult findAll(Integer page, Integer rows, DataDic datadic) {
 		return datadicService.findAll(page, rows, datadic);
 	}
 	
@@ -35,13 +35,13 @@ public class DatadicController {
 	
 	@RequestMapping("/add")
 	@ResponseBody
-	public ServerResponse add(Datadic datadic){
+	public ServerResponse add(DataDic datadic){
 		return datadicService.add(datadic);
 	}
 	
 	@RequestMapping("/update")
 	@ResponseBody
-	public ServerResponse update(Datadic datadic){
+	public ServerResponse update(DataDic datadic){
 		return datadicService.update(datadic);
 	}
 	

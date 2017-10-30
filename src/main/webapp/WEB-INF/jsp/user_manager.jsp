@@ -10,7 +10,7 @@
 /* 查找 */
 function doSearch(value){
 	$("#datagrid").datagrid("load",{
-		'userName':value
+		'name':value
 	})
 }
 
@@ -98,7 +98,7 @@ function doSave(){
 			<tr>
 				<th data-options="field:'cb',checkbox:true,align:'center'"></th>
 				<th data-options="field:'id',width:80,align:'center'">编号</th>
-				<th data-options="field:'userName',width:100,align:'center'">用户名</th>
+				<th data-options="field:'name',width:100,align:'center'">用户名</th>
 				<th data-options="field:'password',width:80,align:'center'">密码</th>
 				<th data-options="field:'trueName',width:80,align:'center'">真实姓名</th>
 				<th data-options="field:'email',width:100,align:'center'">邮件</th>
@@ -124,7 +124,7 @@ function doSave(){
 			<table cellspacing="8px">
 				<tr>
 					<td>用户名：</td>
-					<td><input type="text" id="userName" name="userName" class="easyui-validatebox" required="true"/></td>
+					<td><input type="text" id="name" name="userName" class="easyui-validatebox" required="true"/></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td>密码：</td>
 					<td><input type="text" id="password" name="password" class="easyui-validatebox" required="true"/><font color="red">*</font></td>

@@ -2,9 +2,9 @@ package com.situ.crm.service;
 
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
-import com.situ.crm.pojo.Datadic;
+import com.situ.crm.pojo.DataDic;
 
-public interface IDatadicService {
+public interface IDataDicService {
 	/**
 	 * 返回所有数据
 	 * @param rows 
@@ -12,11 +12,11 @@ public interface IDatadicService {
 	 * @param datadic 
 	 * @return 分装好的EasyUIDataGrideResult对象
 	 */
-	EasyUIDataGrideResult findAll(Integer page, Integer rows, Datadic datadic);
+	EasyUIDataGrideResult findAll(Integer page, Integer rows, DataDic datadic);
 
 	ServerResponse delete(String ids);
 
-	ServerResponse add(Datadic datadic);
+	ServerResponse add(DataDic datadic);
 
-	ServerResponse update(Datadic datadic);
+	ServerResponse update(DataDic datadic);
 }

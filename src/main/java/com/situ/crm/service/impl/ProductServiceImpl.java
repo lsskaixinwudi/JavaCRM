@@ -30,8 +30,8 @@ public class ProductServiceImpl implements IProductService{
 		//2、执行查询
 		//rows(分页之后的数据)
 		Criteria createCriteria = productExample.createCriteria();
-		if (StringUtils.isNotEmpty(product.getProductName())) {
-			createCriteria.andProductNameLike(Util.formatLike(product.getProductName()));
+		if (StringUtils.isNotEmpty(product.getName())) {
+			createCriteria.andNameLike(Util.formatLike(product.getName()));
 		}
 		List<Product> productList = productMapper.selectByExample(productExample);
 		//total

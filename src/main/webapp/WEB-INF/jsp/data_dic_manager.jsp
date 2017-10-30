@@ -10,7 +10,7 @@
 /* 查找 */
 function doSearch(value){
 	$("#datagrid").datagrid("load",{
-		'datadicName':value
+		'data_dic_name':value
 	})
 }
 
@@ -94,8 +94,8 @@ function doSave(){
 			<tr>
 				<th data-options="field:'cb',checkbox:true,align:'center'"></th>
 				<th data-options="field:'id',width:80,align:'center'">编号</th>
-				<th data-options="field:'datadicName',width:100,align:'center'">产品名</th>
-				<th data-options="field:'datadicValue',width:80,align:'center'">型号</th>
+				<th data-options="field:'data_dic_name',width:100,align:'center'">产品名</th>
+				<th data-options="field:'data_dic_value',width:80,align:'center'">型号</th>
 			</tr>
 		</thead>
 	</table>
@@ -116,10 +116,10 @@ function doSave(){
 			<table cellspacing="8px">
 				<tr>
 					<td>数据名称：</td>
-					<td><input type="text" id="datadicName" name="datadicName" class="easyui-validatebox" required="true"/></td>
+					<td><input type="text" id="data_dic_name" name="dataDicName" class="easyui-validatebox" required="true"/></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td>数据类型：</td>
-					<td><input type="text" id="datadicValue" name="datadicValue" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
+					<td><input type="text" id="data_dic_value" name="dataDicValue" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
 				</tr>
 			</table>
 		</form>

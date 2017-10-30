@@ -30,8 +30,8 @@ public class UserServiceImpl implements IUserService{
 		//2、执行查询
 		//rows(分页之后的数据)
 		Criteria createCriteria = userExample.createCriteria();
-		if (StringUtils.isNotEmpty(user.getUserName())) {
-			createCriteria.andUserNameLike(Util.formatLike(user.getUserName()));
+		if (StringUtils.isNotEmpty(user.getName())) {
+			createCriteria.andNameLike(Util.formatLike(user.getName()));
 		}
 		List<User> userList = userMapper.selectByExample(userExample);
 		//total

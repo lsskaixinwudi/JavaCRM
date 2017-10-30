@@ -1,13 +1,13 @@
 package com.situ.crm.pojo;
 
-public class OrderDetails {
+public class OrderItem {
     private Integer id;
 
     private Integer orderId;
 
-    private String goodsName;
+    private String productName;
 
-    private Integer goodsNum;
+    private Integer productNum;
 
     private String unit;
 
@@ -31,20 +31,20 @@ public class OrderDetails {
         this.orderId = orderId;
     }
 
-    public String getGoodsName() {
-        return goodsName;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setGoodsName(String goodsName) {
-        this.goodsName = goodsName == null ? null : goodsName.trim();
+    public void setProductName(String productName) {
+        this.productName = productName == null ? null : productName.trim();
     }
 
-    public Integer getGoodsNum() {
-        return goodsNum;
+    public Integer getProductNum() {
+        return productNum;
     }
 
-    public void setGoodsNum(Integer goodsNum) {
-        this.goodsNum = goodsNum;
+    public void setProductNum(Integer productNum) {
+        this.productNum = productNum;
     }
 
     public String getUnit() {

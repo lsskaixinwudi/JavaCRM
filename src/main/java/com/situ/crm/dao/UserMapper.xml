@@ -3,7 +3,7 @@
 <mapper namespace="com.situ.crm.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="com.situ.crm.pojo.User" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="true_name" property="trueName" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
@@ -13,7 +13,7 @@
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid">
+        <if test="criteria.valid" >
           <trim prefix="(" suffix=")" prefixOverrides="and" >
             <foreach collection="criteria.criteria" item="criterion" >
               <choose >
@@ -28,10 +28,10 @@
                 </when>
                 <when test="criterion.listValue" >
                   and ${criterion.condition}
-                <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                  #{listItem}
-                </foreach>
-               </when>
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
               </choose>
             </foreach>
           </trim>
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_name, password, true_name, email, phone, role_name
+    id, name, password, true_name, email, phone, role_name
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.situ.crm.pojo.UserExample" >
     select
@@ -102,10 +102,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.situ.crm.pojo.User" >
-    insert into user (id, user_name, password, 
+    insert into user (id, name, password, 
       true_name, email, phone, 
       role_name)
-    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{trueName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{roleName,jdbcType=VARCHAR})
   </insert>
@@ -115,8 +115,8 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="userName != null" >
-        user_name,
+      <if test="name != null" >
+        name,
       </if>
       <if test="password != null" >
         password,
@@ -138,8 +138,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userName != null" >
-        #{userName,jdbcType=VARCHAR},
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
@@ -170,8 +170,8 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.userName != null" >
-        user_name = #{record.userName,jdbcType=VARCHAR},
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.password != null" >
         password = #{record.password,jdbcType=VARCHAR},
@@ -196,7 +196,7 @@
   <update id="updateByExample" parameterType="map" >
     update user
     set id = #{record.id,jdbcType=INTEGER},
-      user_name = #{record.userName,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       true_name = #{record.trueName,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
@@ -209,8 +209,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.situ.crm.pojo.User" >
     update user
     <set >
-      <if test="userName != null" >
-        user_name = #{userName,jdbcType=VARCHAR},
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
@@ -232,7 +232,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.situ.crm.pojo.User" >
     update user
-    set user_name = #{userName,jdbcType=VARCHAR},
+    set name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       true_name = #{trueName,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},

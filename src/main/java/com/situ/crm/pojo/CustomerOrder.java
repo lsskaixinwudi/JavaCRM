@@ -5,7 +5,7 @@ import java.util.Date;
 public class CustomerOrder {
     private Integer id;
 
-    private Integer cusId;
+    private Integer customerId;
 
     private String orderNo;
 
@@ -13,7 +13,7 @@ public class CustomerOrder {
 
     private String address;
 
-    private Integer state;
+    private Integer status;
 
     public Integer getId() {
         return id;
@@ -23,12 +23,12 @@ public class CustomerOrder {
         this.id = id;
     }
 
-    public Integer getCusId() {
-        return cusId;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setCusId(Integer cusId) {
-        this.cusId = cusId;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
     public String getOrderNo() {
@@ -55,11 +55,11 @@ public class CustomerOrder {
         this.address = address == null ? null : address.trim();
     }
 
-    public Integer getState() {
-        return state;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setState(Integer state) {
-        this.state = state;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

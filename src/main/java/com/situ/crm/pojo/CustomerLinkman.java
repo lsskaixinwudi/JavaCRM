@@ -3,11 +3,11 @@ package com.situ.crm.pojo;
 public class CustomerLinkman {
     private Integer id;
 
-    private Integer cusId;
+    private Integer customerId;
 
     private String linkName;
 
-    private String sex;
+    private String gender;
 
     private String position;
 
@@ -23,12 +23,12 @@ public class CustomerLinkman {
         this.id = id;
     }
 
-    public Integer getCusId() {
-        return cusId;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setCusId(Integer cusId) {
-        this.cusId = cusId;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
     public String getLinkName() {
@@ -39,12 +39,12 @@ public class CustomerLinkman {
         this.linkName = linkName == null ? null : linkName.trim();
     }
 
-    public String getSex() {
-        return sex;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
+    public void setGender(String gender) {
+        this.gender = gender == null ? null : gender.trim();
     }
 
     public String getPosition() {

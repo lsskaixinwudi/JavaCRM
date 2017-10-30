@@ -5,17 +5,17 @@ import java.util.Date;
 public class CustomerLoss {
     private Integer id;
 
-    private String cusNo;
+    private String customerNo;
 
-    private String cusName;
+    private String customerName;
 
-    private String cusManager;
+    private String customerManager;
 
     private Date lastOrderTime;
 
     private Date confirmLossTime;
 
-    private Integer state;
+    private Integer status;
 
     private String lossReason;
 
@@ -27,28 +27,28 @@ public class CustomerLoss {
         this.id = id;
     }
 
-    public String getCusNo() {
-        return cusNo;
+    public String getCustomerNo() {
+        return customerNo;
     }
 
-    public void setCusNo(String cusNo) {
-        this.cusNo = cusNo == null ? null : cusNo.trim();
+    public void setCustomerNo(String customerNo) {
+        this.customerNo = customerNo == null ? null : customerNo.trim();
     }
 
-    public String getCusName() {
-        return cusName;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setCusName(String cusName) {
-        this.cusName = cusName == null ? null : cusName.trim();
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName == null ? null : customerName.trim();
     }
 
-    public String getCusManager() {
-        return cusManager;
+    public String getCustomerManager() {
+        return customerManager;
     }
 
-    public void setCusManager(String cusManager) {
-        this.cusManager = cusManager == null ? null : cusManager.trim();
+    public void setCustomerManager(String customerManager) {
+        this.customerManager = customerManager == null ? null : customerManager.trim();
     }
 
     public Date getLastOrderTime() {
@@ -67,12 +67,12 @@ public class CustomerLoss {
         this.confirmLossTime = confirmLossTime;
     }
 
-    public Integer getState() {
-        return state;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setState(Integer state) {
-        this.state = state;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getLossReason() {

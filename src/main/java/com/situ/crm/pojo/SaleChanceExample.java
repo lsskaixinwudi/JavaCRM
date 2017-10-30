@@ -305,63 +305,63 @@ public class SaleChanceExample {
             return (Criteria) this;
         }
 
-        public Criteria andCgjlIsNull() {
-            addCriterion("cgjl is null");
+        public Criteria andSuccessRateIsNull() {
+            addCriterion("success_rate is null");
             return (Criteria) this;
         }
 
-        public Criteria andCgjlIsNotNull() {
-            addCriterion("cgjl is not null");
+        public Criteria andSuccessRateIsNotNull() {
+            addCriterion("success_rate is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCgjlEqualTo(Integer value) {
-            addCriterion("cgjl =", value, "cgjl");
+        public Criteria andSuccessRateEqualTo(Integer value) {
+            addCriterion("success_rate =", value, "successRate");
             return (Criteria) this;
         }
 
-        public Criteria andCgjlNotEqualTo(Integer value) {
-            addCriterion("cgjl <>", value, "cgjl");
+        public Criteria andSuccessRateNotEqualTo(Integer value) {
+            addCriterion("success_rate <>", value, "successRate");
             return (Criteria) this;
         }
 
-        public Criteria andCgjlGreaterThan(Integer value) {
-            addCriterion("cgjl >", value, "cgjl");
+        public Criteria andSuccessRateGreaterThan(Integer value) {
+            addCriterion("success_rate >", value, "successRate");
             return (Criteria) this;
         }
 
-        public Criteria andCgjlGreaterThanOrEqualTo(Integer value) {
-            addCriterion("cgjl >=", value, "cgjl");
+        public Criteria andSuccessRateGreaterThanOrEqualTo(Integer value) {
+            addCriterion("success_rate >=", value, "successRate");
             return (Criteria) this;
         }
 
-        public Criteria andCgjlLessThan(Integer value) {
-            addCriterion("cgjl <", value, "cgjl");
+        public Criteria andSuccessRateLessThan(Integer value) {
+            addCriterion("success_rate <", value, "successRate");
             return (Criteria) this;
         }
 
-        public Criteria andCgjlLessThanOrEqualTo(Integer value) {
-            addCriterion("cgjl <=", value, "cgjl");
+        public Criteria andSuccessRateLessThanOrEqualTo(Integer value) {
+            addCriterion("success_rate <=", value, "successRate");
             return (Criteria) this;
         }
 
-        public Criteria andCgjlIn(List<Integer> values) {
-            addCriterion("cgjl in", values, "cgjl");
+        public Criteria andSuccessRateIn(List<Integer> values) {
+            addCriterion("success_rate in", values, "successRate");
             return (Criteria) this;
         }
 
-        public Criteria andCgjlNotIn(List<Integer> values) {
-            addCriterion("cgjl not in", values, "cgjl");
+        public Criteria andSuccessRateNotIn(List<Integer> values) {
+            addCriterion("success_rate not in", values, "successRate");
             return (Criteria) this;
         }
 
-        public Criteria andCgjlBetween(Integer value1, Integer value2) {
-            addCriterion("cgjl between", value1, value2, "cgjl");
+        public Criteria andSuccessRateBetween(Integer value1, Integer value2) {
+            addCriterion("success_rate between", value1, value2, "successRate");
             return (Criteria) this;
         }
 
-        public Criteria andCgjlNotBetween(Integer value1, Integer value2) {
-            addCriterion("cgjl not between", value1, value2, "cgjl");
+        public Criteria andSuccessRateNotBetween(Integer value1, Integer value2) {
+            addCriterion("success_rate not between", value1, value2, "successRate");
             return (Criteria) this;
         }
 
@@ -905,63 +905,63 @@ public class SaleChanceExample {
             return (Criteria) this;
         }
 
-        public Criteria andStateIsNull() {
-            addCriterion("state is null");
+        public Criteria andStatusIsNull() {
+            addCriterion("status is null");
             return (Criteria) this;
         }
 
-        public Criteria andStateIsNotNull() {
-            addCriterion("state is not null");
+        public Criteria andStatusIsNotNull() {
+            addCriterion("status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andStateEqualTo(Integer value) {
-            addCriterion("state =", value, "state");
+        public Criteria andStatusEqualTo(Integer value) {
+            addCriterion("status =", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotEqualTo(Integer value) {
-            addCriterion("state <>", value, "state");
+        public Criteria andStatusNotEqualTo(Integer value) {
+            addCriterion("status <>", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateGreaterThan(Integer value) {
-            addCriterion("state >", value, "state");
+        public Criteria andStatusGreaterThan(Integer value) {
+            addCriterion("status >", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateGreaterThanOrEqualTo(Integer value) {
-            addCriterion("state >=", value, "state");
+        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("status >=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateLessThan(Integer value) {
-            addCriterion("state <", value, "state");
+        public Criteria andStatusLessThan(Integer value) {
+            addCriterion("status <", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateLessThanOrEqualTo(Integer value) {
-            addCriterion("state <=", value, "state");
+        public Criteria andStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("status <=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateIn(List<Integer> values) {
-            addCriterion("state in", values, "state");
+        public Criteria andStatusIn(List<Integer> values) {
+            addCriterion("status in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotIn(List<Integer> values) {
-            addCriterion("state not in", values, "state");
+        public Criteria andStatusNotIn(List<Integer> values) {
+            addCriterion("status not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateBetween(Integer value1, Integer value2) {
-            addCriterion("state between", value1, value2, "state");
+        public Criteria andStatusBetween(Integer value1, Integer value2) {
+            addCriterion("status between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotBetween(Integer value1, Integer value2) {
-            addCriterion("state not between", value1, value2, "state");
+        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }
 

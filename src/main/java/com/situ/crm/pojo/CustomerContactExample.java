@@ -192,123 +192,123 @@ public class CustomerContactExample {
             return (Criteria) this;
         }
 
-        public Criteria andCusIdIsNull() {
-            addCriterion("cus_id is null");
+        public Criteria andCustomerIdIsNull() {
+            addCriterion("customer_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andCusIdIsNotNull() {
-            addCriterion("cus_id is not null");
+        public Criteria andCustomerIdIsNotNull() {
+            addCriterion("customer_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCusIdEqualTo(Integer value) {
-            addCriterion("cus_id =", value, "cusId");
+        public Criteria andCustomerIdEqualTo(Integer value) {
+            addCriterion("customer_id =", value, "customerId");
             return (Criteria) this;
         }
 
-        public Criteria andCusIdNotEqualTo(Integer value) {
-            addCriterion("cus_id <>", value, "cusId");
+        public Criteria andCustomerIdNotEqualTo(Integer value) {
+            addCriterion("customer_id <>", value, "customerId");
             return (Criteria) this;
         }
 
-        public Criteria andCusIdGreaterThan(Integer value) {
-            addCriterion("cus_id >", value, "cusId");
+        public Criteria andCustomerIdGreaterThan(Integer value) {
+            addCriterion("customer_id >", value, "customerId");
             return (Criteria) this;
         }
 
-        public Criteria andCusIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("cus_id >=", value, "cusId");
+        public Criteria andCustomerIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("customer_id >=", value, "customerId");
             return (Criteria) this;
         }
 
-        public Criteria andCusIdLessThan(Integer value) {
-            addCriterion("cus_id <", value, "cusId");
+        public Criteria andCustomerIdLessThan(Integer value) {
+            addCriterion("customer_id <", value, "customerId");
             return (Criteria) this;
         }
 
-        public Criteria andCusIdLessThanOrEqualTo(Integer value) {
-            addCriterion("cus_id <=", value, "cusId");
+        public Criteria andCustomerIdLessThanOrEqualTo(Integer value) {
+            addCriterion("customer_id <=", value, "customerId");
             return (Criteria) this;
         }
 
-        public Criteria andCusIdIn(List<Integer> values) {
-            addCriterion("cus_id in", values, "cusId");
+        public Criteria andCustomerIdIn(List<Integer> values) {
+            addCriterion("customer_id in", values, "customerId");
             return (Criteria) this;
         }
 
-        public Criteria andCusIdNotIn(List<Integer> values) {
-            addCriterion("cus_id not in", values, "cusId");
+        public Criteria andCustomerIdNotIn(List<Integer> values) {
+            addCriterion("customer_id not in", values, "customerId");
             return (Criteria) this;
         }
 
-        public Criteria andCusIdBetween(Integer value1, Integer value2) {
-            addCriterion("cus_id between", value1, value2, "cusId");
+        public Criteria andCustomerIdBetween(Integer value1, Integer value2) {
+            addCriterion("customer_id between", value1, value2, "customerId");
             return (Criteria) this;
         }
 
-        public Criteria andCusIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("cus_id not between", value1, value2, "cusId");
+        public Criteria andCustomerIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("customer_id not between", value1, value2, "customerId");
             return (Criteria) this;
         }
 
-        public Criteria andContactTimeIsNull() {
-            addCriterion("contact_time is null");
+        public Criteria andTimeIsNull() {
+            addCriterion("time is null");
             return (Criteria) this;
         }
 
-        public Criteria andContactTimeIsNotNull() {
-            addCriterion("contact_time is not null");
+        public Criteria andTimeIsNotNull() {
+            addCriterion("time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andContactTimeEqualTo(Date value) {
-            addCriterionForJDBCDate("contact_time =", value, "contactTime");
+        public Criteria andTimeEqualTo(Date value) {
+            addCriterionForJDBCDate("time =", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andContactTimeNotEqualTo(Date value) {
-            addCriterionForJDBCDate("contact_time <>", value, "contactTime");
+        public Criteria andTimeNotEqualTo(Date value) {
+            addCriterionForJDBCDate("time <>", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andContactTimeGreaterThan(Date value) {
-            addCriterionForJDBCDate("contact_time >", value, "contactTime");
+        public Criteria andTimeGreaterThan(Date value) {
+            addCriterionForJDBCDate("time >", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andContactTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("contact_time >=", value, "contactTime");
+        public Criteria andTimeGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("time >=", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andContactTimeLessThan(Date value) {
-            addCriterionForJDBCDate("contact_time <", value, "contactTime");
+        public Criteria andTimeLessThan(Date value) {
+            addCriterionForJDBCDate("time <", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andContactTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("contact_time <=", value, "contactTime");
+        public Criteria andTimeLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("time <=", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andContactTimeIn(List<Date> values) {
-            addCriterionForJDBCDate("contact_time in", values, "contactTime");
+        public Criteria andTimeIn(List<Date> values) {
+            addCriterionForJDBCDate("time in", values, "time");
             return (Criteria) this;
         }
 
-        public Criteria andContactTimeNotIn(List<Date> values) {
-            addCriterionForJDBCDate("contact_time not in", values, "contactTime");
+        public Criteria andTimeNotIn(List<Date> values) {
+            addCriterionForJDBCDate("time not in", values, "time");
             return (Criteria) this;
         }
 
-        public Criteria andContactTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("contact_time between", value1, value2, "contactTime");
+        public Criteria andTimeBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("time between", value1, value2, "time");
             return (Criteria) this;
         }
 
-        public Criteria andContactTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("contact_time not between", value1, value2, "contactTime");
+        public Criteria andTimeNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("time not between", value1, value2, "time");
             return (Criteria) this;
         }
 

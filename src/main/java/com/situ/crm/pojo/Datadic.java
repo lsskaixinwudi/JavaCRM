@@ -1,11 +1,11 @@
 package com.situ.crm.pojo;
 
-public class Datadic {
+public class DataDic {
     private Integer id;
 
-    private String datadicName;
+    private String dataDicName;
 
-    private String datadicValue;
+    private String dataDicValue;
 
     public Integer getId() {
         return id;
@@ -15,19 +15,19 @@ public class Datadic {
         this.id = id;
     }
 
-    public String getDatadicName() {
-        return datadicName;
+    public String getDataDicName() {
+        return dataDicName;
     }
 
-    public void setDatadicName(String datadicName) {
-        this.datadicName = datadicName == null ? null : datadicName.trim();
+    public void setDataDicName(String dataDicName) {
+        this.dataDicName = dataDicName == null ? null : dataDicName.trim();
     }
 
-    public String getDatadicValue() {
-        return datadicValue;
+    public String getDataDicValue() {
+        return dataDicValue;
     }
 
-    public void setDatadicValue(String datadicValue) {
-        this.datadicValue = datadicValue == null ? null : datadicValue.trim();
+    public void setDataDicValue(String dataDicValue) {
+        this.dataDicValue = dataDicValue == null ? null : dataDicValue.trim();
     }
 }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.situ.crm.dao.DatadicMapper" >
-  <resultMap id="BaseResultMap" type="com.situ.crm.pojo.Datadic" >
+<mapper namespace="com.situ.crm.dao.DataDicMapper" >
+  <resultMap id="BaseResultMap" type="com.situ.crm.pojo.DataDic" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="data_dic_name" property="datadicName" jdbcType="VARCHAR" />
-    <result column="data_dic_value" property="datadicValue" jdbcType="VARCHAR" />
+    <result column="data_dic_name" property="dataDicName" jdbcType="VARCHAR" />
+    <result column="data_dic_value" property="dataDicValue" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,13 +67,13 @@
   <sql id="Base_Column_List" >
     id, data_dic_name, data_dic_value
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.situ.crm.pojo.DatadicExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.situ.crm.pojo.DataDicExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from datadic
+    from data_dic
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,35 +84,35 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from datadic
+    from data_dic
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from datadic
+    delete from data_dic
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.situ.crm.pojo.DatadicExample" >
-    delete from datadic
+  <delete id="deleteByExample" parameterType="com.situ.crm.pojo.DataDicExample" >
+    delete from data_dic
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.situ.crm.pojo.Datadic" >
-    insert into datadic (id, data_dic_name, data_dic_value
+  <insert id="insert" parameterType="com.situ.crm.pojo.DataDic" >
+    insert into data_dic (id, data_dic_name, data_dic_value
       )
-    values (#{id,jdbcType=INTEGER}, #{datadicName,jdbcType=VARCHAR}, #{datadicValue,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{dataDicName,jdbcType=VARCHAR}, #{dataDicValue,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.situ.crm.pojo.Datadic" >
-    insert into datadic
+  <insert id="insertSelective" parameterType="com.situ.crm.pojo.DataDic" >
+    insert into data_dic
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="datadicName != null" >
+      <if test="dataDicName != null" >
         data_dic_name,
       </if>
-      <if test="datadicValue != null" >
+      <if test="dataDicValue != null" >
         data_dic_value,
       </if>
     </trim>
@@ -120,31 +120,31 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="datadicName != null" >
-        #{datadicName,jdbcType=VARCHAR},
+      <if test="dataDicName != null" >
+        #{dataDicName,jdbcType=VARCHAR},
       </if>
-      <if test="datadicValue != null" >
-        #{datadicValue,jdbcType=VARCHAR},
+      <if test="dataDicValue != null" >
+        #{dataDicValue,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.situ.crm.pojo.DatadicExample" resultType="java.lang.Integer" >
-    select count(*) from datadic
+  <select id="countByExample" parameterType="com.situ.crm.pojo.DataDicExample" resultType="java.lang.Integer" >
+    select count(*) from data_dic
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update datadic
+    update data_dic
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.datadicName != null" >
-        data_dic_name = #{record.datadicName,jdbcType=VARCHAR},
+      <if test="record.dataDicName != null" >
+        data_dic_name = #{record.dataDicName,jdbcType=VARCHAR},
       </if>
-      <if test="record.datadicValue != null" >
-        data_dic_value = #{record.datadicValue,jdbcType=VARCHAR},
+      <if test="record.dataDicValue != null" >
+        data_dic_value = #{record.dataDicValue,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -152,30 +152,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update datadic
+    update data_dic
     set id = #{record.id,jdbcType=INTEGER},
-      data_dic_name = #{record.datadicName,jdbcType=VARCHAR},
-      data_dic_value = #{record.datadicValue,jdbcType=VARCHAR}
+      data_dic_name = #{record.dataDicName,jdbcType=VARCHAR},
+      data_dic_value = #{record.dataDicValue,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.situ.crm.pojo.Datadic" >
-    update datadic
+  <update id="updateByPrimaryKeySelective" parameterType="com.situ.crm.pojo.DataDic" >
+    update data_dic
     <set >
-      <if test="datadicName != null" >
-        data_dic_name = #{datadicName,jdbcType=VARCHAR},
+      <if test="dataDicName != null" >
+        data_dic_name = #{dataDicName,jdbcType=VARCHAR},
       </if>
-      <if test="datadicValue != null" >
-        data_dic_value = #{datadicValue,jdbcType=VARCHAR},
+      <if test="dataDicValue != null" >
+        data_dic_value = #{dataDicValue,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.situ.crm.pojo.Datadic" >
-    update datadic
-    set data_dic_name = #{datadicName,jdbcType=VARCHAR},
-      data_dic_value = #{datadicValue,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.situ.crm.pojo.DataDic" >
+    update data_dic
+    set data_dic_name = #{dataDicName,jdbcType=VARCHAR},
+      data_dic_value = #{dataDicValue,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

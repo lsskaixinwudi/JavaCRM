@@ -3,8 +3,8 @@
 <mapper namespace="com.situ.crm.dao.CustomerContactMapper" >
   <resultMap id="BaseResultMap" type="com.situ.crm.pojo.CustomerContact" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="cus_id" property="cusId" jdbcType="INTEGER" />
-    <result column="contact_time" property="contactTime" jdbcType="DATE" />
+    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <result column="time" property="time" jdbcType="DATE" />
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="overview" property="overview" jdbcType="VARCHAR" />
   </resultMap>
@@ -67,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, cus_id, contact_time, address, overview
+    id, customer_id, time, address, overview
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.situ.crm.pojo.CustomerContactExample" >
     select
@@ -100,9 +100,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.situ.crm.pojo.CustomerContact" >
-    insert into customer_contact (id, cus_id, contact_time, 
+    insert into customer_contact (id, customer_id, time, 
       address, overview)
-    values (#{id,jdbcType=INTEGER}, #{cusId,jdbcType=INTEGER}, #{contactTime,jdbcType=DATE}, 
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{time,jdbcType=DATE}, 
       #{address,jdbcType=VARCHAR}, #{overview,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.situ.crm.pojo.CustomerContact" >
@@ -111,11 +111,11 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="cusId != null" >
-        cus_id,
+      <if test="customerId != null" >
+        customer_id,
       </if>
-      <if test="contactTime != null" >
-        contact_time,
+      <if test="time != null" >
+        time,
       </if>
       <if test="address != null" >
         address,
@@ -128,11 +128,11 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="cusId != null" >
-        #{cusId,jdbcType=INTEGER},
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
       </if>
-      <if test="contactTime != null" >
-        #{contactTime,jdbcType=DATE},
+      <if test="time != null" >
+        #{time,jdbcType=DATE},
       </if>
       <if test="address != null" >
         #{address,jdbcType=VARCHAR},
@@ -154,11 +154,11 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.cusId != null" >
-        cus_id = #{record.cusId,jdbcType=INTEGER},
+      <if test="record.customerId != null" >
+        customer_id = #{record.customerId,jdbcType=INTEGER},
       </if>
-      <if test="record.contactTime != null" >
-        contact_time = #{record.contactTime,jdbcType=DATE},
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=DATE},
       </if>
       <if test="record.address != null" >
         address = #{record.address,jdbcType=VARCHAR},
@@ -174,8 +174,8 @@
   <update id="updateByExample" parameterType="map" >
     update customer_contact
     set id = #{record.id,jdbcType=INTEGER},
-      cus_id = #{record.cusId,jdbcType=INTEGER},
-      contact_time = #{record.contactTime,jdbcType=DATE},
+      customer_id = #{record.customerId,jdbcType=INTEGER},
+      time = #{record.time,jdbcType=DATE},
       address = #{record.address,jdbcType=VARCHAR},
       overview = #{record.overview,jdbcType=VARCHAR}
     <if test="_parameter != null" >
@@ -185,11 +185,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.situ.crm.pojo.CustomerContact" >
     update customer_contact
     <set >
-      <if test="cusId != null" >
-        cus_id = #{cusId,jdbcType=INTEGER},
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=INTEGER},
       </if>
-      <if test="contactTime != null" >
-        contact_time = #{contactTime,jdbcType=DATE},
+      <if test="time != null" >
+        time = #{time,jdbcType=DATE},
       </if>
       <if test="address != null" >
         address = #{address,jdbcType=VARCHAR},
@@ -202,8 +202,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.situ.crm.pojo.CustomerContact" >
     update customer_contact
-    set cus_id = #{cusId,jdbcType=INTEGER},
-      contact_time = #{contactTime,jdbcType=DATE},
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      time = #{time,jdbcType=DATE},
       address = #{address,jdbcType=VARCHAR},
       overview = #{overview,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

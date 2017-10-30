@@ -165,73 +165,73 @@ public class CustomerServiceExample {
             return (Criteria) this;
         }
 
-        public Criteria andServeTypeIsNull() {
-            addCriterion("serve_type is null");
+        public Criteria andServiceTypeIsNull() {
+            addCriterion("service_type is null");
             return (Criteria) this;
         }
 
-        public Criteria andServeTypeIsNotNull() {
-            addCriterion("serve_type is not null");
+        public Criteria andServiceTypeIsNotNull() {
+            addCriterion("service_type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andServeTypeEqualTo(String value) {
-            addCriterion("serve_type =", value, "serveType");
+        public Criteria andServiceTypeEqualTo(String value) {
+            addCriterion("service_type =", value, "serviceType");
             return (Criteria) this;
         }
 
-        public Criteria andServeTypeNotEqualTo(String value) {
-            addCriterion("serve_type <>", value, "serveType");
+        public Criteria andServiceTypeNotEqualTo(String value) {
+            addCriterion("service_type <>", value, "serviceType");
             return (Criteria) this;
         }
 
-        public Criteria andServeTypeGreaterThan(String value) {
-            addCriterion("serve_type >", value, "serveType");
+        public Criteria andServiceTypeGreaterThan(String value) {
+            addCriterion("service_type >", value, "serviceType");
             return (Criteria) this;
         }
 
-        public Criteria andServeTypeGreaterThanOrEqualTo(String value) {
-            addCriterion("serve_type >=", value, "serveType");
+        public Criteria andServiceTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("service_type >=", value, "serviceType");
             return (Criteria) this;
         }
 
-        public Criteria andServeTypeLessThan(String value) {
-            addCriterion("serve_type <", value, "serveType");
+        public Criteria andServiceTypeLessThan(String value) {
+            addCriterion("service_type <", value, "serviceType");
             return (Criteria) this;
         }
 
-        public Criteria andServeTypeLessThanOrEqualTo(String value) {
-            addCriterion("serve_type <=", value, "serveType");
+        public Criteria andServiceTypeLessThanOrEqualTo(String value) {
+            addCriterion("service_type <=", value, "serviceType");
             return (Criteria) this;
         }
 
-        public Criteria andServeTypeLike(String value) {
-            addCriterion("serve_type like", value, "serveType");
+        public Criteria andServiceTypeLike(String value) {
+            addCriterion("service_type like", value, "serviceType");
             return (Criteria) this;
         }
 
-        public Criteria andServeTypeNotLike(String value) {
-            addCriterion("serve_type not like", value, "serveType");
+        public Criteria andServiceTypeNotLike(String value) {
+            addCriterion("service_type not like", value, "serviceType");
             return (Criteria) this;
         }
 
-        public Criteria andServeTypeIn(List<String> values) {
-            addCriterion("serve_type in", values, "serveType");
+        public Criteria andServiceTypeIn(List<String> values) {
+            addCriterion("service_type in", values, "serviceType");
             return (Criteria) this;
         }
 
-        public Criteria andServeTypeNotIn(List<String> values) {
-            addCriterion("serve_type not in", values, "serveType");
+        public Criteria andServiceTypeNotIn(List<String> values) {
+            addCriterion("service_type not in", values, "serviceType");
             return (Criteria) this;
         }
 
-        public Criteria andServeTypeBetween(String value1, String value2) {
-            addCriterion("serve_type between", value1, value2, "serveType");
+        public Criteria andServiceTypeBetween(String value1, String value2) {
+            addCriterion("service_type between", value1, value2, "serviceType");
             return (Criteria) this;
         }
 
-        public Criteria andServeTypeNotBetween(String value1, String value2) {
-            addCriterion("serve_type not between", value1, value2, "serveType");
+        public Criteria andServiceTypeNotBetween(String value1, String value2) {
+            addCriterion("service_type not between", value1, value2, "serviceType");
             return (Criteria) this;
         }
 
@@ -375,73 +375,73 @@ public class CustomerServiceExample {
             return (Criteria) this;
         }
 
-        public Criteria andStateIsNull() {
-            addCriterion("state is null");
+        public Criteria andStatusIsNull() {
+            addCriterion("status is null");
             return (Criteria) this;
         }
 
-        public Criteria andStateIsNotNull() {
-            addCriterion("state is not null");
+        public Criteria andStatusIsNotNull() {
+            addCriterion("status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andStateEqualTo(String value) {
-            addCriterion("state =", value, "state");
+        public Criteria andStatusEqualTo(String value) {
+            addCriterion("status =", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotEqualTo(String value) {
-            addCriterion("state <>", value, "state");
+        public Criteria andStatusNotEqualTo(String value) {
+            addCriterion("status <>", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateGreaterThan(String value) {
-            addCriterion("state >", value, "state");
+        public Criteria andStatusGreaterThan(String value) {
+            addCriterion("status >", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateGreaterThanOrEqualTo(String value) {
-            addCriterion("state >=", value, "state");
+        public Criteria andStatusGreaterThanOrEqualTo(String value) {
+            addCriterion("status >=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateLessThan(String value) {
-            addCriterion("state <", value, "state");
+        public Criteria andStatusLessThan(String value) {
+            addCriterion("status <", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateLessThanOrEqualTo(String value) {
-            addCriterion("state <=", value, "state");
+        public Criteria andStatusLessThanOrEqualTo(String value) {
+            addCriterion("status <=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateLike(String value) {
-            addCriterion("state like", value, "state");
+        public Criteria andStatusLike(String value) {
+            addCriterion("status like", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotLike(String value) {
-            addCriterion("state not like", value, "state");
+        public Criteria andStatusNotLike(String value) {
+            addCriterion("status not like", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateIn(List<String> values) {
-            addCriterion("state in", values, "state");
+        public Criteria andStatusIn(List<String> values) {
+            addCriterion("status in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotIn(List<String> values) {
-            addCriterion("state not in", values, "state");
+        public Criteria andStatusNotIn(List<String> values) {
+            addCriterion("status not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateBetween(String value1, String value2) {
-            addCriterion("state between", value1, value2, "state");
+        public Criteria andStatusBetween(String value1, String value2) {
+            addCriterion("status between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotBetween(String value1, String value2) {
-            addCriterion("state not between", value1, value2, "state");
+        public Criteria andStatusNotBetween(String value1, String value2) {
+            addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }
 
@@ -775,343 +775,343 @@ public class CustomerServiceExample {
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceIsNull() {
-            addCriterion("service_proce is null");
+        public Criteria andServiceDealIsNull() {
+            addCriterion("service_deal is null");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceIsNotNull() {
-            addCriterion("service_proce is not null");
+        public Criteria andServiceDealIsNotNull() {
+            addCriterion("service_deal is not null");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceEqualTo(String value) {
-            addCriterion("service_proce =", value, "serviceProce");
+        public Criteria andServiceDealEqualTo(String value) {
+            addCriterion("service_deal =", value, "serviceDeal");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceNotEqualTo(String value) {
-            addCriterion("service_proce <>", value, "serviceProce");
+        public Criteria andServiceDealNotEqualTo(String value) {
+            addCriterion("service_deal <>", value, "serviceDeal");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceGreaterThan(String value) {
-            addCriterion("service_proce >", value, "serviceProce");
+        public Criteria andServiceDealGreaterThan(String value) {
+            addCriterion("service_deal >", value, "serviceDeal");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceGreaterThanOrEqualTo(String value) {
-            addCriterion("service_proce >=", value, "serviceProce");
+        public Criteria andServiceDealGreaterThanOrEqualTo(String value) {
+            addCriterion("service_deal >=", value, "serviceDeal");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceLessThan(String value) {
-            addCriterion("service_proce <", value, "serviceProce");
+        public Criteria andServiceDealLessThan(String value) {
+            addCriterion("service_deal <", value, "serviceDeal");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceLessThanOrEqualTo(String value) {
-            addCriterion("service_proce <=", value, "serviceProce");
+        public Criteria andServiceDealLessThanOrEqualTo(String value) {
+            addCriterion("service_deal <=", value, "serviceDeal");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceLike(String value) {
-            addCriterion("service_proce like", value, "serviceProce");
+        public Criteria andServiceDealLike(String value) {
+            addCriterion("service_deal like", value, "serviceDeal");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceNotLike(String value) {
-            addCriterion("service_proce not like", value, "serviceProce");
+        public Criteria andServiceDealNotLike(String value) {
+            addCriterion("service_deal not like", value, "serviceDeal");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceIn(List<String> values) {
-            addCriterion("service_proce in", values, "serviceProce");
+        public Criteria andServiceDealIn(List<String> values) {
+            addCriterion("service_deal in", values, "serviceDeal");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceNotIn(List<String> values) {
-            addCriterion("service_proce not in", values, "serviceProce");
+        public Criteria andServiceDealNotIn(List<String> values) {
+            addCriterion("service_deal not in", values, "serviceDeal");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceBetween(String value1, String value2) {
-            addCriterion("service_proce between", value1, value2, "serviceProce");
+        public Criteria andServiceDealBetween(String value1, String value2) {
+            addCriterion("service_deal between", value1, value2, "serviceDeal");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceNotBetween(String value1, String value2) {
-            addCriterion("service_proce not between", value1, value2, "serviceProce");
+        public Criteria andServiceDealNotBetween(String value1, String value2) {
+            addCriterion("service_deal not between", value1, value2, "serviceDeal");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProcePeopleIsNull() {
-            addCriterion("service_proce_people is null");
+        public Criteria andServiceDealPeopleIsNull() {
+            addCriterion("service_deal_people is null");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProcePeopleIsNotNull() {
-            addCriterion("service_proce_people is not null");
+        public Criteria andServiceDealPeopleIsNotNull() {
+            addCriterion("service_deal_people is not null");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProcePeopleEqualTo(String value) {
-            addCriterion("service_proce_people =", value, "serviceProcePeople");
+        public Criteria andServiceDealPeopleEqualTo(String value) {
+            addCriterion("service_deal_people =", value, "serviceDealPeople");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProcePeopleNotEqualTo(String value) {
-            addCriterion("service_proce_people <>", value, "serviceProcePeople");
+        public Criteria andServiceDealPeopleNotEqualTo(String value) {
+            addCriterion("service_deal_people <>", value, "serviceDealPeople");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProcePeopleGreaterThan(String value) {
-            addCriterion("service_proce_people >", value, "serviceProcePeople");
+        public Criteria andServiceDealPeopleGreaterThan(String value) {
+            addCriterion("service_deal_people >", value, "serviceDealPeople");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProcePeopleGreaterThanOrEqualTo(String value) {
-            addCriterion("service_proce_people >=", value, "serviceProcePeople");
+        public Criteria andServiceDealPeopleGreaterThanOrEqualTo(String value) {
+            addCriterion("service_deal_people >=", value, "serviceDealPeople");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProcePeopleLessThan(String value) {
-            addCriterion("service_proce_people <", value, "serviceProcePeople");
+        public Criteria andServiceDealPeopleLessThan(String value) {
+            addCriterion("service_deal_people <", value, "serviceDealPeople");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProcePeopleLessThanOrEqualTo(String value) {
-            addCriterion("service_proce_people <=", value, "serviceProcePeople");
+        public Criteria andServiceDealPeopleLessThanOrEqualTo(String value) {
+            addCriterion("service_deal_people <=", value, "serviceDealPeople");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProcePeopleLike(String value) {
-            addCriterion("service_proce_people like", value, "serviceProcePeople");
+        public Criteria andServiceDealPeopleLike(String value) {
+            addCriterion("service_deal_people like", value, "serviceDealPeople");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProcePeopleNotLike(String value) {
-            addCriterion("service_proce_people not like", value, "serviceProcePeople");
+        public Criteria andServiceDealPeopleNotLike(String value) {
+            addCriterion("service_deal_people not like", value, "serviceDealPeople");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProcePeopleIn(List<String> values) {
-            addCriterion("service_proce_people in", values, "serviceProcePeople");
+        public Criteria andServiceDealPeopleIn(List<String> values) {
+            addCriterion("service_deal_people in", values, "serviceDealPeople");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProcePeopleNotIn(List<String> values) {
-            addCriterion("service_proce_people not in", values, "serviceProcePeople");
+        public Criteria andServiceDealPeopleNotIn(List<String> values) {
+            addCriterion("service_deal_people not in", values, "serviceDealPeople");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProcePeopleBetween(String value1, String value2) {
-            addCriterion("service_proce_people between", value1, value2, "serviceProcePeople");
+        public Criteria andServiceDealPeopleBetween(String value1, String value2) {
+            addCriterion("service_deal_people between", value1, value2, "serviceDealPeople");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProcePeopleNotBetween(String value1, String value2) {
-            addCriterion("service_proce_people not between", value1, value2, "serviceProcePeople");
+        public Criteria andServiceDealPeopleNotBetween(String value1, String value2) {
+            addCriterion("service_deal_people not between", value1, value2, "serviceDealPeople");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceTimeIsNull() {
-            addCriterion("service_proce_time is null");
+        public Criteria andServiceDealTimeIsNull() {
+            addCriterion("service_deal_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceTimeIsNotNull() {
-            addCriterion("service_proce_time is not null");
+        public Criteria andServiceDealTimeIsNotNull() {
+            addCriterion("service_deal_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceTimeEqualTo(Date value) {
-            addCriterion("service_proce_time =", value, "serviceProceTime");
+        public Criteria andServiceDealTimeEqualTo(Date value) {
+            addCriterion("service_deal_time =", value, "serviceDealTime");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceTimeNotEqualTo(Date value) {
-            addCriterion("service_proce_time <>", value, "serviceProceTime");
+        public Criteria andServiceDealTimeNotEqualTo(Date value) {
+            addCriterion("service_deal_time <>", value, "serviceDealTime");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceTimeGreaterThan(Date value) {
-            addCriterion("service_proce_time >", value, "serviceProceTime");
+        public Criteria andServiceDealTimeGreaterThan(Date value) {
+            addCriterion("service_deal_time >", value, "serviceDealTime");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("service_proce_time >=", value, "serviceProceTime");
+        public Criteria andServiceDealTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("service_deal_time >=", value, "serviceDealTime");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceTimeLessThan(Date value) {
-            addCriterion("service_proce_time <", value, "serviceProceTime");
+        public Criteria andServiceDealTimeLessThan(Date value) {
+            addCriterion("service_deal_time <", value, "serviceDealTime");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceTimeLessThanOrEqualTo(Date value) {
-            addCriterion("service_proce_time <=", value, "serviceProceTime");
+        public Criteria andServiceDealTimeLessThanOrEqualTo(Date value) {
+            addCriterion("service_deal_time <=", value, "serviceDealTime");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceTimeIn(List<Date> values) {
-            addCriterion("service_proce_time in", values, "serviceProceTime");
+        public Criteria andServiceDealTimeIn(List<Date> values) {
+            addCriterion("service_deal_time in", values, "serviceDealTime");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceTimeNotIn(List<Date> values) {
-            addCriterion("service_proce_time not in", values, "serviceProceTime");
+        public Criteria andServiceDealTimeNotIn(List<Date> values) {
+            addCriterion("service_deal_time not in", values, "serviceDealTime");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceTimeBetween(Date value1, Date value2) {
-            addCriterion("service_proce_time between", value1, value2, "serviceProceTime");
+        public Criteria andServiceDealTimeBetween(Date value1, Date value2) {
+            addCriterion("service_deal_time between", value1, value2, "serviceDealTime");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceTimeNotBetween(Date value1, Date value2) {
-            addCriterion("service_proce_time not between", value1, value2, "serviceProceTime");
+        public Criteria andServiceDealTimeNotBetween(Date value1, Date value2) {
+            addCriterion("service_deal_time not between", value1, value2, "serviceDealTime");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceResultIsNull() {
-            addCriterion("service_proce_result is null");
+        public Criteria andServiceDealResultIsNull() {
+            addCriterion("service_deal_result is null");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceResultIsNotNull() {
-            addCriterion("service_proce_result is not null");
+        public Criteria andServiceDealResultIsNotNull() {
+            addCriterion("service_deal_result is not null");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceResultEqualTo(String value) {
-            addCriterion("service_proce_result =", value, "serviceProceResult");
+        public Criteria andServiceDealResultEqualTo(String value) {
+            addCriterion("service_deal_result =", value, "serviceDealResult");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceResultNotEqualTo(String value) {
-            addCriterion("service_proce_result <>", value, "serviceProceResult");
+        public Criteria andServiceDealResultNotEqualTo(String value) {
+            addCriterion("service_deal_result <>", value, "serviceDealResult");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceResultGreaterThan(String value) {
-            addCriterion("service_proce_result >", value, "serviceProceResult");
+        public Criteria andServiceDealResultGreaterThan(String value) {
+            addCriterion("service_deal_result >", value, "serviceDealResult");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceResultGreaterThanOrEqualTo(String value) {
-            addCriterion("service_proce_result >=", value, "serviceProceResult");
+        public Criteria andServiceDealResultGreaterThanOrEqualTo(String value) {
+            addCriterion("service_deal_result >=", value, "serviceDealResult");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceResultLessThan(String value) {
-            addCriterion("service_proce_result <", value, "serviceProceResult");
+        public Criteria andServiceDealResultLessThan(String value) {
+            addCriterion("service_deal_result <", value, "serviceDealResult");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceResultLessThanOrEqualTo(String value) {
-            addCriterion("service_proce_result <=", value, "serviceProceResult");
+        public Criteria andServiceDealResultLessThanOrEqualTo(String value) {
+            addCriterion("service_deal_result <=", value, "serviceDealResult");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceResultLike(String value) {
-            addCriterion("service_proce_result like", value, "serviceProceResult");
+        public Criteria andServiceDealResultLike(String value) {
+            addCriterion("service_deal_result like", value, "serviceDealResult");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceResultNotLike(String value) {
-            addCriterion("service_proce_result not like", value, "serviceProceResult");
+        public Criteria andServiceDealResultNotLike(String value) {
+            addCriterion("service_deal_result not like", value, "serviceDealResult");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceResultIn(List<String> values) {
-            addCriterion("service_proce_result in", values, "serviceProceResult");
+        public Criteria andServiceDealResultIn(List<String> values) {
+            addCriterion("service_deal_result in", values, "serviceDealResult");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceResultNotIn(List<String> values) {
-            addCriterion("service_proce_result not in", values, "serviceProceResult");
+        public Criteria andServiceDealResultNotIn(List<String> values) {
+            addCriterion("service_deal_result not in", values, "serviceDealResult");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceResultBetween(String value1, String value2) {
-            addCriterion("service_proce_result between", value1, value2, "serviceProceResult");
+        public Criteria andServiceDealResultBetween(String value1, String value2) {
+            addCriterion("service_deal_result between", value1, value2, "serviceDealResult");
             return (Criteria) this;
         }
 
-        public Criteria andServiceProceResultNotBetween(String value1, String value2) {
-            addCriterion("service_proce_result not between", value1, value2, "serviceProceResult");
+        public Criteria andServiceDealResultNotBetween(String value1, String value2) {
+            addCriterion("service_deal_result not between", value1, value2, "serviceDealResult");
             return (Criteria) this;
         }
 
-        public Criteria andMydIsNull() {
-            addCriterion("myd is null");
+        public Criteria andSatisfyIsNull() {
+            addCriterion("satisfy is null");
             return (Criteria) this;
         }
 
-        public Criteria andMydIsNotNull() {
-            addCriterion("myd is not null");
+        public Criteria andSatisfyIsNotNull() {
+            addCriterion("satisfy is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMydEqualTo(String value) {
-            addCriterion("myd =", value, "myd");
+        public Criteria andSatisfyEqualTo(String value) {
+            addCriterion("satisfy =", value, "satisfy");
             return (Criteria) this;
         }
 
-        public Criteria andMydNotEqualTo(String value) {
-            addCriterion("myd <>", value, "myd");
+        public Criteria andSatisfyNotEqualTo(String value) {
+            addCriterion("satisfy <>", value, "satisfy");
             return (Criteria) this;
         }
 
-        public Criteria andMydGreaterThan(String value) {
-            addCriterion("myd >", value, "myd");
+        public Criteria andSatisfyGreaterThan(String value) {
+            addCriterion("satisfy >", value, "satisfy");
             return (Criteria) this;
         }
 
-        public Criteria andMydGreaterThanOrEqualTo(String value) {
-            addCriterion("myd >=", value, "myd");
+        public Criteria andSatisfyGreaterThanOrEqualTo(String value) {
+            addCriterion("satisfy >=", value, "satisfy");
             return (Criteria) this;
         }
 
-        public Criteria andMydLessThan(String value) {
-            addCriterion("myd <", value, "myd");
+        public Criteria andSatisfyLessThan(String value) {
+            addCriterion("satisfy <", value, "satisfy");
             return (Criteria) this;
         }
 
-        public Criteria andMydLessThanOrEqualTo(String value) {
-            addCriterion("myd <=", value, "myd");
+        public Criteria andSatisfyLessThanOrEqualTo(String value) {
+            addCriterion("satisfy <=", value, "satisfy");
             return (Criteria) this;
         }
 
-        public Criteria andMydLike(String value) {
-            addCriterion("myd like", value, "myd");
+        public Criteria andSatisfyLike(String value) {
+            addCriterion("satisfy like", value, "satisfy");
             return (Criteria) this;
         }
 
-        public Criteria andMydNotLike(String value) {
-            addCriterion("myd not like", value, "myd");
+        public Criteria andSatisfyNotLike(String value) {
+            addCriterion("satisfy not like", value, "satisfy");
             return (Criteria) this;
         }
 
-        public Criteria andMydIn(List<String> values) {
-            addCriterion("myd in", values, "myd");
+        public Criteria andSatisfyIn(List<String> values) {
+            addCriterion("satisfy in", values, "satisfy");
             return (Criteria) this;
         }
 
-        public Criteria andMydNotIn(List<String> values) {
-            addCriterion("myd not in", values, "myd");
+        public Criteria andSatisfyNotIn(List<String> values) {
+            addCriterion("satisfy not in", values, "satisfy");
             return (Criteria) this;
         }
 
-        public Criteria andMydBetween(String value1, String value2) {
-            addCriterion("myd between", value1, value2, "myd");
+        public Criteria andSatisfyBetween(String value1, String value2) {
+            addCriterion("satisfy between", value1, value2, "satisfy");
             return (Criteria) this;
         }
 
-        public Criteria andMydNotBetween(String value1, String value2) {
-            addCriterion("myd not between", value1, value2, "myd");
+        public Criteria andSatisfyNotBetween(String value1, String value2) {
+            addCriterion("satisfy not between", value1, value2, "satisfy");
             return (Criteria) this;
         }
     }
