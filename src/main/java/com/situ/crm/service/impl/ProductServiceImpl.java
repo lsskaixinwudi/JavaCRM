@@ -11,6 +11,7 @@ import com.github.pagehelper.PageInfo;
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
 import com.situ.crm.dao.ProductMapper;
+import com.situ.crm.pojo.DataDic;
 import com.situ.crm.pojo.Product;
 import com.situ.crm.pojo.ProductExample;
 import com.situ.crm.pojo.ProductExample.Criteria;
@@ -32,6 +33,9 @@ public class ProductServiceImpl implements IProductService{
 		Criteria createCriteria = productExample.createCriteria();
 		if (StringUtils.isNotEmpty(product.getName())) {
 			createCriteria.andNameLike(Util.formatLike(product.getName()));
+		}
+		if (StringUtils.isNotEmpty(product.getModel())) {
+			createCriteria.andModelLike(Util.formatLike(product.getModel()));
 		}
 		List<Product> productList = productMapper.selectByExample(productExample);
 		//total
@@ -66,6 +70,11 @@ public class ProductServiceImpl implements IProductService{
 			return ServerResponse.createSuccess("修改成功！");
 		}
 		return ServerResponse.createError("修改失败！");
+	}
+
+	@Override
+	public List<Product> findProductName() {
+		return productMapper.findProductName();
 	}
 
 }

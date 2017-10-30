@@ -7,10 +7,83 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+
+$(function(){
+	/*展示数据的datagrid表格*/
+	$("#datagrid").datagrid({
+		url:'${ctx}/product/findAll.action',
+		method:'get',
+		fit:true,
+		singleSelect:false,
+		toolbar:'#toolbar',
+		rownumbers:true,
+		fitColumns:true,
+		pagination:true,
+		columns:[[    
+		     {field:'cb',checkbox:true,align:'center'},    
+		     {field:'id',title:'编号',width:80,align:'center'},    
+		     {field:'name',title:'产品名',width:100,align:'center'},    
+		     {field:'model',title:'型号',width:80,align:'center'},
+		     {field:'unit',title:'单位',width:100,align:'center'},    
+		     {field:'price',title:'价格',width:80,align:'center'},
+		     {field:'stock',title:'库存',width:100,align:'center'},    
+		     {field:'remark',title:'备注',width:80,align:'center'}
+		]]  
+	});
+	
+	/*添加和修改弹出的dialog */
+	$("#dialog").dialog({
+		closed:'true',
+		buttons:[
+			{
+				text:'保存',
+				iconCls:'icon-ok',
+				handler:function(){
+					doSave();
+				}
+			},
+			{
+				text:'关闭',
+				iconCls:'icon-cancel',
+				handler:function(){
+					$("#dialog").dialog("close");
+				}
+			}
+			
+		]
+		
+	});
+});
+/*添加或修改的dialog */
+function doSave() {
+	$('#form').form('submit', {    
+	    url:url,    
+	    onSubmit: function(){    
+	        // do some check    
+	        if($("#name").combobox("getValue") == "") {
+	        	$.messager.alert("系统提示", "请选择用户角色");
+	        	return false;
+	        }
+	        //validate none 做表单字段验证，当所有字段都有效的时候返回true。该方法使用validatebox(验证框)插件。 
+	        // return false to prevent submit;  
+	        return $(this).form("validate");
+	    },    
+	    success:function(data){//正常返回ServerResponse
+	    	//alert(data);
+	    	var data = eval('(' + data + ')');
+	    	if(data.status == Util.SUCCESS) {
+	    		$.messager.alert("系统提示", data.msg);
+	    		$("#dialog").dialog("close");
+	    		$("#datagrid").datagrid("reload");
+	    	}
+	    }    
+	});  
+}
 /* 查找 */
-function doSearch(value){
+function doSearch(){
 	$("#datagrid").datagrid("load",{
-		'name':value
+		'name':$("#name").val(),
+		'model':$("#model").val()
 	})
 }
 
@@ -50,7 +123,7 @@ function openAddDialog() {
 function openUpdateDialog() {
 	var selections = $("#datagrid").datagrid("getSelections");
 	if(selections.length == 0) {
-		$.messager.alert("系统提示", "请选择要修改的数据");
+		$.messager.alert("系统提示", "请选择要删除的数据");
 		return;
 	}
 	var row = selections[0];
@@ -59,59 +132,34 @@ function openUpdateDialog() {
 	$('#form').form("load", row);
 }
 
-function closeDialog(){
-	 $("#dialog").dialog("close");
-}
-
-function doSave(){
-	$('#form').form('submit', {    
-	    url:url,    
-	    onSubmit: function(){    
-	        // do some check    
-	        //validate none 做表单字段验证，当所有字段都有效的时候返回true。该方法使用validatebox(验证框)插件。 
-	        // return false to prevent submit;  
-	        return $(this).form("validate");
-	    },    
-	    success:function(data){//正常返回ServerResponse
-	    	/* alert(data); */
-	    	var data = eval('(' + data + ')');
-	    	if(data.status == Util.SUCCESS) {
-	    		$.messager.alert("系统提示", data.msg);
-	    		$("#dialog").dialog("close");
-	    		$("#datagrid").datagrid("reload");
-	    	}
-	    }    
-	});  
-}
-
 </script>
 </head>
 <body>
-	<table id="datagrid" class="easyui-datagrid" rownumbers="true" fitColumns="true"
-		pagination="true"
-		data-options="fit:true,singleSelect:false,url:'${ctx}/product/findAll.action',method:'get',toolbar:'#toolbar'">
-		<thead>
-			<tr>
-				<th data-options="field:'cb',checkbox:true,align:'center'"></th>
-				<th data-options="field:'id',width:80,align:'center'">编号</th>
-				<th data-options="field:'name',width:100,align:'center'">产品名</th>
-				<th data-options="field:'model',width:80,align:'center'">型号</th>
-				<th data-options="field:'unit',width:80,align:'center'">单位</th>
-				<th data-options="field:'price',width:100,align:'center'">价格</th>
-				<th data-options="field:'stock',width:100,align:'center'">库存</th>
-				<th data-options="field:'remark',width:100,align:'center'">备注</th>
-			</tr>
-		</thead>
-	</table>
+	<table id="datagrid"></table>
 	
-	<!-- toolbar -->
+	<!-- toolbar 开始 -->
 	<div id="toolbar">
-		<a class="easyui-linkbutton" href="javascript:openAddDialog()" iconCls="icon-add">添加</a>
-		<a class="easyui-linkbutton" href="javascript:openUpdateDialog()" iconCls="icon-edit">修改</a>
-		<a class="easyui-linkbutton" href="javascript:doDelete()" iconCls="icon-remove">删除</a>
-		&nbsp;&nbsp;&nbsp;&nbsp;
-		<input class="easyui-searchbox" data-options="prompt:'用户名',searcher:doSearch" style="width:150px"></input>
+		<div>
+			<a class="easyui-linkbutton" href="javascript:openAddDialog()" iconCls="icon-add">添加</a>
+			<a class="easyui-linkbutton" href="javascript:openUpdateDialog()" iconCls="icon-edit">修改</a>
+			<a class="easyui-linkbutton" href="javascript:doDelete()" iconCls="icon-remove">删除</a>
+		</div>
+		<div>
+			产品名：<input type="text" id="name" class="easyui-combobox"
+					 data-options="
+					 	url:'${ctx}/product/findProductName.action',
+					 	valueField: 'name',
+					 	textField: 'name',
+					 	panelHeight:'auto',
+					 	editable:false  "/>
+		       型号：<input type="text" id="model"></input>
+		  <a href="javascript:doSearch();" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
+		</div>
 	</div>
+	<!-- toolbar 结束 -->
+	
+	
+	
 	
 	<!-- 添加和修改的dialog开始 -->
 	<div id = "dialog" class="easyui-dialog" closed="true" style="width:650;height:280,padding: 10px 20px" buttons="#dialog-button">
@@ -120,7 +168,12 @@ function doSave(){
 			<table cellspacing="8px">
 				<tr>
 					<td>产品名：</td>
-					<td><input type="text" id="name" name="name" class="easyui-validatebox" required="true"/></td>
+					<td><input type="text" id="name" name="name" class="easyui-validatebox"
+					 data-options="
+					 	url:'${ctx}/product/findProductName.action',
+					 	valueField: 'name',
+					 	textField: 'name',
+					 	panelHeight:'auto' "/><font color="red">*</font></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td>型号：</td>
 					<td><input type="text" id="model" name="model" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
@@ -141,14 +194,6 @@ function doSave(){
 				</tr>
 			</table>
 		</form>
-	</div>
-	<!-- 添加和修改的dialog 结束 -->
-	
-	
-	<!-- dialog-button 开始-->
-	<div id="dialog-button">
-		<a href="javascript:doSave()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-		<a href="javascript:closeDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
 	</div>
 	<!-- dialog-button 结束-->
 </body>

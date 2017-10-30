@@ -7,10 +7,82 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+$(function(){
+	/*展示数据的datagrid表格*/
+	$("#datagrid").datagrid({
+		url:'${ctx}/user/findAll.action',
+		method:'get',
+		fit:true,
+		singleSelect:false,
+		toolbar:'#toolbar',
+		rownumbers:true,
+		fitColumns:true,
+		pagination:true,
+		columns:[[    
+		     {field:'cb',checkbox:true,align:'center'},    
+		     {field:'id',title:'编号',width:80,align:'center'},    
+		     {field:'name',title:'用户名',width:100,align:'center'},    
+		     {field:'password',title:'密码',width:80,align:'center'},
+		     {field:'trueName',title:'真实姓名',width:100,align:'center'},    
+		     {field:'email',title:'邮件',width:100,align:'center'},
+		     {field:'phone',title:'联系电话',width:100,align:'center'},    
+		     {field:'roleName',title:'角色',width:80,align:'center'}
+		]]  
+	});
+	
+	/*添加和修改弹出的dialog */
+	$("#dialog").dialog({
+		closed:'true',
+		buttons:[
+			{
+				text:'保存',
+				iconCls:'icon-ok',
+				handler:function(){
+					doSave();
+				}
+			},
+			{
+				text:'关闭',
+				iconCls:'icon-cancel',
+				handler:function(){
+					$("#dialog").dialog("close");
+				}
+			}
+			
+		]
+		
+	});
+});
+/*添加或修改的dialog */
+function doSave() {
+	$('#form').form('submit', {    
+	    url:url,    
+	    onSubmit: function(){    
+	        // do some check    
+	        if($("#name").combobox("getValue") == "") {
+	        	$.messager.alert("系统提示", "请选择用户角色");
+	        	return false;
+	        }
+	        //validate none 做表单字段验证，当所有字段都有效的时候返回true。该方法使用validatebox(验证框)插件。 
+	        // return false to prevent submit;  
+	        return $(this).form("validate");
+	    },    
+	    success:function(data){//正常返回ServerResponse
+	    	//alert(data);
+	    	var data = eval('(' + data + ')');
+	    	if(data.status == Util.SUCCESS) {
+	    		$.messager.alert("系统提示", data.msg);
+	    		$("#dialog").dialog("close");
+	    		$("#datagrid").datagrid("reload");
+	    	}
+	    }    
+	});  
+}
 /* 查找 */
-function doSearch(value){
+function doSearch(){
 	$("#datagrid").datagrid("load",{
-		'name':value
+		'name':$("#name").val(),
+		'trueName':$("#trueName").val()
 	})
 }
 
@@ -50,7 +122,7 @@ function openAddDialog() {
 function openUpdateDialog() {
 	var selections = $("#datagrid").datagrid("getSelections");
 	if(selections.length == 0) {
-		$.messager.alert("系统提示", "请选择要修改的数据");
+		$.messager.alert("系统提示", "请选择要删除的数据");
 		return;
 	}
 	var row = selections[0];
@@ -59,38 +131,33 @@ function openUpdateDialog() {
 	$('#form').form("load", row);
 }
 
-function closeDialog(){
-	 $("#dialog").dialog("close");
-}
-
-function doSave(){
-	$('#form').form('submit', {    
-	    url:url,    
-	    onSubmit: function(){    
-	        // do some check    
-	        if($("#roleName").combobox("getValue") == "") {
-	        	$.messager.alert("系统提示", "请选择用户角色");
-	        	return false;
-	        }
-	        //validate none 做表单字段验证，当所有字段都有效的时候返回true。该方法使用validatebox(验证框)插件。 
-	        // return false to prevent submit;  
-	        return $(this).form("validate");
-	    },    
-	    success:function(data){//正常返回ServerResponse
-	    	/* alert(data); */
-	    	var data = eval('(' + data + ')');
-	    	if(data.status == Util.SUCCESS) {
-	    		$.messager.alert("系统提示", data.msg);
-	    		$("#dialog").dialog("close");
-	    		$("#datagrid").datagrid("reload");
-	    	}
-	    }    
-	});  
-}
-
 </script>
 </head>
 <body>
+	
+	<table id="datagrid"></table>
+	
+	<!-- toolbar 开始 -->
+	<div id="toolbar">
+		<div>
+			<a class="easyui-linkbutton" href="javascript:openAddDialog()" iconCls="icon-add">添加</a>
+			<a class="easyui-linkbutton" href="javascript:openUpdateDialog()" iconCls="icon-edit">修改</a>
+			<a class="easyui-linkbutton" href="javascript:doDelete()" iconCls="icon-remove">删除</a>
+		</div>
+		<div>
+			用户名：<input type="text" id="name" class="easyui-validatebox"
+					 data-options="
+					 	url:'${ctx}/user/findUserName.action',
+					 	valueField: 'name',
+					 	textField: 'name',
+					 	panelHeight:'auto',
+					 	"/>
+		       真实姓名：<input type="text" id="trueName"></input>
+		  <a href="javascript:doSearch();" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
+		</div>
+	</div>
+	<!-- toolbar 结束 -->
+	
 	<table id="datagrid" class="easyui-datagrid" rownumbers="true" fitColumns="true"
 		pagination="true"
 		data-options="fit:true,singleSelect:false,url:'${ctx}/user/findAll.action',method:'get',toolbar:'#toolbar'">
@@ -108,14 +175,7 @@ function doSave(){
 		</thead>
 	</table>
 	
-	<!-- toolbar -->
-	<div id="toolbar">
-		<a class="easyui-linkbutton" href="javascript:openAddDialog()" iconCls="icon-add">添加</a>
-		<a class="easyui-linkbutton" href="javascript:openUpdateDialog()" iconCls="icon-edit">修改</a>
-		<a class="easyui-linkbutton" href="javascript:doDelete()" iconCls="icon-remove">删除</a>
-		&nbsp;&nbsp;&nbsp;&nbsp;
-		<input class="easyui-searchbox" data-options="prompt:'用户名',searcher:doSearch" style="width:150px"></input>
-	</div>
+	
 	
 	<!-- 添加和修改的dialog开始 -->
 	<div id = "dialog" class="easyui-dialog" closed="true" style="width:650;height:280,padding: 10px 20px" buttons="#dialog-button">

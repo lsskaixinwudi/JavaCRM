@@ -1,5 +1,7 @@
 package com.situ.crm.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
+import com.situ.crm.pojo.Product;
 import com.situ.crm.pojo.User;
 import com.situ.crm.service.IUserService;
 
@@ -43,6 +46,12 @@ public class UserController {
 	@ResponseBody
 	public ServerResponse update(User user){
 		return userService.update(user);
+	}
+	
+	@RequestMapping("/findUserName")
+	@ResponseBody
+	public List<User> findUserName() {
+		return userService.findUserName();
 	}
 	
 }

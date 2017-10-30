@@ -1,5 +1,7 @@
 package com.situ.crm.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
+import com.situ.crm.pojo.DataDic;
 import com.situ.crm.pojo.Product;
 import com.situ.crm.service.IProductService;
 
@@ -45,4 +48,9 @@ public class ProductController {
 		return productService.update(product);
 	}
 	
+	@RequestMapping("/findProductName")
+	@ResponseBody
+	public List<Product> findProductName() {
+		return productService.findProductName();
+	}
 }

@@ -33,6 +33,9 @@ public class DataDicServiceImpl implements IDataDicService{
 		if (StringUtils.isNotEmpty(datadic.getDataDicName())) {
 			createCriteria.andDataDicNameLike(Util.formatLike(datadic.getDataDicName()));
 		}
+		if (StringUtils.isNotEmpty(datadic.getDataDicValue())) {
+			createCriteria.andDataDicValueLike(Util.formatLike(datadic.getDataDicValue()));
+		}
 		List<DataDic> datadicList = datadicMapper.selectByExample(datadicExample);
 		//total
 		PageInfo<DataDic> pageInfo = new PageInfo<>(datadicList);
@@ -66,6 +69,11 @@ public class DataDicServiceImpl implements IDataDicService{
 			return ServerResponse.createSuccess("修改成功！");
 		}
 		return ServerResponse.createError("修改失败！");
+	}
+
+	@Override
+	public List<DataDic> findDataDicName() {
+		return datadicMapper.findDataDicName();
 	}
 
 }

@@ -240,4 +240,8 @@
       role_name = #{roleName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="findUserName" resultMap="BaseResultMap">
+   	select distinct name from user
+  </select>
 </mapper>

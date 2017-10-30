@@ -11,6 +11,7 @@ import com.github.pagehelper.PageInfo;
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
 import com.situ.crm.dao.UserMapper;
+import com.situ.crm.pojo.Product;
 import com.situ.crm.pojo.User;
 import com.situ.crm.pojo.UserExample;
 import com.situ.crm.pojo.UserExample.Criteria;
@@ -32,6 +33,9 @@ public class UserServiceImpl implements IUserService{
 		Criteria createCriteria = userExample.createCriteria();
 		if (StringUtils.isNotEmpty(user.getName())) {
 			createCriteria.andNameLike(Util.formatLike(user.getName()));
+		}
+		if (StringUtils.isNotEmpty(user.getTrueName())) {
+			createCriteria.andTrueNameLike(Util.formatLike(user.getTrueName()));
 		}
 		List<User> userList = userMapper.selectByExample(userExample);
 		//total
@@ -66,6 +70,11 @@ public class UserServiceImpl implements IUserService{
 			return ServerResponse.createSuccess("修改成功！");
 		}
 		return ServerResponse.createError("修改失败！");
+	}
+
+	@Override
+	public List<User> findUserName() {
+		return userMapper.findUserName();
 	}
 
 }

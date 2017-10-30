@@ -27,4 +27,6 @@ public interface DataDicMapper {
     int updateByPrimaryKeySelective(DataDic record);
 
     int updateByPrimaryKey(DataDic record);
+
+	List<DataDic> findDataDicName();
 }

@@ -7,10 +7,78 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+$(function(){
+	/*展示数据的datagrid表格*/
+	$("#datagrid").datagrid({
+		url:'${ctx}/datadic/findAll.action',
+		method:'get',
+		fit:true,
+		singleSelect:false,
+		toolbar:'#toolbar',
+		rownumbers:true,
+		fitColumns:true,
+		pagination:true,
+		columns:[[    
+		     {field:'cb',checkbox:true,align:'center'},    
+		     {field:'id',title:'编号',width:80,align:'center'},    
+		     {field:'dataDicName',title:'数据字典名',width:100,align:'center'},    
+		     {field:'dataDicValue',title:'数据字典值',width:80,align:'center'},    
+		]]  
+	});
+	
+	/*添加和修改弹出的dialog */
+	$("#dialog").dialog({
+		closed:'true',
+		buttons:[
+			{
+				text:'保存',
+				iconCls:'icon-ok',
+				handler:function(){
+					doSave();
+				}
+			},
+			{
+				text:'关闭',
+				iconCls:'icon-cancel',
+				handler:function(){
+					$("#dialog").dialog("close");
+				}
+			}
+			
+		]
+		
+	});
+});
+/*添加或修改的dialog */
+function doSave() {
+	$('#form').form('submit', {    
+	    url:url,    
+	    onSubmit: function(){    
+	        // do some check    
+	        if($("#dataDicName").combobox("getValue") == "") {
+	        	$.messager.alert("系统提示", "请选择用户角色");
+	        	return false;
+	        }
+	        //validate none 做表单字段验证，当所有字段都有效的时候返回true。该方法使用validatebox(验证框)插件。 
+	        // return false to prevent submit;  
+	        return $(this).form("validate");
+	    },    
+	    success:function(data){//正常返回ServerResponse
+	    	//alert(data);
+	    	var data = eval('(' + data + ')');
+	    	if(data.status == Util.SUCCESS) {
+	    		$.messager.alert("系统提示", data.msg);
+	    		$("#dialog").dialog("close");
+	    		$("#datagrid").datagrid("reload");
+	    	}
+	    }    
+	});  
+}
 /* 查找 */
-function doSearch(value){
+function doSearch(){
 	$("#datagrid").datagrid("load",{
-		'data_dic_name':value
+		'dataDicName':$("#dataDicName").val(),
+		'dataDicValue':$("#dataDicValue").val()
 	})
 }
 
@@ -50,7 +118,7 @@ function openAddDialog() {
 function openUpdateDialog() {
 	var selections = $("#datagrid").datagrid("getSelections");
 	if(selections.length == 0) {
-		$.messager.alert("系统提示", "请选择要修改的数据");
+		$.messager.alert("系统提示", "请选择要删除的数据");
 		return;
 	}
 	var row = selections[0];
@@ -59,78 +127,53 @@ function openUpdateDialog() {
 	$('#form').form("load", row);
 }
 
-function closeDialog(){
-	 $("#dialog").dialog("close");
-}
 
-function doSave(){
-	$('#form').form('submit', {    
-	    url:url,    
-	    onSubmit: function(){    
-	        // do some check    
-	        //validate none 做表单字段验证，当所有字段都有效的时候返回true。该方法使用validatebox(验证框)插件。 
-	        // return false to prevent submit;  
-	        return $(this).form("validate");
-	    },    
-	    success:function(data){//正常返回ServerResponse
-	    	/* alert(data); */
-	    	var data = eval('(' + data + ')');
-	    	if(data.status == Util.SUCCESS) {
-	    		$.messager.alert("系统提示", data.msg);
-	    		$("#dialog").dialog("close");
-	    		$("#datagrid").datagrid("reload");
-	    	}
-	    }    
-	});  
-}
 
 </script>
 </head>
 <body>
-	<table id="datagrid" class="easyui-datagrid" rownumbers="true" fitColumns="true"
-		pagination="true"
-		data-options="fit:true,singleSelect:false,url:'${ctx}/datadic/findAll.action',method:'get',toolbar:'#toolbar'">
-		<thead>
-			<tr>
-				<th data-options="field:'cb',checkbox:true,align:'center'"></th>
-				<th data-options="field:'id',width:80,align:'center'">编号</th>
-				<th data-options="field:'dataDicName',width:100,align:'center'">数据字典名称</th>
-				<th data-options="field:'dataDicValue',width:80,align:'center'">数据字典值</th>
-			</tr>
-		</thead>
-	</table>
+	<table id="datagrid"></table>
 	
-	<!-- toolbar -->
+	<!-- toolbar 开始 -->
 	<div id="toolbar">
-		<a class="easyui-linkbutton" href="javascript:openAddDialog()" iconCls="icon-add">添加</a>
-		<a class="easyui-linkbutton" href="javascript:openUpdateDialog()" iconCls="icon-edit">修改</a>
-		<a class="easyui-linkbutton" href="javascript:doDelete()" iconCls="icon-remove">删除</a>
-		&nbsp;&nbsp;&nbsp;&nbsp;
-		<input class="easyui-searchbox" data-options="prompt:'用户名',searcher:doSearch" style="width:150px"></input>
+		<div>
+			<a class="easyui-linkbutton" href="javascript:openAddDialog()" iconCls="icon-add">添加</a>
+			<a class="easyui-linkbutton" href="javascript:openUpdateDialog()" iconCls="icon-edit">修改</a>
+			<a class="easyui-linkbutton" href="javascript:doDelete()" iconCls="icon-remove">删除</a>
+		</div>
+		<div>
+			数据字典名：<input type="text" id="dataDicName" class="easyui-combobox"
+					 data-options="
+					 	url:'${ctx}/datadic/findDataDicName.action',
+					 	valueField: 'dataDicName',
+					 	textField: 'dataDicName',
+					 	panelHeight:'auto',
+					 	editable:false  "/>
+		       数据字典值：<input type="text" id="dataDicValue"></input>
+		  <a href="javascript:doSearch();" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
+		</div>
 	</div>
+	<!-- toolbar 结束 -->
 	
-	<!-- 添加和修改的dialog开始 -->
-	<div id = "dialog" class="easyui-dialog" closed="true" style="width:650;height:280,padding: 10px 20px" buttons="#dialog-button">
-		<form action="" id = "form" method="post">
+	<!-- 添加和修改的dialog 开始 -->
+	<div id="dialog" style="width:650;height:280,padding: 10px 20px">
+		<form action="" id="form" method="post">
 			<input type="hidden" id="id" name="id"/>
 			<table cellspacing="8px">
 				<tr>
-					<td>数据字典名称：</td>
-					<td><input type="text" id="dataDicName" name="dataDicName" class="easyui-validatebox" required="true"/></td>
+					<td>数据字典名：</td>
+					<td><input type="text" id="dataDicName" name="dataDicName" class="easyui-combobox"
+					 data-options="
+					 	url:'${ctx}/datadic/findDataDicName.action',
+					 	valueField: 'dataDicName',
+					 	textField: 'dataDicName',
+					 	panelHeight:'auto' "/><font color="red">*</font></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td>数据字典值：</td>
 					<td><input type="text" id="dataDicValue" name="dataDicValue" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
 				</tr>
 			</table>
 		</form>
-	</div>
-	<!-- 添加和修改的dialog 结束 -->
-	
-	
-	<!-- dialog-button 开始-->
-	<div id="dialog-button">
-		<a href="javascript:doSave()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-		<a href="javascript:closeDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
 	</div>
 	<!-- dialog-button 结束-->
 </body>
