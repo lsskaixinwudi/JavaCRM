@@ -1,0 +1,5 @@
+.form_border{
+	padding: 10px;
+    border: solid 1px #ddd;
+    border-top: none;
+}
