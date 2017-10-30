@@ -94,8 +94,8 @@ function doSave(){
 			<tr>
 				<th data-options="field:'cb',checkbox:true,align:'center'"></th>
 				<th data-options="field:'id',width:80,align:'center'">编号</th>
-				<th data-options="field:'dataDicName',width:100,align:'center'">产品名</th>
-				<th data-options="field:'dataDicValue',width:80,align:'center'">型号</th>
+				<th data-options="field:'dataDicName',width:100,align:'center'">数据字典名称</th>
+				<th data-options="field:'dataDicValue',width:80,align:'center'">数据字典值</th>
 			</tr>
 		</thead>
 	</table>
@@ -115,11 +115,11 @@ function doSave(){
 			<input type="hidden" id="id" name="id"/>
 			<table cellspacing="8px">
 				<tr>
-					<td>数据名称：</td>
-					<td><input type="text" id="data_dic_name" name="dataDicName" class="easyui-validatebox" required="true"/></td>
+					<td>数据字典名称：</td>
+					<td><input type="text" id="dataDicName" name="dataDicName" class="easyui-validatebox" required="true"/></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>数据类型：</td>
-					<td><input type="text" id="data_dic_value" name="dataDicValue" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
+					<td>数据字典值：</td>
+					<td><input type="text" id="dataDicValue" name="dataDicValue" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
 				</tr>
 			</table>
 		</form>
