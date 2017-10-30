@@ -73,7 +73,7 @@ function doSave(){
 	        return $(this).form("validate");
 	    },    
 	    success:function(data){//正常返回ServerResponse
-	    	alert(data);
+	    	/* alert(data); */
 	    	var data = eval('(' + data + ')');
 	    	if(data.status == Util.SUCCESS) {
 	    		$.messager.alert("系统提示", data.msg);
@@ -94,8 +94,8 @@ function doSave(){
 			<tr>
 				<th data-options="field:'cb',checkbox:true,align:'center'"></th>
 				<th data-options="field:'id',width:80,align:'center'">编号</th>
-				<th data-options="field:'data_dic_name',width:100,align:'center'">产品名</th>
-				<th data-options="field:'data_dic_value',width:80,align:'center'">型号</th>
+				<th data-options="field:'dataDicName',width:100,align:'center'">产品名</th>
+				<th data-options="field:'dataDicValue',width:80,align:'center'">型号</th>
 			</tr>
 		</thead>
 	</table>

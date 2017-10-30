@@ -73,7 +73,7 @@ function doSave(){
 	        return $(this).form("validate");
 	    },    
 	    success:function(data){//正常返回ServerResponse
-	    	alert(data);
+	    	/* alert(data); */
 	    	var data = eval('(' + data + ')');
 	    	if(data.status == Util.SUCCESS) {
 	    		$.messager.alert("系统提示", data.msg);
