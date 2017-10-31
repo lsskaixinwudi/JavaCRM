@@ -12,8 +12,8 @@ public class IndexController {
 		return "index";
 	}
 	
-	@RequestMapping("/login")
-	public String login() {
+	@RequestMapping("/toLogin")
+	public String toLogin() {
 		return "login";
 	}
 }

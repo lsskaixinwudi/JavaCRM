@@ -77,4 +77,18 @@ public class UserServiceImpl implements IUserService{
 		return userMapper.findUserName();
 	}
 
+	@Override
+	public User getUser(String name, String password) {
+		return userMapper.getUser(name,password);
+	}
+
+	@Override
+	public ServerResponse updatePassWord(User user) {
+		if(userMapper.updateByPrimaryKey(user)>0){
+			return ServerResponse.createSuccess("修改成功！");
+		}
+		return ServerResponse.createError("修改失败！");
+	}
+	
+
 }

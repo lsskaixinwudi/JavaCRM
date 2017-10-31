@@ -21,6 +21,32 @@
 			});
 		}
 	}
+	function openUpdateDialog() {
+		$("#dialog").dialog("open").dialog("setTitle","添加信息");
+		$('#form').form("clear");
+		$('#name').val("${user.name}");
+		url = "${ctx}/user/updatePassWord.action";
+		
+	}
+	function doSave(){
+		$('#form').form('submit', {    
+		    url:url,    
+		    onSubmit: function(){    
+		        //validate none 做表单字段验证，当所有字段都有效的时候返回true。该方法使用validatebox(验证框)插件。 
+		        // return false to prevent submit;  
+		        return $(this).form("validate");
+		    },    
+		    success:function(data){//正常返回ServerResponse
+		    	//alert(data);
+		    	var data = eval('(' + data + ')');
+		    	if(data.status == Util.SUCCESS) {
+		    		$.messager.alert("系统提示", data.msg);
+		    		$("#dialog").dialog("close");
+		    		$("#datagrid").datagrid("reload");
+		    	}
+		    }    
+		});  
+	}
 </script>
 </head>
 <body class="easyui-layout">
@@ -29,7 +55,7 @@
 			<tr>
 				<td width="50%"><img alt="logo"
 					src="${pageContext.request.contextPath}/images/bglogo.png"></td>
-				<td valign="bottom" align="right" width="50%"><font size="3">&nbsp;&nbsp;<strong>欢迎：</strong>${currentUser.userName }</font>【${currentUser.trueName }】【${currentUser.roleName }】
+				<td valign="bottom" align="right" width="50%"><font size="3">&nbsp;&nbsp;<strong>欢迎：</strong>${user.name }</font>【${user.trueName }】【${user.roleName }】
 				</td>
 			</tr>
 		</table>
@@ -128,18 +154,41 @@
 			</div>
 			<div title="系统管理" data-options="iconCls:'icon-item'"
 				style="padding: 10px">
-				<a href="javascript:openPasswordModifyDialog()"
-					class="easyui-linkbutton"
+				<a class="easyui-linkbutton" href="javascript:openUpdateDialog()"
 					data-options="plain:true,iconCls:'icon-modifyPassword'"
-					style="width: 150px;">修改密码</a> <a href="javascript:logout()"
+					style="width: 150px;">修改密码</a> 
+				<a href="javascript:logout()"
 					class="easyui-linkbutton"
-					data-options="plain:true,iconCls:'icon-exit'" style="width: 150px;">安全退出</a>
+					data-options="plain:true,iconCls:'icon-exit'" 
+					style="width: 150px;">安全退出</a>
 			</div>
 		</div>
 	</div>
 	<div region="south" style="height: 25px; padding: 5px" align="center">
 		Java1707CRM管理系统
 	</div>
+	<!-- 修改密码的dialog 开始 -->
+	<div id="dialog" class="easyui-dialog" closed="true" style="width:450;height:650,padding: 10px 20px" buttons="#dialog-button">
+		<form action="" id="form" method="post">
+			<input type="hidden" id="id" name="id" value="${user.id}"/>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			用户名：<input type="text" id="name" name="name" class="easyui-validatebox" required="true"/><br><br>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			原密码：<input type="text" id="password" name="password" class="easyui-validatebox" required="true"/><br><br>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			新密码：<input type="text" id="password" name="password" class="easyui-validatebox" required="true" /><br><br>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			确认密码：<input type="text" id="password" name="password" class="easyui-validatebox" required="true" />
+		</form>
+	</div>
+	<!-- 修改密码的dialog 结束 -->
+	
+	<!-- dialog-button 开始-->
+	<div id="dialog-button">
+		<a href="javascript:doSave()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+		<a href="javascript:closeDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+	</div>
+	<!-- dialog-button 结束-->
 
 </body>
 </html>

@@ -29,4 +29,7 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
 	List<User> findUserName();
+
+
+	User getUser(String name, String password);
 }

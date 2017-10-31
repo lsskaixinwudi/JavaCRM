@@ -30,18 +30,15 @@ margin-left:-200px;margin-top:-100px;border:1px}
 		        <div class="col-md-10">
 		            
 		            <!-- 学生添加表单  begin -->
-		            <form id="form-add" action="${ctx}/user/login.action" enctype="multipart/form-data" method="post">
+		            <form id="login" action="${pageContext.request.contextPath}/user/login.action" method="post">
 	                    <div class="form-group">
-	                        <label for="addname">用户名</label>
+	                        <label for="name">用户名</label>
 	                        <input type="text" name="name" id="name" class="form-control" placeholder="请输入用户名">
 	                    </div>
 	                    <div class="form-group">
-	                        <label for="addpassword">密码</label>
+	                        <label for="password">密码</label>
 	                        <input type="text" name="password" id="password" class="form-control" placeholder="请输入密码">
-	                    </div>
-	                   
-	                    
-					  
+	                    </div>	  
 					  	<input class="btn btn-success btn-lg" type="submit" value="登录"/>
 					</form>
 		            <!-- 学生添加表单  end -->

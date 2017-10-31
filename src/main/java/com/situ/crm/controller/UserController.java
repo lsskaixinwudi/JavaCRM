@@ -2,8 +2,12 @@ package com.situ.crm.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -22,6 +26,32 @@ public class UserController {
 	@RequestMapping("/index")
 	public String index() {
 		return "user_manager";
+	}
+	
+	@RequestMapping(value="/login")
+	public String login( HttpServletRequest req, String name, String password) {
+		
+		User user = userService.getUser(name,password);
+		System.out.println(user);
+		if (user != null) {
+				HttpSession session = req.getSession();
+				session.setAttribute("user", user);
+				System.out.println(user);
+				return "redirect:/index/index.action";
+			} else {
+				return "redirect:/index/toLogin.action";
+			}
+		}
+	
+	@RequestMapping("/updatePassWord")
+	@ResponseBody
+	public ServerResponse updatePassWord(HttpServletRequest req, User user){
+		
+				HttpSession session = req.getSession();
+				session.setAttribute("user", user);
+				System.out.println(user);
+				return userService.updatePassWord(user);
+			
 	}
 	
 	@RequestMapping("/findAll")

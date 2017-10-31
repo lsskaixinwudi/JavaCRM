@@ -23,4 +23,9 @@ public interface IUserService {
 	ServerResponse update(User user);
 
 	List<User> findUserName();
+
+
+	User getUser(String name, String password);
+
+	ServerResponse updatePassWord(User user);
 }
