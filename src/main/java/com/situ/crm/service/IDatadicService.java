@@ -23,4 +23,6 @@ public interface IDataDicService {
 	ServerResponse update(DataDic datadic);
 
 	List<DataDic> findDataDicName();
+
+	List<DataDic> findDataDicValue();
 }

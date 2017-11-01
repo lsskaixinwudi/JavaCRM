@@ -111,7 +111,7 @@
 			<div title="客户管理" data-options="iconCls:'icon-khgl'"
 				style="padding: 10px;">
 				<a
-					href="javascript:openTab('客户信息管理','customerManage.jsp','icon-khxxgl')"
+					href="javascript:openTab('客户信息管理','${ctx}/customer/index.action','icon-khxxgl')"
 					class="easyui-linkbutton"
 					data-options="plain:true,iconCls:'icon-khxxgl'"
 					style="width: 150px;">客户信息管理</a> <a

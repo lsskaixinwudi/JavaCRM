@@ -182,4 +182,8 @@
   <select id="findDataDicName" resultMap="BaseResultMap">
    	select distinct data_dic_name from data_dic
   </select>
+  
+  <select id="findDataDicValue" resultMap="BaseResultMap">
+  	select distinct data_dic_value from data_dic
+  </select>
 </mapper>

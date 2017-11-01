@@ -53,4 +53,10 @@ public class DatadicController {
 		return datadicService.findDataDicName();
 	}
 	
+	@RequestMapping("/findDataDicValue")
+	@ResponseBody
+	public List<DataDic> findDataDicValue() {
+		return datadicService.findDataDicValue();
+	}
+	
 }

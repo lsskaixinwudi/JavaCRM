@@ -477,4 +477,8 @@
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="findCustomerNum" resultMap="BaseResultMap">
+   	select name from user
+  </select>
 </mapper>

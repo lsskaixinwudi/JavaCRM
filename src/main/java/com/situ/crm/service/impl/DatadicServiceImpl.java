@@ -76,4 +76,9 @@ public class DataDicServiceImpl implements IDataDicService{
 		return datadicMapper.findDataDicName();
 	}
 
+	@Override
+	public List<DataDic> findDataDicValue() {
+		return datadicMapper.findDataDicValue();
+	}
+
 }
