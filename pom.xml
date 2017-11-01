@@ -25,6 +25,7 @@
 		<c3p0-version>0.9.1.2</c3p0-version>
 		<!-- Jackson Json处理工具包 -->
 		<jackson.version>2.4.2</jackson.version>
+		<jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version>
 		<!-- 单元测试 -->
 		<junit.version>4.12</junit.version>
 		<!-- 日志处理 -->
@@ -125,6 +126,16 @@
 			<version>${c3p0-version}</version>
 		</dependency>
 		<!-- Jackson Json处理工具包 -->
+		<!-- <dependency>  
+		    <groupId>com.fasterxml.jackson.core</groupId>  
+		    <artifactId>jackson-core</artifactId>  
+		    <version>${jackson.version}</version>  
+		</dependency>
+		<dependency>  
+    	<groupId>org.codehaus.jackson</groupId>  
+		    <artifactId>jackson-mapper-asl</artifactId>  
+		    <version>${jackson-mapper-asl.version}</version>  
+		</dependency>   -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>

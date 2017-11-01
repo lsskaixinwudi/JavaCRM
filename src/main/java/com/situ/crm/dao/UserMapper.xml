@@ -248,9 +248,13 @@
   <select id="getUser" resultMap="BaseResultMap" parameterType="com.situ.crm.pojo.User">
 	select <include refid="Base_Column_List" /> from user where  name=#{0} and password=#{1}
   </select>
-  <update id="updatePassWord" parameterType="com.situ.crm.pojo.User" >
-    update password
-    set password = #{password,jdbcType=VARCHAR},
-    where id = #{id,jdbcType=INTEGER}
+  
+ 	<update id="updateById" parameterType="com.situ.crm.pojo.User" >
+    update user
+    set 
+      password = #{password,jdbcType=VARCHAR},
+      
+    where id = #{id,jdbcType=VARCHAR}
   </update>
+  
 </mapper>

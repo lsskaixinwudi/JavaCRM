@@ -1,5 +1,6 @@
 package com.situ.crm.dao;
 
+import com.situ.crm.common.ServerResponse;
 import com.situ.crm.pojo.User;
 import com.situ.crm.pojo.UserExample;
 import java.util.List;
@@ -32,4 +33,8 @@ public interface UserMapper {
 
 
 	User getUser(String name, String password);
+
+	User getUserId(User user);
+
+	ServerResponse updateById(User user);
 }

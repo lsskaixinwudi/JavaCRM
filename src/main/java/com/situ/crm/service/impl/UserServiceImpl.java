@@ -83,12 +83,25 @@ public class UserServiceImpl implements IUserService{
 	}
 
 	@Override
-	public ServerResponse updatePassWord(User user) {
-		if(userMapper.updateByPrimaryKey(user)>0){
+	public ServerResponse updateById(User user) {
+		if(userMapper.updateByPrimaryKeySelective(user)>0){
 			return ServerResponse.createSuccess("修改成功！");
 		}
 		return ServerResponse.createError("修改失败！");
 	}
-	
+
+	@Override
+	public User getUserId(User user) {
+		return userMapper.getUserId(user);
+	}
+
+	@Override
+	public List<User> getCustomerManagerList() {
+		UserExample userExample =  new UserExample();
+		Criteria createCriteria = userExample.createCriteria();
+		createCriteria.andRoleNameEqualTo("客户经理");
+		List<User> userList = userMapper.selectByExample(userExample);
+		return userList;
+	}
 
 }

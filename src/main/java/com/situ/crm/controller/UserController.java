@@ -43,15 +43,18 @@ public class UserController {
 			}
 		}
 	
-	@RequestMapping("/updatePassWord")
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest req) {
+		HttpSession session = req.getSession(true);
+		session.invalidate();
+		return "redirect:/index/toLogin.action";
+	}
+	
+	@RequestMapping("/updateById")
 	@ResponseBody
-	public ServerResponse updatePassWord(HttpServletRequest req, User user){
-		
-				HttpSession session = req.getSession();
-				session.setAttribute("user", user);
-				System.out.println(user);
-				return userService.updatePassWord(user);
-			
+	public ServerResponse updateById(HttpServletRequest req, User user){
+				System.out.println(user.getName());
+				return userService.updateById(user);
 	}
 	
 	@RequestMapping("/findAll")
@@ -84,4 +87,10 @@ public class UserController {
 		return userService.findUserName();
 	}
 	
+	
+	@RequestMapping("/getCustomerManagerList")
+	@ResponseBody
+	public List<User> getCustomerManagerList() {
+		return userService.getCustomerManagerList();
+	}
 }

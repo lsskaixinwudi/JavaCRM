@@ -31,7 +31,7 @@ $(function(){
 	});
 	
 	/*添加和修改弹出的dialog */
-	$("#dialog").dialog({
+	    $("#dialog").dialog({
 		closed:'true',
 		buttons:[
 			{
@@ -51,7 +51,7 @@ $(function(){
 			
 		]
 		
-	});
+	}); 
 });
 /*添加或修改的dialog */
 function doSave() {
@@ -59,7 +59,7 @@ function doSave() {
 	    url:url,    
 	    onSubmit: function(){    
 	        // do some check    
-	        if($("#name").combobox("getValue") == "") {
+	        if($("#roleName").combobox("getValue") == "") {
 	        	$.messager.alert("系统提示", "请选择用户角色");
 	        	return false;
 	        }
@@ -81,8 +81,8 @@ function doSave() {
 /* 查找 */
 function doSearch(){
 	$("#datagrid").datagrid("load",{
-		'name':$("#name").val(),
-		'trueName':$("#trueName").val()
+		'name':$("#s_nameId").val(),
+		'trueName':$("#s_trueNameId").val()
 	})
 }
 
@@ -145,14 +145,14 @@ function openUpdateDialog() {
 			<a class="easyui-linkbutton" href="javascript:doDelete()" iconCls="icon-remove">删除</a>
 		</div>
 		<div>
-			用户名：<input type="text" id="name" class="easyui-validatebox"
+			用户名：<input type="text" id="s_nameId" class="easyui-validatebox"
 					 data-options="
 					 	url:'${ctx}/user/findUserName.action',
 					 	valueField: 'name',
 					 	textField: 'name',
 					 	panelHeight:'auto',
 					 	"/>
-		       真实姓名：<input type="text" id="trueName"></input>
+		       真实姓名：<input type="text" id="s_trueNameId"></input>
 		  <a href="javascript:doSearch();" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
 		</div>
 	</div>
@@ -184,7 +184,7 @@ function openUpdateDialog() {
 			<table cellspacing="8px">
 				<tr>
 					<td>用户名：</td>
-					<td><input type="text" id="name" name="userName" class="easyui-validatebox" required="true"/></td>
+					<td><input type="text" id="name" name="name" class="easyui-validatebox" required="true"/></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td>密码：</td>
 					<td><input type="text" id="password" name="password" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
@@ -203,7 +203,6 @@ function openUpdateDialog() {
 					<td>用户角色：</td>
 					<td>
 						<select class="easyui-combobox" id="roleName" name="roleName" style="width:160">
-							<option></option>
 							<option value="系统管理员">系统管理员</option>
 							<option value="销售主管">销售主管</option>
 							<option value="客户经理">客户经理</option>
@@ -218,10 +217,10 @@ function openUpdateDialog() {
 	
 	
 	<!-- dialog-button 开始-->
-	<div id="dialog-button">
+	<!-- <div id="dialog-button">
 		<a href="javascript:doSave()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
 		<a href="javascript:closeDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
-	</div>
+	</div> -->
 	<!-- dialog-button 结束-->
 </body>
 </html>

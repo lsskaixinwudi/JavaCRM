@@ -1,8 +1,11 @@
 package com.situ.crm.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class SaleChance {
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+public class SaleChance implements Serializable {
     private Integer id;
 
     private String chanceSource;
@@ -18,13 +21,15 @@ public class SaleChance {
     private String linkPhone;
 
     private String description;
-
+    
     private String createMan;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private String assignMan;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date assignTime;
 
     private Integer status;

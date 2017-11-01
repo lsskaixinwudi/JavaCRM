@@ -24,16 +24,28 @@
 	function openUpdateDialog() {
 		$("#dialog").dialog("open").dialog("setTitle","添加信息");
 		$('#form').form("clear");
+		$('#id').val("${user.id}");
 		$('#name').val("${user.name}");
-		url = "${ctx}/user/updatePassWord.action";
+		/* url = "${ctx}/user/updateById.action"; */
 		
 	}
 	function doSave(){
 		$('#form').form('submit', {    
-		    url:url,    
+		    url:"${ctx}/user/updateById.action",    
 		    onSubmit: function(){    
 		        //validate none 做表单字段验证，当所有字段都有效的时候返回true。该方法使用validatebox(验证框)插件。 
 		        // return false to prevent submit;  
+		    var oldpass = $('#oldpass').val();
+		    var password = $('#password').val();
+		    var password1 = $('#password1').val();
+		    if(password != password1){
+		    	alert('两次输入的密码不一致！')
+		    	return false;
+		    }
+		    if(oldpass == password && password == password1){
+		    	alert('新旧密码不能相同！')
+		    	return false;
+		    }
 		        return $(this).form("validate");
 		    },    
 		    success:function(data){//正常返回ServerResponse
@@ -43,10 +55,23 @@
 		    		$.messager.alert("系统提示", data.msg);
 		    		$("#dialog").dialog("close");
 		    		$("#datagrid").datagrid("reload");
+		    	} else {
+		    		$.messager.alert('系统提示',data.msg);
 		    	}
 		    }    
 		});  
 	}
+	function logout(){
+		$.messager.alert('系统提示','退出成功');    
+		$.messager.confirm('确认','您确认想要退出登录吗？',function(tc){    
+			if (tc){    
+		        
+		        location.href="${ctx}/user/logout.action"
+		    }    
+		});  
+	}
+		
+
 </script>
 </head>
 <body class="easyui-layout">
@@ -74,7 +99,7 @@
 			<div title="营销管理" data-options="selected:true,iconCls:'icon-yxgl'"
 				style="padding: 10px">
 				<a
-					href="javascript:openTab('营销机会管理','saleChanceManage.jsp','icon-yxjhgl')"
+					href="javascript:openTab('营销机会管理','${ctx}/salechance/index.action','icon-yxjhgl')"
 					class="easyui-linkbutton"
 					data-options="plain:true,iconCls:'icon-yxjhgl'"
 					style="width: 150px">营销机会管理</a> <a
@@ -172,13 +197,13 @@
 		<form action="" id="form" method="post">
 			<input type="hidden" id="id" name="id" value="${user.id}"/>
 			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-			用户名：<input type="text" id="name" name="name" class="easyui-validatebox" required="true"/><br><br>
+			用户名：<input type="text" id="name" name="name"  class="easyui-validatebox" required="true"/><br><br>
 			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-			原密码：<input type="text" id="password" name="password" class="easyui-validatebox" required="true"/><br><br>
+			原密码：<input type="text" id="oldpass"  class="easyui-validatebox" required="true"/><br><br>
 			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 			新密码：<input type="text" id="password" name="password" class="easyui-validatebox" required="true" /><br><br>
 			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-			确认密码：<input type="text" id="password" name="password" class="easyui-validatebox" required="true" />
+			确认密码：<input type="text" id="password1"  class="easyui-validatebox" required="true" />
 		</form>
 	</div>
 	<!-- 修改密码的dialog 结束 -->
@@ -189,6 +214,6 @@
 		<a href="javascript:closeDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
 	</div>
 	<!-- dialog-button 结束-->
-
+	
 </body>
 </html>

@@ -27,5 +27,11 @@ public interface IUserService {
 
 	User getUser(String name, String password);
 
-	ServerResponse updatePassWord(User user);
+
+
+	User getUserId(User user);
+
+	ServerResponse updateById(User user);
+
+	List<User> getCustomerManagerList();
 }

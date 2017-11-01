@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.mysql.fabric.xmlrpc.base.Data;
+
 public class SaleChanceExample {
     protected String orderByClause;
 
@@ -765,8 +767,8 @@ public class SaleChanceExample {
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeBetween(Date value1, Date value2) {
-            addCriterion("create_time between", value1, value2, "createTime");
+        public Criteria andCreateTimeBetween(Date begindate, Date enddate) {
+            addCriterion("create_time between", begindate, enddate, "createTime");
             return (Criteria) this;
         }
 
