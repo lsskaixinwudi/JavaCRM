@@ -99,11 +99,11 @@
 			<div title="营销管理" data-options="selected:true,iconCls:'icon-yxgl'"
 				style="padding: 10px">
 				<a
-					href="javascript:openTab('营销机会管理','${ctx}/salechance/index.action','icon-yxjhgl')"
+					href="javascript:openTab('营销机会管理','${ctx}/saleChance/index.action','icon-yxjhgl')"
 					class="easyui-linkbutton"
 					data-options="plain:true,iconCls:'icon-yxjhgl'"
 					style="width: 150px">营销机会管理</a> <a
-					href="javascript:openTab('客户开发计划','cusdevplanManage.jsp','icon-khkfjh')"
+					href="javascript:openTab('客户开发计划','${ctx}/saleChance/cusDevPlan.action','icon-khkfjh')"
 					class="easyui-linkbutton"
 					data-options="plain:true,iconCls:'icon-khkfjh'"
 					style="width: 150px">客户开发计划</a>

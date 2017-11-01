@@ -19,7 +19,7 @@ import com.situ.crm.pojo.SaleChance;
 import com.situ.crm.service.ISaleChanceService;
 
 @Controller
-@RequestMapping("/salechance")
+@RequestMapping("/saleChance")
 public class SaleChanceController {
 	@InitBinder 
 	public void initBinder(WebDataBinder binder) { 
@@ -29,41 +29,57 @@ public class SaleChanceController {
  	           new CustomDateEditor(dateFormat, true));
  	}
 	@Autowired
-	private ISaleChanceService salechanceService;
+	private ISaleChanceService saleChanceService;
 	
 	@RequestMapping("/index")
 	public String index() {
 		return "sale_chance_manage";
 	}
 	
+	@RequestMapping("/cusDevPlan")
+	public String cusDevPlan() {
+		return "cus_dev_plan_manager";
+	}
+	
 	@RequestMapping("/findAll")
 	@ResponseBody
-	public EasyUIDataGrideResult findAll(Integer page, Integer rows, SaleChance salechance,Date begindate,Date enddate) {
-		return salechanceService.findAll(page, rows, salechance,begindate,enddate);
+	public EasyUIDataGrideResult findAll(Integer page, Integer rows, SaleChance saleChance,Date begindate,Date enddate) {
+		return saleChanceService.findAll(page, rows, saleChance,begindate,enddate);
 	}
 	
 	@RequestMapping("/delete")
 	@ResponseBody
 	public ServerResponse delete(String ids) {
-		return salechanceService.delete(ids);
+		return saleChanceService.delete(ids);
 	}
 	
 	@RequestMapping("/add")
 	@ResponseBody
-	public ServerResponse add(SaleChance salechance){
+	public ServerResponse add(SaleChance saleChance){
 		/*Integer status = null;
-		if(salechance.getAssignMan()!=null){
+		if(saleChance.getAssignMan()!=null){
 			status = 1;
 		}else{
 			status = 0;
 		}System.out.println(status);*/
-		return salechanceService.add(salechance);
+		return saleChanceService.add(saleChance);
 	}
 	
 	@RequestMapping("/update")
 	@ResponseBody
-	public ServerResponse update(SaleChance salechance){
-		return salechanceService.update(salechance);
+	public ServerResponse update(SaleChance saleChance){
+		return saleChanceService.update(saleChance);
 	}
 	
+	@RequestMapping("/findById")
+	@ResponseBody
+	public ServerResponse findById(Integer id) {
+		return saleChanceService.findById(id);
+	}
+	
+	@RequestMapping("/updateDevResult")
+	@ResponseBody
+	public ServerResponse updateDevResult(Integer saleChanceId, Integer devResult) {
+		return saleChanceService.updateDevResult(saleChanceId, devResult);
+	}
 }

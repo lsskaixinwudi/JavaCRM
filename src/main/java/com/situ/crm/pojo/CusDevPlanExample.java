@@ -458,6 +458,7 @@ public class CusDevPlanExample {
         protected Criteria() {
             super();
         }
+
     }
 
     public static class Criterion {

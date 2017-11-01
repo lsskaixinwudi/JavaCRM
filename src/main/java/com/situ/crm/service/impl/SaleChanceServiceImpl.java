@@ -24,38 +24,38 @@ import com.situ.crm.util.Util;
 @Service
 public class SaleChanceServiceImpl implements ISaleChanceService{
 	@Autowired
-	private SaleChanceMapper salechanceMapper;
+	private SaleChanceMapper saleChanceMapper;
 	@Override
-	public EasyUIDataGrideResult findAll(Integer page, Integer rows, SaleChance salechance, Date begindate, Date enddate) {
+	public EasyUIDataGrideResult findAll(Integer page, Integer rows, SaleChance saleChance, Date begindate, Date enddate) {
 		EasyUIDataGrideResult result = new EasyUIDataGrideResult();
-		SaleChanceExample salechanceExample = new SaleChanceExample();
+		SaleChanceExample saleChanceExample = new SaleChanceExample();
 		//1、设置分页 
 		PageHelper.startPage(page, rows);
 		//2、执行查询
 		//rows(分页之后的数据)
-		Criteria createCriteria = salechanceExample.createCriteria();
-		if (StringUtils.isNotEmpty(salechance.getCustomerName())) {
-			createCriteria.andCustomerNameLike(Util.formatLike(salechance.getCustomerName()));
+		Criteria createCriteria = saleChanceExample.createCriteria();
+		if (StringUtils.isNotEmpty(saleChance.getCustomerName())) {
+			createCriteria.andCustomerNameLike(Util.formatLike(saleChance.getCustomerName()));
 		}
-		if (StringUtils.isNotEmpty(salechance.getCreateMan())) {
-			createCriteria.andCreateManLike(Util.formatLike(salechance.getCreateMan()));
+		if (StringUtils.isNotEmpty(saleChance.getCreateMan())) {
+			createCriteria.andCreateManLike(Util.formatLike(saleChance.getCreateMan()));
 		}
-		if (salechance.getStatus() != null) {
-			createCriteria.andStatusEqualTo(salechance.getStatus());
+		if (saleChance.getStatus() != null) {
+			createCriteria.andStatusEqualTo(saleChance.getStatus());
 		}
-		if (salechance.getDevResult() != null) {
-			createCriteria.andDevResultEqualTo(salechance.getDevResult());
+		if (saleChance.getDevResult() != null) {
+			createCriteria.andDevResultEqualTo(saleChance.getDevResult());
 		}
 		if (begindate !=null && enddate != null) {
 			createCriteria.andCreateTimeBetween(begindate, enddate);
 		}
-		List<SaleChance> salechanceList = salechanceMapper.selectByExample(salechanceExample);
+		List<SaleChance> saleChanceList = saleChanceMapper.selectByExample(saleChanceExample);
 		//total
-		PageInfo<SaleChance> pageInfo = new PageInfo<>(salechanceList);
+		PageInfo<SaleChance> pageInfo = new PageInfo<>(saleChanceList);
 		int total = (int)pageInfo.getTotal();
 		
 		result.setTotal(total);
-		result.setRows(salechanceList);
+		result.setRows(saleChanceList);
 		return result;
 	}
 
@@ -63,30 +63,51 @@ public class SaleChanceServiceImpl implements ISaleChanceService{
 	public ServerResponse delete(String ids) {
 		String[] idArray = ids.split(",");
 		for (String id : idArray) {
-			salechanceMapper.deleteByPrimaryKey(Integer.parseInt(id));
+			saleChanceMapper.deleteByPrimaryKey(Integer.parseInt(id));
 		}
 		return ServerResponse.createSuccess("数据已经成功删除");
 	}
 
 	@Override
-	public ServerResponse add(SaleChance salechance) {
-		if(StringUtils.isNotEmpty(salechance.getAssignMan())){
-			salechance.setStatus(1);
+	public ServerResponse add(SaleChance saleChance) {
+		if(StringUtils.isNotEmpty(saleChance.getAssignMan())){
+			saleChance.setStatus(1);
 		}else{
-			salechance.setStatus(0);
+			saleChance.setStatus(0);
 		}
-		if(salechanceMapper.insert(salechance)>0){
+		saleChance.setDevResult(0);
+		if(saleChanceMapper.insert(saleChance)>0){
 			return ServerResponse.createSuccess("添加成功！");
 		}
 		return ServerResponse.createError("添加失败！");
 	}
 
 	@Override
-	public ServerResponse update(SaleChance salechance) {
-		if(salechanceMapper.updateByPrimaryKey(salechance)>0){
+	public ServerResponse update(SaleChance saleChance) {
+		if(saleChanceMapper.updateByPrimaryKey(saleChance)>0){
 			return ServerResponse.createSuccess("修改成功！");
 		}
 		return ServerResponse.createError("修改失败！");
+	}
+
+	@Override
+	public ServerResponse findById(Integer id) {
+		SaleChance saleChance = saleChanceMapper.selectByPrimaryKey(id);
+		if (saleChance != null) {
+			return ServerResponse.createSuccess("查找成功! ", saleChance);
+		}
+		return ServerResponse.createError("查找失败!");
+	}
+
+	@Override
+	public ServerResponse updateDevResult(Integer saleChanceId, Integer devResult) {
+		SaleChance saleChance = new SaleChance();
+		saleChance.setId(saleChanceId);
+		saleChance.setDevResult(devResult);
+		if (saleChanceMapper.updateByPrimaryKeySelective(saleChance) > 0) {
+			return ServerResponse.createSuccess("更新成功");
+		}
+		return ServerResponse.createError("更新失败");
 	}
 
 

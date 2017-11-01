@@ -14,7 +14,14 @@ http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 	<!-- 配置Controller扫描 -->
     <context:component-scan base-package="com.situ.crm.controller" />
     <!-- 配置注解驱动 -->
-    <mvc:annotation-driven />
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"> 
+ 	  <property name="converters"> 
+ 	   <list> 
+ 	    <bean class="com.situ.crm.util.DateConverter" /> 
+ 	   </list> 
+ 	  </property> 
+ 	</bean>
+ 	<mvc:annotation-driven conversion-service="conversionService" />
     
     
     <!-- jsp配置视图解析器 -->

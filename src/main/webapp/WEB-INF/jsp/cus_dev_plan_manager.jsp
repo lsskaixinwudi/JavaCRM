@@ -10,7 +10,7 @@
 	$(function(){
 		/*展示数据的datagrid表格*/
 		$("#datagrid").datagrid({
-			url:'${ctx}/saleChance/findAll.action',
+			url:'${ctx}/saleChance/findAll.action?status=1',//只查询已分配咨询师的
 			method:'get',
 			fit:true,
 			singleSelect:false,
@@ -20,20 +20,33 @@
 			pagination:true,
 			columns:[[    
 			     {field:'cb',checkbox:true,align:'center'},    
-			     {field:'id',title:'编号',width:80,align:'center'},    
+			     {field:'id',title:'编号',width:50,align:'center'},    
 			     {field:'customerName',title:'客户名称',width:100,align:'center'},    
 			     {field:'overview',title:'概要',width:80,align:'center'},    
 			     {field:'linkMan',title:'联系人',width:80,align:'center'},    
-			     {field:'linkPhone',title:'联系电话',width:80,align:'center'},    
 			     {field:'createMan',title:'创建人',width:80,align:'center'},    
-			     {field:'createTime',title:'创建时间',width:80,align:'center'},    
-			     {field:'status',title:'状态',width:80,align:'center',formatter:function(value,row,index){
-			    	 if(value==1){
-						 return "已分配";
-					 }else{
-						 return "未分配";
-					 }
-			     }}    
+			     {field:'createTime',title:'创建时间',width:100,align:'center'},    
+			     {field:'assignMan',title:'指派人',width:80,align:'center'},    
+			     {field:'assignTime',title:'指派时间',width:100,align:'center'},    
+			     {field:'devResult',title:'客户开发状态',width:80,align:'center',formatter:function(value,row,index){
+			    	 //客户开发状态 0 未开发 1 开发中 2 开发成功 3 开发失败
+			    	 if(value==0){
+			    		 return "未开发";
+			    	 }else if(value==1){
+			    		 return "开发中";
+			    	 }else if(value==2){
+			    		 return "开发成功";
+			    	 }else if(value==3){
+			    		 return "开发失败";
+			    	 }
+			     }},    
+			     {field:'a',title:'操作',width:80,align:'center',formatter:function(value,row,index){
+			    	 if(row.devResult==0||row.devResult==1){
+			    		 return "<a href='javascript:openCusDevPlanTab("+row.id+")'>开发</a>";
+			    	 }else{
+			    		 return "<a href='javascript:openCusDevPlanInfoTab("+row.id+")'>查看详细信息</a>";
+			    	 }
+			     }},    
 			]]  
 		});
 		
@@ -104,10 +117,8 @@
 		$("#datagrid").datagrid("load",{
 			'customerName':$("#s_customerName").val(),
 			'overview':$("#s_overview").val(),
-			'createMan':$("#s_createMan").val(),
-			'status':$("#s_status").val(),
-			'begindate':$("#begindate").val(),
-			'enddate':$("#enddate").val()
+			'overview':$("#s_overview").val(),
+			'devResult':$("#s_devResult").val(),
 		})
 	}
 	
@@ -128,10 +139,6 @@
 						if(result.status == Util.SUCCESS) {
 							$("#datagrid").datagrid("reload");
 						}
-						else{
-							$.messager.alert('系统提示',result.msg);
-							$("#datagrid").datagrid("reload");
-						}
 					},
 					"json"
 				);
@@ -144,7 +151,7 @@
 	function openAddDialog() {
 		$("#dialog").dialog("open").dialog("setTitle","添加信息");
 		$('#form').form("clear");
-		$("#createMan").val("${user.name}");
+		$("#createMan").val("Gao");
 		$("#createTime").val(Util.getCurrentDateTime());
 		url = "${ctx}/saleChance/add.action";
 		
@@ -170,6 +177,16 @@
 		 }
 	 }
 	
+	//可以修改添加开发项
+	function openCusDevPlanTab(id){
+		 window.parent.openTab('客户开发计划项管理','${ctx}/cusDevPlan/index.action?saleChanceId='+id,'icon-khkfjh');
+	}
+	 
+	//只能查看开发信息
+	function openCusDevPlanInfoTab(id){
+		window.parent.openTab('查看客户开发计划项','${ctx}/cusDevPlan/index.action?saleChanceId='+id+'&show=true','icon-khkfjh');
+	}
+	
 </script>
 </head>
 <body>
@@ -177,22 +194,22 @@
 	
 	<!-- toolbar 开始 -->
 	<div id="toolbar">
-		<div>
+		<!-- <div>
 			<a class="easyui-linkbutton" href="javascript:openAddDialog()" iconCls="icon-add">添加</a>
 			<a class="easyui-linkbutton" href="javascript:openUpdateDialog()" iconCls="icon-edit">修改</a>
 			<a class="easyui-linkbutton" href="javascript:doDelete()" iconCls="icon-remove">删除</a>
-		</div>
+		</div> -->
 		<div>
 		       客户名称：<input type="text" id="s_customerName"/>
-		       创建人：<input type="text" id="s_createMan"/>
-		       分配状态：<select type="text" id="s_status" class="easyui-combobox"
+		       概要：<input type="text" id="s_overview"/>
+		       客户开发状态：<select type="text" id="s_devResult" class="easyui-combobox"
 		     		panelHeight="auto" editable="false">
 		     		<option value="">请选择...</option>	
- 					<option value="0">未分配</option>
- 					<option value="1">已分配</option>	
+ 					<option value="0">未开发</option>
+ 					<option value="1">开发中</option>	
+ 					<option value="2">开发成功</option>	
+ 					<option value="3">开发失败</option>	
 		     	</select>
-		      起始时间：<input type="text" id="begindate" class="easyui-datetimebox" name="begindate" style="width:150px">
-		      到:<input type="text" id="enddate" class="easyui-datetimebox" name="enddate" style="width:150px">
 		  <a href="javascript:doSearch();" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
 		</div>
 	</div>

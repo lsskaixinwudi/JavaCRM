@@ -8,12 +8,16 @@ import com.situ.crm.pojo.SaleChance;
 
 public interface ISaleChanceService {
 
-	EasyUIDataGrideResult findAll(Integer page, Integer rows, SaleChance salechance, Date begindate, Date enddate);
+	EasyUIDataGrideResult findAll(Integer page, Integer rows, SaleChance saleChance, Date begindate, Date enddate);
 
 	ServerResponse delete(String ids);
 
-	ServerResponse add(SaleChance salechance);
+	ServerResponse add(SaleChance saleChance);
 
-	ServerResponse update(SaleChance salechance);
+	ServerResponse update(SaleChance saleChance);
+
+	ServerResponse findById(Integer id);
+
+	ServerResponse updateDevResult(Integer saleChanceId, Integer devResult);
 
 }
