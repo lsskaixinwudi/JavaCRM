@@ -62,6 +62,8 @@ public class CustomerServiceController {
 		}else{
 			status = 0;
 		}System.out.println(status);*/
+		System.out.println(customerService.getCreatePeople());
+		System.out.println(customerService.getStatus());
 		return customerServiceService.add(customerService);
 	}
 	
@@ -75,7 +77,7 @@ public class CustomerServiceController {
 	@ResponseBody
 	public ServerResponse findById(Integer id) {
 		return customerServiceService.findById(id);
-	}
+	}   
 	
 	/*@RequestMapping("/updateDevResult")
 	@ResponseBody

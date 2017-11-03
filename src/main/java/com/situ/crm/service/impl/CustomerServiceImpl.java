@@ -15,12 +15,14 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
+import com.situ.crm.dao.CustomerLossMapper;
 import com.situ.crm.dao.CustomerMapper;
-import com.situ.crm.pojo.Product;
-import com.situ.crm.pojo.SaleChance;
+import com.situ.crm.dao.CustomerOrderMapper;
 import com.situ.crm.pojo.Customer;
 import com.situ.crm.pojo.CustomerExample;
 import com.situ.crm.pojo.CustomerExample.Criteria;
+import com.situ.crm.pojo.CustomerLoss;
+import com.situ.crm.pojo.CustomerOrder;
 import com.situ.crm.service.ICustomerService;
 import com.situ.crm.util.Util;
 
@@ -36,6 +38,10 @@ public class CustomerServiceImpl implements ICustomerService{
 	
 	@Autowired
 	private CustomerMapper customerMapper;
+	@Autowired
+	private CustomerOrderMapper customerOrderMapper;
+	@Autowired
+	private CustomerLossMapper customerLossMapper;
 	@Override
 	public EasyUIDataGrideResult findAll(Integer page, Integer rows, Customer customer) {
 		EasyUIDataGrideResult result = new EasyUIDataGrideResult();
@@ -117,4 +123,31 @@ public class CustomerServiceImpl implements ICustomerService{
 		}
 		return ServerResponse.createError("查找失败!");
 	}
+
+	@Override
+	public void checkCustomerLoss() {
+	    System.out.println("CustomerServiceImpl.checkCustomerLoss()");
+	    // 1、查找流失客户
+	    List<Customer> customerList = customerMapper.findLossCustomer();
+	    for (Customer customer : customerList) {
+	       // 2、实例化客户流失实体
+	       CustomerLoss customerLoss = new CustomerLoss();
+	        customerLoss.setCustomerNo(customer.getNum()); // 客户编号
+	        customerLoss.setCustomerName(customer.getName()); // 客户名称
+	        customerLoss.setCustomerManager(customer.getManagerName()); // 客户经理
+	        // 3、查找指定客户最近的订单
+	       CustomerOrder customerOrder = customerOrderMapper.findLastOrderByCustomerId(customer.getId());
+	       if (customerOrder == null) {
+	           customerLoss.setLastOrderTime(null);
+	       } else {
+	           customerLoss.setLastOrderTime(customerOrder.getOrderDate()); // 设置最近的下单日期
+	       }
+	        // 4、添加到客户流失表
+	        customerLossMapper.insert(customerLoss);
+	       // 5、客户表中客户状态修改成1 流失状态
+	       customer.setStatus(1);
+	        customerMapper.updateByPrimaryKeySelective(customer);
+	    }
+	}
+
 }

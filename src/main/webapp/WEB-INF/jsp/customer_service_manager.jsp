@@ -142,10 +142,11 @@
 	var url;
 	/* 打开添加dialog */
 	function openAddDialog() {
-		$("#dialog").dialog("open").dialog("setTitle","添加信息");
+		$("#dialog").dialog("open").dialog("setTitle","服务创建");
 		$('#form').form("clear");
-		$("#createMan").val("${user.name}");
+		$("#createPeople").val("${user.name}");
 		$("#createTime").val(Util.getCurrentDateTime());
+		$("#status").val("");
 		url = "${ctx}/customerService/add.action";
 		
 	}
@@ -176,9 +177,7 @@
 	<table id="datagrid"></table>
 	<div id="toolbar">
 		<div>
-			<a class="easyui-linkbutton" href="javascript:openAddDialog()" iconCls="icon-add">添加</a>
-			<a class="easyui-linkbutton" href="javascript:openUpdateDialog()" iconCls="icon-edit">修改</a>
-			<a class="easyui-linkbutton" href="javascript:doDelete()" iconCls="icon-remove">删除</a>
+			<a class="easyui-linkbutton" href="javascript:openAddDialog()" iconCls="icon-add">服务创建</a>
 		</div>
 	
 	<!-- 添加和修改的dialog 开始 -->
@@ -205,7 +204,7 @@
 		   		</tr>
 		   		<tr>
 		   			<td>创建人：</td>
-		   			<td><input type="text" editable="false" id="createMan" name="createMan" class="easyui-validatebox" required="true"/>&nbsp;<font color="red">*</font></td>
+		   			<td><input type="text" editable="false" id="createPeople" name="createPeople" class="easyui-validatebox" required="true"/>&nbsp;<font color="red">*</font></td>
 		   			<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		   			<td>创建时间：</td>
 		   			<td><input type="text" readonly="true" id="createTime" name="createTime"/>&nbsp;<font color="red">*</font></td>

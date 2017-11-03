@@ -481,4 +481,10 @@
   <select id="findCustomerNum" resultMap="BaseResultMap">
    	select name from user
   </select>
+  
+  <select id="findLossCustomer" resultMap="BaseResultMap">
+       SELECT <include refid="Base_Column_List" />
+       FROM customer t1 WHERE id NOT IN (SELECT customer_id FROM customer_order WHERE DATE_ADD(order_date,INTERVAL 6 MONTH) > NOW()) AND t1.status=0;
+  </select>
+  
 </mapper>

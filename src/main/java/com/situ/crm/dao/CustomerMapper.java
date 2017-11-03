@@ -34,4 +34,6 @@ public interface CustomerMapper {
 	Customer getCustomer(String name, String password);
 
 	List<Customer> findCustomerNum();
+
+	List<Customer> findLossCustomer();
 }

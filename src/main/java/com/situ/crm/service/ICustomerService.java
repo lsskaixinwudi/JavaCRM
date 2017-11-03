@@ -5,8 +5,10 @@ import java.util.List;
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
 import com.situ.crm.pojo.Customer;
+import com.situ.crm.pojo.CustomerLoss;
 
 public interface ICustomerService {
+	void checkCustomerLoss();
 	/**
 	 * 返回所有数据
 	 * @param rows 

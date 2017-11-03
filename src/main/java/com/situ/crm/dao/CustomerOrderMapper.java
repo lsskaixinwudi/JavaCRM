@@ -27,4 +27,6 @@ public interface CustomerOrderMapper {
     int updateByPrimaryKeySelective(CustomerOrder record);
 
     int updateByPrimaryKey(CustomerOrder record);
+
+	CustomerOrder findLastOrderByCustomerId(Integer id);
 }
