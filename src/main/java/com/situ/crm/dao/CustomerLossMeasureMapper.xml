@@ -87,6 +87,15 @@
     from customer_loss_measure
     where id = #{id,jdbcType=INTEGER}
   </select>
+  
+  <select id="findByLossId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from customer_loss_measure
+    where loss_id = #{lossId,jdbcType=INTEGER}
+  </select>
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from customer_loss_measure
     where id = #{id,jdbcType=INTEGER}

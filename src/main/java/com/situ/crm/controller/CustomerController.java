@@ -1,5 +1,8 @@
 package com.situ.crm.controller;
 
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +19,7 @@ import com.situ.crm.common.ServerResponse;
 import com.situ.crm.pojo.Product;
 import com.situ.crm.pojo.Customer;
 import com.situ.crm.service.ICustomerService;
+
 
 @Controller
 @RequestMapping("/customer")
@@ -72,6 +76,14 @@ public class CustomerController {
 	@RequestMapping("/add")
 	@ResponseBody
 	public ServerResponse add(Customer customer){
+		Date date = new Date();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+		String dateStr = simpleDateFormat.format(date);
+		String num = new String("KH"+dateStr);
+		
+		customer.setNum(num);
+		
+		
 		return customerService.add(customer);
 	}
 	
@@ -87,5 +99,10 @@ public class CustomerController {
 		return customerService.findCustomerNum();
 	}
 	
+	@RequestMapping("/findById")
+	@ResponseBody
+	public ServerResponse findById(Integer id) {
+		return customerService.findById(id);
+	}
 	
 }

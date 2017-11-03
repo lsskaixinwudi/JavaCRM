@@ -131,6 +131,36 @@
 		url = "${ctx}/customer/update.action";
 		$('#form').form("load", row);
 	}
+	
+	function openjwDialog() {
+		var selections = $("#datagrid").datagrid("getSelections");
+		if(selections.length == 0){
+			 $.messager.alert("系统提示", "请选择交往管理的数据");
+			 return;
+	    	 }
+		var row = selections[0];
+		window.parent.openTab('客户交往记录管理','${ctx}/customerContact/index.action?customerId='+row.id,'icon-khkfjh');
+		}
+	
+	function openlxDialog() {
+		var selections = $("#datagrid").datagrid("getSelections");
+		if(selections.length == 0){
+			 $.messager.alert("系统提示", "请选择联系人");
+			 return;
+	    	 }
+		var row = selections[0];
+		window.parent.openTab('客户联系人管理','${ctx}/customerLinkman/index.action?customerId='+row.id,'icon-khkfjh');
+		}
+	
+	function openlsDialog() {
+		var selections = $("#datagrid").datagrid("getSelections");
+		if(selections.length == 0){
+			 $.messager.alert("系统提示", "请选择联系人");
+			 return;
+	    	 }
+		var row = selections[0];
+		window.parent.openTab('历史订单查看','${ctx}/customerOrder/index.action?customerId='+row.id,'icon-khkfjh');
+		}
 </script>
 </head>
 <body>
@@ -142,6 +172,9 @@
 			<a class="easyui-linkbutton" href="javascript:openAddDialog()" iconCls="icon-add">添加</a>
 			<a class="easyui-linkbutton" href="javascript:openUpdateDialog()" iconCls="icon-edit">修改</a>
 			<a class="easyui-linkbutton" href="javascript:doDelete()" iconCls="icon-remove">删除</a>
+			<a class="easyui-linkbutton" href="javascript:openlxDialog()" iconCls="icon-man">联系人管理</a>
+			<a class="easyui-linkbutton" href="javascript:openjwDialog()" iconCls="icon-jwjl">交往记录管理</a>
+			<a class="easyui-linkbutton" href="javascript:openlsDialog()" iconCls="icon-jwjl">历史订单查看</a>
 		</div>
 		<div>
 			客户编号：	<input type="text" id="num"/>
@@ -165,24 +198,25 @@
 		   		</tr>
 		   		<tr>
 		   			<td>客户经理：</td>
-		   			<td><input class="easyui-combobox" id="managerName" name="managerName" data-options="panelHeight:'auto',editable:false,valueField:'trueName',textField:'trueName',url:'${ctx}/user/getCustomerManagerList.action'" /></td>
+		   			<td><input class="easyui-combobox"  id="managerName" name="managerName" data-options="panelHeight:'auto',editable:false,valueField:'trueName',textField:'trueName',url:'${ctx}/user/getCustomerManagerList.action'" /></td>
 		   			<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		   			<td>客户等级：</td>
 		   			<td>
-		   			    <select class="easyui-combobox" id="level" editable="false" name="level" style="width:160">
+		   			<input class="easyui-combobox" id="level" name="level" data-options="panelHeight:'auto',editable:false,valueField:'dataDicValue',textField:'dataDicValue',url:'${ctx}/dataDic/getCustomerManagerList.action'" />
+		   			    <!-- <select class="easyui-combobox" id="level" editable="false" panelHeight="auto" name="level" style="width:160">
 							<option value="重点开发客户">重点开发客户</option>
 							<option value="合作伙伴">合作伙伴</option>
 							<option value="大客户">大客户</option>
 							<option value="战略合作伙伴">战略合作伙伴</option>
 							<option value="普通客户">普通客户</option>
-						</select>
-						<font color="red">*</font>
+						</select> -->
+						<!-- <font color="red">*</font> -->
 		   			</td>
 		   		</tr>
 		   		<tr>
 		   			<td>客户满意度：</td>
 		   			<td>
-		   			    <select class="easyui-combobox" id="satisfy" editable="false" name="satisfy" style="width:160">
+		   			    <select panelHeight="auto" class="easyui-combobox" id="satisfy" editable="false" name="satisfy" style="width:160">
 							<option value="☆">☆</option>
 							<option value="☆☆">☆☆</option>
 							<option value="☆☆☆">☆☆☆</option>
@@ -192,7 +226,14 @@
 		   			</td>
 		   			<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		   			<td>客户信用度：</td>
-		   			<td><input type="text" id="credit" name="credit" data-options="panelHeight:'auto',editable:false,valueField:'dataDicValue',textField:'dataDicValue',url:'${ctx}/dataDic/getDataDicManagerList.action'" /></td>
+		   			<td>
+		   			    <select panelHeight="auto" class="easyui-combobox" id="credit"  editable="false" name="credit" style="width:160">
+							<option value="☆">☆</option>
+							<option value="☆☆">☆☆</option>
+							<option value="☆☆☆">☆☆☆</option>
+							<option value="☆☆☆☆">☆☆☆☆</option>
+							<option value="☆☆☆☆☆">☆☆☆☆☆</option>
+						</select></td>
 		   		</tr>
 		   		<tr>
 		   			<td>邮政编码：</td>

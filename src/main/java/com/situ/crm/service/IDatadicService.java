@@ -25,4 +25,6 @@ public interface IDataDicService {
 	List<DataDic> findDataDicName();
 
 	List<DataDic> findDataDicValue();
+
+	List<DataDic> getDataDicValue();
 }

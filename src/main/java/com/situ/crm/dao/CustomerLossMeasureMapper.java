@@ -1,5 +1,6 @@
 package com.situ.crm.dao;
 
+import com.situ.crm.common.ServerResponse;
 import com.situ.crm.pojo.CustomerLossMeasure;
 import com.situ.crm.pojo.CustomerLossMeasureExample;
 import java.util.List;
@@ -27,4 +28,6 @@ public interface CustomerLossMeasureMapper {
     int updateByPrimaryKeySelective(CustomerLossMeasure record);
 
     int updateByPrimaryKey(CustomerLossMeasure record);
+
+	ServerResponse findByLossId(Integer lossId);
 }

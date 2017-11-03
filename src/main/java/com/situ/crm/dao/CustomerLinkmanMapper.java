@@ -1,5 +1,6 @@
 package com.situ.crm.dao;
 
+import com.situ.crm.common.ServerResponse;
 import com.situ.crm.pojo.CustomerLinkman;
 import com.situ.crm.pojo.CustomerLinkmanExample;
 import java.util.List;
@@ -27,4 +28,6 @@ public interface CustomerLinkmanMapper {
     int updateByPrimaryKeySelective(CustomerLinkman record);
 
     int updateByPrimaryKey(CustomerLinkman record);
+
+	ServerResponse findByCustomerId(CustomerLinkman customerLinkman);
 }

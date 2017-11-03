@@ -34,4 +34,6 @@ public interface ICustomerService {
 
 	List<Customer> findCustomerNum();
 
+	ServerResponse findById(Integer id);
+
 }

@@ -1,10 +1,15 @@
 package com.situ.crm.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -12,6 +17,7 @@ import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
 import com.situ.crm.dao.CustomerMapper;
 import com.situ.crm.pojo.Product;
+import com.situ.crm.pojo.SaleChance;
 import com.situ.crm.pojo.Customer;
 import com.situ.crm.pojo.CustomerExample;
 import com.situ.crm.pojo.CustomerExample.Criteria;
@@ -20,6 +26,14 @@ import com.situ.crm.util.Util;
 
 @Service
 public class CustomerServiceImpl implements ICustomerService{
+	@InitBinder 
+	public void initBinder(WebDataBinder binder) { 
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+	    dateFormat.setLenient(false); 
+	    binder.registerCustomEditor(Date.class,
+	           new CustomDateEditor(dateFormat, true));
+	}
+	
 	@Autowired
 	private CustomerMapper customerMapper;
 	@Override
@@ -95,5 +109,12 @@ public class CustomerServiceImpl implements ICustomerService{
 		return customerMapper.getCustomerId(customer);
 	}
 
-
+	@Override
+	public ServerResponse findById(Integer id) {
+		Customer customer = customerMapper.selectByPrimaryKey(id);
+		if (customer != null) {
+			return ServerResponse.createSuccess("查找成功! ", customer);
+		}
+		return ServerResponse.createError("查找失败!");
+	}
 }

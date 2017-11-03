@@ -91,6 +91,12 @@
     from customer_linkman
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="findByCustomerId" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_linkman
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from customer_linkman
     where id = #{id,jdbcType=INTEGER}

@@ -31,4 +31,6 @@ public interface DataDicMapper {
 	List<DataDic> findDataDicName();
 
 	List<DataDic> findDataDicValue();
+
+	List<DataDic> getDataDicValue();
 }
