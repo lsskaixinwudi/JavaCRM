@@ -27,8 +27,8 @@
 		/*展示数据的datagrid表格*/
 		$("#datagrid").edatagrid({
 			url:'${ctx}/customerLossMeasure/findAll.action?lossId=${param.id}',//只查询已分配咨询师的
-			saveUrl:'${ctx}/customerLossMeasure/add.action?customerLossId=${param.id}',
-			updateUrl:'${ctx}/customerLossMeasure/update.action?customerLossId=${param.id}',
+			saveUrl:'${ctx}/customerLossMeasure/add.action?lossId=${param.id}',
+			updateUrl:'${ctx}/customerLossMeasure/update.action?lossId=${param.id}',
 			destroyUrl:'${ctx}/customerLossMeasure/deleteById.action',
 			title:'开发计划项',
 			singleSelect:true,

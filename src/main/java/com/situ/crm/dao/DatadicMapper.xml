@@ -188,6 +188,6 @@
   </select>
   
   <select id="getDataDicValue" resultMap="BaseResultMap">  
-  	select distinct data_dic_value from data_dic <!-- where data_dic_name = #{dataDicName,jdbcType=VARCHAR} -->
+  	SELECT  data_dic_value FROM data_dic WHERE data_dic_name='服务类型';
   </select>
 </mapper>
