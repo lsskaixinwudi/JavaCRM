@@ -36,6 +36,11 @@ public class CustomerLossController {
 		return "customer_loss_manager";
 	}
 	
+	@RequestMapping("/index2")
+	public String index2() {
+		return "customer_loss_manager2";
+	}
+	
 	@RequestMapping("/customerLosss")
 	public String customerLossLoss() {
 		return "customer_loss_measure_manager";
@@ -45,6 +50,13 @@ public class CustomerLossController {
 	@ResponseBody
 	public EasyUIDataGrideResult findAll(Integer page, Integer rows, CustomerLoss customerLoss,Date beginTime,Date endTime) {
 		return customerLossService.findAll(page, rows, customerLoss,beginTime,endTime);
+	}
+	
+	@RequestMapping("/findAll2")
+	@ResponseBody
+	public EasyUIDataGrideResult findAll2(Integer page, Integer rows, CustomerLoss customerLoss) {
+		System.out.println(page + "+" + rows);
+		return customerLossService.findAll2(page, rows, customerLoss);
 	}
 	
 	@RequestMapping("/delete")

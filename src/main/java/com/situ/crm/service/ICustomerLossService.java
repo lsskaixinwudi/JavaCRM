@@ -24,4 +24,6 @@ public interface ICustomerLossService {
 	ServerResponse findById(Integer id);
 	
 	ServerResponse updateStatus(Integer id, Integer status);
+
+	EasyUIDataGrideResult findAll2(Integer page, Integer rows, CustomerLoss customerLoss);
 }

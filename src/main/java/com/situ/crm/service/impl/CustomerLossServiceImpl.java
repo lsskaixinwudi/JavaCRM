@@ -1,5 +1,6 @@
 package com.situ.crm.service.impl;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
 
@@ -42,6 +43,40 @@ public class CustomerLossServiceImpl implements ICustomerLossService{
 		PageInfo<CustomerLoss> pageInfo = new PageInfo<>(customerLossList);
 		int total = (int)pageInfo.getTotal();
 		
+		result.setTotal(total);
+		result.setRows(customerLossList);
+		return result;
+	}
+	
+	@Override
+	public EasyUIDataGrideResult findAll2(Integer page, Integer rows, CustomerLoss customerLoss) {
+		EasyUIDataGrideResult result = new EasyUIDataGrideResult();
+		CustomerLossExample customerLossExample = new CustomerLossExample();
+		PageHelper.startPage(page, rows);
+		Criteria createCriteria = customerLossExample.createCriteria();
+		if (StringUtils.isNotEmpty(customerLoss.getCustomerName())) {
+			try {
+				createCriteria.andCustomerNameLike(Util.formatLike(new String(customerLoss.getCustomerName().getBytes("iso-8859-1"),"utf-8")));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		}
+		if (StringUtils.isNotEmpty(customerLoss.getCustomerManager())) {
+			try {
+				createCriteria.andCustomerManagerLike(Util.formatLike(new String(customerLoss.getCustomerManager().getBytes("iso-8859-1"),"utf-8")));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		}
+		if (null != customerLoss.getStatus()) {
+				createCriteria.andStatusEqualTo(customerLoss.getStatus());
+			}
+		createCriteria.andStatusEqualTo(1);
+		//list
+		List<CustomerLoss> customerLossList = customerLossMapper.selectByExample(customerLossExample);
+		PageInfo<CustomerLoss> pageInfo = new PageInfo<>(customerLossList);
+		//total
+		Integer total = (int) pageInfo.getTotal();
 		result.setTotal(total);
 		result.setRows(customerLossList);
 		return result;
