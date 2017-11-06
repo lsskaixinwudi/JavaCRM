@@ -124,8 +124,8 @@ public class CustomerLossServiceImpl implements ICustomerLossService{
 		customerLoss.setId(id);
 		customerLoss.setStatus(status);
 		if (customerLossMapper.updateByPrimaryKeySelective(customerLoss) > 0) {
-			return ServerResponse.createSuccess("鏇存柊鎴愬姛");
+			return ServerResponse.createSuccess("修改成功！");
 		}
-		return ServerResponse.createError("鏇存柊澶辫触");
+		return ServerResponse.createError("修改失败！");
 	}
 }
