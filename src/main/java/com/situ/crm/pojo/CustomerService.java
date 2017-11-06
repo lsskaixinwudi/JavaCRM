@@ -2,6 +2,8 @@ package com.situ.crm.pojo;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class CustomerService {
     private Integer id;
 
@@ -88,11 +90,10 @@ public class CustomerService {
     public void setCreatePeople(String createPeople) {
         this.createPeople = createPeople == null ? null : createPeople.trim();
     }
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getCreateTime() {
         return createTime;
     }
-
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
@@ -104,11 +105,10 @@ public class CustomerService {
     public void setAssigner(String assigner) {
         this.assigner = assigner == null ? null : assigner.trim();
     }
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getAssignTime() {
         return assignTime;
     }
-
     public void setAssignTime(Date assignTime) {
         this.assignTime = assignTime;
     }
@@ -128,7 +128,7 @@ public class CustomerService {
     public void setServiceDealPeople(String serviceDealPeople) {
         this.serviceDealPeople = serviceDealPeople == null ? null : serviceDealPeople.trim();
     }
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getServiceDealTime() {
         return serviceDealTime;
     }

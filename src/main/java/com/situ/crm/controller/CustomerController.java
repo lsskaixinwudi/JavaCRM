@@ -1,6 +1,5 @@
 package com.situ.crm.controller;
 
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -10,15 +9,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
-import com.situ.crm.pojo.Product;
 import com.situ.crm.pojo.Customer;
 import com.situ.crm.service.ICustomerService;
+import com.situ.crm.vo.CustomerContribute;
 
 
 @Controller
@@ -104,5 +102,41 @@ public class CustomerController {
 	public ServerResponse findById(Integer id) {
 		return customerService.findById(id);
 	}
+	
+	@RequestMapping("/getCustomerContributePage")
+	public String getCustomerContributePage() {
+		return "customer_contribute_analysis";
+	}
+	
+	@RequestMapping("/findCustomerContribute")
+	@ResponseBody
+	public EasyUIDataGrideResult findCustomerContribute(Integer page, Integer rows, CustomerContribute customerContribute) {
+		System.out.println(customerContribute.getName());
+		return customerService.findCustomerContribute(page, rows, customerContribute);
+	}
+	
+	
+	@RequestMapping(value="/findkhfw")
+	@ResponseBody
+	public ServerResponse findkhfw(){
+		return customerService.findkhfw();
+	}
+	
+	@RequestMapping(value="/getkhgc")
+	public String getkhgc(){
+		return "khgc";
+	}
+	
+	@RequestMapping(value="/getkhfw")
+	public String getkhfw(){
+		return "khfw";
+	}
+	
+	@RequestMapping(value="/findCustomerConstitute")
+	@ResponseBody
+	public ServerResponse findCustomerConstitute(){
+		return customerService.findCustomerConstitute();
+	}
+	
 	
 }

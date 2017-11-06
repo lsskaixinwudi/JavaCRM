@@ -1,9 +1,14 @@
 package com.situ.crm.dao;
 
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.situ.crm.pojo.Customer;
 import com.situ.crm.pojo.CustomerExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
+import com.situ.crm.vo.CustomerConstitute;
+import com.situ.crm.vo.CustomerContribute;
 
 public interface CustomerMapper {
     int countByExample(CustomerExample example);
@@ -36,4 +41,10 @@ public interface CustomerMapper {
 	List<Customer> findCustomerNum();
 
 	List<Customer> findLossCustomer();
+	
+	List<CustomerContribute> findCustomerContribute(Map<String, Object> map);
+
+	List<CustomerContribute> selectCustomerContribute(Map<String, Object> map);
+
+	List<CustomerConstitute> findCustomerConstitute();
 }

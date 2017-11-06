@@ -368,4 +368,26 @@
       satisfy = #{satisfy,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectByExample1" resultMap="BaseResultMap" parameterType="com.situ.crm.pojo.CustomerServiceExample" >
+  select  * from customer_service where assigner is null
+  </select>
+  
+  <select id="selectByExample2" resultMap="BaseResultMap" parameterType="com.situ.crm.pojo.CustomerServiceExample" >
+  	select  * from customer_service where assigner is not null and service_deal is null
+  </select>
+  
+  <select id="selectByExample3" resultMap="BaseResultMap" parameterType="com.situ.crm.pojo.CustomerServiceExample" >
+     SELECT * FROM customer_service WHERE assigner IS NOT NULL AND service_deal is NOT NULL AND service_deal_result IS NULL
+  </select>
+  
+  <select id="getServiceDealPeople" resultMap="BaseResultMap">
+     SELECT distinct service_deal_people FROM customer_service WHERE assigner IS NOT NULL AND service_deal is NOT NULL AND service_deal_result IS NULL
+  </select>
+  
+  <!-- 客户服务查询 -->
+  <select id="findkhfw" resultType="com.situ.crm.vo.khfu">
+  	SELECT service_type AS serviceType,COUNT(service_type) as num
+	FROM customer_service GROUP BY service_type
+  </select>
 </mapper>

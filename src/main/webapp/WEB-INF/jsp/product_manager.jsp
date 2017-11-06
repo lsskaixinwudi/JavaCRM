@@ -58,16 +58,6 @@ $(function(){
 function doSave() {
 	$('#form').form('submit', {    
 	    url:url,    
-	    /* onSubmit: function(){    
-	        // do some check    
-	        if($("#name").combobox("getValue") == "") {
-	        	$.messager.alert("系统提示", "请选择用户角色");
-	        	return false;
-	        }
-	        //validate none 做表单字段验证，当所有字段都有效的时候返回true。该方法使用validatebox(验证框)插件。 
-	        // return false to prevent submit;  
-	        return $(this).form("validate");
-	    },     */
 	    success:function(data){//正常返回ServerResponse
 	    	//alert(data);
 	    	var data = eval('(' + data + ')');

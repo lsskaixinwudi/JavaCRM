@@ -10,7 +10,7 @@
 	$(function(){
 		/*展示数据的datagrid表格*/
 		$("#datagrid").datagrid({
-			url:'${ctx}/customerService/findAll.action',
+			url:'${ctx}/customerService/findAll2.action',
 			method:'get',
 			fit:true,
 			singleSelect:false,
@@ -26,32 +26,46 @@
 				{field:'customer',title:'客户',width:80,align:'center'},    
 			/* 	{field:'status',title:'状态',width:100,align:'center'},  */   
 				{field:'createPeople',title:'创建人',width:100,align:'center'}, 
-				{field:'createTime',title:'创建日期',width:80,align:'center'}        
+				{field:'createTime',title:'创建日期',width:80,align:'center'},
+				{field:'assigner',title:'分配人',width:100,align:'center'}, 
+				{field:'assignTime',title:'分配日期',width:80,align:'center'} 
 			]]  
 		});
-		
 		/*添加和修改弹出的dialog */
 		$("#dialog").dialog({
 			 closed:'true', 
-			/* buttons:[
-				{ */
-					/* text:'保存', */
-				/* 	iconCls:'icon-ok', */
-					/* handler:function(){
+	 buttons:[
+				{ 
+					 text:'保存',
+				 	iconCls:'icon-ok', 
+					 handler:function(){
 						doSave();
-					} */
+					}
 				},
 				{
-					/* text:'关闭', */
-					/* iconCls:'icon-cancel', */
-					/* handler:function(){
+					text:'关闭',
+					 iconCls:'icon-cancel', 
+					handler:function(){
 						$("#dialog").dialog("close");
-					} */
-			/* 	}
+					} 
+			 	}
 				
-			] */
+			] 
 			
 		});
+	
+	//如果分配指派人，指派时间为当前时间
+	$(function(){
+		$("#serviceDealPeople").combobox({
+			onSelect:function(record){
+				if(record.trueName!=''){
+					$("#serviceDealTime").val(Util.getCurrentDateTime());
+				}else{
+					$("#serviceDealTime").val("");
+				}
+			}
+		}); 
+	 });
 	});
 	
 	/*添加或修改的dialog */
@@ -77,13 +91,9 @@
 	}
 	/* 查找 */
 	function doSearch(){
-		
 		$("#datagrid").datagrid("load",{
 			'customer':$("#customer").val(),
-			'overview':$("#overviewId").val(),
-			'serviceType':$("#serviceType").val(),
-			'beginTime':$("#beginTime").val(),
-			'endTime':$("#endTime").val()
+			'status':$("#status").val()
 		})
 	}
 	
@@ -127,7 +137,7 @@
 			return;
 		}
 		var row = selections[0];
-		$("#dialog").dialog("open").dialog("setTitle","客户服务详情");
+		$("#dialog").dialog("open").dialog("setTitle","处理客户服务");
 		url = "${ctx}/customerService/update.action";
 		$('#form').form("load", row);
 	}
@@ -140,25 +150,10 @@
 	<!-- toolbar 开始 -->
 	<div id="toolbar">
 <!-- 		<a class="easyui-linkbutton" href="javascript:openAddDialog()" iconCls="icon-add">添加</a> -->
-		<a class="easyui-linkbutton" href="javascript:openUpdateDialog()" iconCls="icon-item">查看客户服务详情</a>
+		<a class="easyui-linkbutton" href="javascript:openUpdateDialog()" iconCls="icon-item">处理</a>
 	<!-- 	<a class="easyui-linkbutton" href="javascript:doDelete()" iconCls="icon-remove">删除</a> -->
 		&nbsp;&nbsp;&nbsp;&nbsp;
-		<div>
-			客户名：<input type="text" id="customer" />
-			 概要：<input type="text" id="overviewId"/>
-		        服务类型：<select type="text" id="serviceType" class="easyui-combobox"
-		     		panelHeight="auto" editable="false">
-		     		<option value="">请选择...</option>	
- 					<option value="咨询">咨询</option>
- 					<option value="建议">建议</option>	
- 					<option value="投诉">投诉</option>	
-		     	</select>
-		   开始时间:<input type="text" id="beginTime" name="beginTime" class="easyui-datetimebox"   ></input>
-		   结束时间:<input type="text" id="endTime" name="endTime" class="easyui-datetimebox"  ></input> 
-		    
-		  <a href="javascript:doSearch();" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
-		</div>
-	</div>
+		
 	<!-- toolbar 结束 -->
 	
 	<!-- 添加和修改的dialog 开始 -->
@@ -201,22 +196,15 @@
 		   		<tr>
 		   			<td>服务处理：</td>
 		   			<td colspan="4">
-		   				<textarea rows="5" cols="50" id="serviceDeal" name="serviceDeal" readonly="readonly"></textarea>
+		   				<textarea rows="5" cols="50" id="serviceDeal" name="serviceDeal" class="easyui-validatebox" required="true" ></textarea>
 		   			</td>
 		   		</tr>
 		   		<tr>
 		   			<td>处理人：</td>
-		   			<td><input type="text" editable="false" id="serviceDealPeople" name="serviceDealPeople" readonly="readonly" class="easyui-validatebox" required="true"/>&nbsp;<font color="red">*</font></td>
+		   			<td><input  class="easyui-combobox" id="serviceDealPeople"  name="serviceDealPeople"  data-options="panelHeight:'auto',editable:false,valueField:'trueName',textField:'trueName',url:'${ctx}/user/getCustomerManagerList.action'"/></td>
 		   			<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		   			<td>处理时间：</td>
 		   			<td><input type="text" readonly="true" id="serviceDealTime" name="serviceDealTime" readonly="readonly"/>&nbsp;<font color="red">*</font></td>
-		   		</tr>
-		   		<tr>
-		   			<td>处理结果：</td>
-		   			<td><input type="text" id="serviceDealResult" name="serviceDealResult" readonly="readonly"/></td>
-		   			<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		   			<td>客户满意度：</td>
-		   			<td><input type="text" id="satisfy" name="satisfy" readonly="readonly" readonly="readonly"/></td>
 		   		</tr>
 				
 			</table>

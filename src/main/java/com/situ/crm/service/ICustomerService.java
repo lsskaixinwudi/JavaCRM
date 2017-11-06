@@ -5,7 +5,7 @@ import java.util.List;
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
 import com.situ.crm.pojo.Customer;
-import com.situ.crm.pojo.CustomerLoss;
+import com.situ.crm.vo.CustomerContribute;
 
 public interface ICustomerService {
 	void checkCustomerLoss();
@@ -37,5 +37,12 @@ public interface ICustomerService {
 	List<Customer> findCustomerNum();
 
 	ServerResponse findById(Integer id);
-
+	
+	EasyUIDataGrideResult findCustomerContribute(Integer page, Integer rows, CustomerContribute customerContribute);
+	
+	EasyUIDataGrideResult selectCustomerContribute(Integer page, Integer rows, CustomerContribute customerContribute);
+	
+	ServerResponse findkhfw();
+	
+	ServerResponse findCustomerConstitute();
 }

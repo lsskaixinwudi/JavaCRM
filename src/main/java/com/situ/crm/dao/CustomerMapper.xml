@@ -487,4 +487,32 @@
        FROM customer t1 WHERE id NOT IN (SELECT customer_id FROM customer_order WHERE DATE_ADD(order_date,INTERVAL 6 MONTH) > NOW()) AND t1.status=0;
   </select>
   
+  <select id="findCustomerContribute" resultType="com.situ.crm.vo.CustomerContribute" parameterType="String">
+   	SELECT c.name,SUM(CASE WHEN oi.sum IS NULL THEN 0 ELSE oi.sum END) AS contribute
+	FROM customer AS c LEFT JOIN customer_order AS co ON c.id=co.customer_id
+	LEFT JOIN order_item AS oi ON co.id=oi.order_id 
+	<if test="name!=null and !&quot;&quot;.equals(name.trim())">
+	WHERE c.name like '%${name}%'
+	</if>
+	GROUP BY c.id ORDER BY contribute DESC
+	
+  </select>
+  
+  
+  <select id="selectCustomerContribute" resultType="com.situ.crm.vo.CustomerContribute">
+   	SELECT c.name,SUM(CASE WHEN oi.sum IS NULL THEN 0 ELSE oi.sum END) AS contribute
+	FROM customer AS c LEFT JOIN customer_order AS co ON c.id=co.customer_id
+	LEFT JOIN order_item AS oi ON co.id=oi.order_id 
+	<if test="name!=null and !&quot;&quot;.equals(name.trim())">
+	WHERE c.name=#{name};
+	</if>
+	GROUP BY c.id ORDER BY contribute DESC
+  </select>
+  
+  <!-- 客户构成分析 -->
+  <select id="findCustomerConstitute" resultType="com.situ.crm.vo.CustomerConstitute">
+  	SELECT LEVEL AS CustomerLevel,COUNT(LEVEL) AS CustomerNum
+	FROM customer
+	GROUP BY LEVEL;
+  </select>
 </mapper>
