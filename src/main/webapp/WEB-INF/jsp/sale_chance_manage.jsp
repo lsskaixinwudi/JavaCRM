@@ -170,6 +170,10 @@
 		 }
 	 }
 	
+	function doExportExcel(){
+		 		window.location.href="${ctx}/saleChance/exportExcel.action";
+		 	}
+	
 </script>
 </head>
 <body>
@@ -181,6 +185,7 @@
 			<a class="easyui-linkbutton" href="javascript:openAddDialog()" iconCls="icon-add">添加</a>
 			<a class="easyui-linkbutton" href="javascript:openUpdateDialog()" iconCls="icon-edit">修改</a>
 			<a class="easyui-linkbutton" href="javascript:doDelete()" iconCls="icon-remove">删除</a>
+			<a class="easyui-linkbutton" href="javascript:doExportExcel()" iconCls="icon-add">导出报表</a>
 		</div>
 		<div>
 		       客户名称：<input type="text" id="s_customerName"/>

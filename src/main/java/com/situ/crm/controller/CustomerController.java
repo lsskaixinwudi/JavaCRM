@@ -96,7 +96,7 @@ public class CustomerController {
 	public List<Customer> findCustomerNum() {
 		return customerService.findCustomerNum();
 	}
-	
+	 
 	@RequestMapping("/findById")
 	@ResponseBody
 	public ServerResponse findById(Integer id) {
