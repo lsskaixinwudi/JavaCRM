@@ -161,6 +161,10 @@
 		var row = selections[0];
 		window.parent.openTab('历史订单查看','${ctx}/customerOrder/index.action?customerId='+row.id,'icon-khkfjh');
 		}
+	
+	function doExportExcel1(){
+ 		window.location.href="${ctx}/customer/exportExcel1.action";
+ 	}
 </script>
 </head>
 <body>
@@ -172,6 +176,7 @@
 			<a class="easyui-linkbutton" href="javascript:openAddDialog()" iconCls="icon-add">添加</a>
 			<a class="easyui-linkbutton" href="javascript:openUpdateDialog()" iconCls="icon-edit">修改</a>
 			<a class="easyui-linkbutton" href="javascript:doDelete()" iconCls="icon-remove">删除</a>
+			<a class="easyui-linkbutton" href="javascript:doExportExcel1()" iconCls="icon-add">导出报表</a>
 			<a class="easyui-linkbutton" href="javascript:openlxDialog()" iconCls="icon-man">联系人管理</a>
 			<a class="easyui-linkbutton" href="javascript:openjwDialog()" iconCls="icon-jwjl">交往记录管理</a>
 			<a class="easyui-linkbutton" href="javascript:openlsDialog()" iconCls="icon-jwjl">历史订单查看</a>

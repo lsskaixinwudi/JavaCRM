@@ -2,6 +2,8 @@ package com.situ.crm.service;
 
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
+
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
 import com.situ.crm.pojo.Customer;
@@ -45,4 +47,5 @@ public interface ICustomerService {
 	ServerResponse findkhfw();
 	
 	ServerResponse findCustomerConstitute();
+	void exportExcel1(ServletOutputStream outputStream);
 }

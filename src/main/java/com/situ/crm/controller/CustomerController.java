@@ -4,7 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -138,5 +140,24 @@ public class CustomerController {
 		return customerService.findCustomerConstitute();
 	}
 	
+	
+	@RequestMapping("/exportExcel1")
+ 	public void exportExcel1(HttpServletResponse response) {
+ 		try {
+ 			/*//1、查找用户列表
+ 			List<SaleChance> list = saleChanceService.findAll();
+ 			//2、导出
+ */			response.setContentType("application/x-execl");
+ 			response.setHeader("Content-Disposition", "attachment;filename=" + new String("客户列表.xls".getBytes(), "ISO-8859-1"));
+ 			ServletOutputStream outputStream = response.getOutputStream();
+ 			customerService.exportExcel1(outputStream);
+ 			System.out.println(outputStream);
+ 			if(outputStream != null){
+ 				outputStream.close();
+ 			}
+ 		} catch (Exception e) {
+ 			e.printStackTrace();
+ 		}
+ 	}
 	
 }
