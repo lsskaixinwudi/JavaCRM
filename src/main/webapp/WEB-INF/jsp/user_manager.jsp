@@ -131,6 +131,10 @@ function openUpdateDialog() {
 	$('#form').form("load", row);
 }
 
+function doExportExcel2(){
+		window.location.href="${ctx}/user/exportExcel2.action";
+	}
+
 </script>
 </head>
 <body>
@@ -143,6 +147,7 @@ function openUpdateDialog() {
 			<a class="easyui-linkbutton" href="javascript:openAddDialog()" iconCls="icon-add">添加</a>
 			<a class="easyui-linkbutton" href="javascript:openUpdateDialog()" iconCls="icon-edit">修改</a>
 			<a class="easyui-linkbutton" href="javascript:doDelete()" iconCls="icon-remove">删除</a>
+			<a class="easyui-linkbutton" href="javascript:doExportExcel2()" iconCls="icon-add">导出报表</a>
 		</div>
 		<div>
 			用户名：<input type="text" id="s_nameId" class="easyui-validatebox"
